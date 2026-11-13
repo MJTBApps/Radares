@@ -1,0 +1,113 @@
+name: Radares - Subir iOS a TestFlight
+
+# Firma la app iOS y la sube a App Store Connect (TestFlight). Se lanza a mano
+# («Run workflow», no «Re-run», que repetiría el commit antiguo).
+# Mismo sistema que OpoAlert: firma automática en la nube con la clave de la API de
+# App Store Connect (rol de Administración). La clave solo está en los secretos
+# ASC_KEY_ID, ASC_ISSUER_ID y ASC_KEY_P8 de este repositorio.
+# Antes de la primera subida tiene que existir la app es.mjtbapps.radares en App Store Connect.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: radares-testflight
+  cancel-in-progress: false
+
+jobs:
+  subir:
+    runs-on: macos-15-intel
+    timeout-minutes: 45
+    env:
+      TEAM_ID: 6QLP74LVPC
+    steps:
+      - name: Descargar codigo
+        uses: actions/checkout@v4
+
+      - name: Comprobar secretos
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+        run: |
+          for name in ASC_KEY_ID ASC_ISSUER_ID ASC_KEY_P8; do
+            if [ -z "${!name}" ]; then echo "::error::Falta el secreto $name"; exit 1; fi
+          done
+          case "$ASC_KEY_P8" in
+            *"BEGIN PRIVATE KEY"*"END PRIVATE KEY"*) ;;
+            *) echo "::error::ASC_KEY_P8 no parece un archivo .p8 completo"; exit 1;;
+          esac
+
+      - name: Elegir el Xcode mas reciente
+        run: |
+          XCODE="$(ls -d /Applications/Xcode_*.app | sort -V | tail -1)"
+          sudo xcode-select -s "$XCODE"
+          xcodebuild -version
+          case "$(xcodebuild -version | head -1)" in
+            "Xcode 2"[6-9]*|"Xcode 3"*) ;;
+            *) echo "::error::El App Store exige Xcode 26 o posterior"; exit 1;;
+          esac
+
+      - name: Comprobar el nucleo y la base de radares
+        working-directory: ios/RadaresCore
+        run: swift run RadaresChecks "$GITHUB_WORKSPACE/ios/Radares/Recursos/radares.json"
+
+      - name: Guardar la clave de la API (solo en este ejecutor)
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/asc"
+          printf '%s\n' "$ASC_KEY_P8" > "$RUNNER_TEMP/asc/AuthKey_$ASC_KEY_ID.p8"
+          chmod 600 "$RUNNER_TEMP/asc/AuthKey_$ASC_KEY_ID.p8"
+
+      - name: Generar el proyecto de Xcode
+        working-directory: ios
+        run: |
+          brew install xcodegen
+          xcodegen generate
+
+      - name: Archivar
+        working-directory: ios
+        run: |
+          set -o pipefail
+          # Se archiva sin firmar (firmar aquí pediría un perfil de desarrollo con un iPhone
+          # registrado); la firma de distribución la hace el paso siguiente.
+          # Número de compilación: uno más en cada ejecución (App Store Connect no admite repetidos).
+          xcodebuild -project Radares.xcodeproj -scheme Radares -configuration Release \
+            -destination 'generic/platform=iOS' -archivePath build/Radares.xcarchive \
+            DEVELOPMENT_TEAM="$TEAM_ID" CODE_SIGN_STYLE=Automatic CODE_SIGNING_ALLOWED=NO \
+            CURRENT_PROJECT_VERSION="${{ github.run_number }}" \
+            archive | tail -n 80
+
+      - name: Subir a App Store Connect
+        working-directory: ios
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+        run: |
+          set -o pipefail
+          cat > build/ExportOptions.plist <<PLIST
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0"><dict>
+            <key>method</key><string>app-store-connect</string>
+            <key>destination</key><string>upload</string>
+            <key>teamID</key><string>$TEAM_ID</string>
+            <key>signingStyle</key><string>automatic</string>
+            <key>manageAppVersionAndBuildNumber</key><false/>
+          </dict></plist>
+          PLIST
+          xcodebuild -exportArchive -archivePath build/Radares.xcarchive \
+            -exportOptionsPlist build/ExportOptions.plist -exportPath build/export \
+            -allowProvisioningUpdates \
+            -authenticationKeyPath "$RUNNER_TEMP/asc/AuthKey_$ASC_KEY_ID.p8" \
+            -authenticationKeyID "$ASC_KEY_ID" -authenticationKeyIssuerID "$ASC_ISSUER_ID" \
+            | tail -n 60
+          echo "Subida la compilación ${{ github.run_number }}. App Store Connect tarda unos minutos en procesarla."
+
+      - name: Borrar la clave
+        if: always()
+        run: rm -rf "$RUNNER_TEMP/asc"

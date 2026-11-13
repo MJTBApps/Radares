@@ -1,0 +1,55 @@
+# Proyecto de Xcode de la app iOS. No se sube el .xcodeproj: se genera con
+# XcodeGen (`brew install xcodegen`, y en esta carpeta `xcodegen generate`).
+# Mismo modelo que OpoAlert: se compila en GitHub Actions, no en el iMac.
+name: Radares
+options:
+  bundleIdPrefix: es.mjtbapps
+  deploymentTarget:
+    iOS: "16.0"
+  developmentLanguage: es
+packages:
+  RadaresCore:
+    path: RadaresCore
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    MARKETING_VERSION: "0.1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    DEVELOPMENT_TEAM: ""
+targets:
+  Radares:
+    type: application
+    platform: iOS
+    sources:
+      - path: Radares
+    dependencies:
+      - package: RadaresCore
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: es.mjtbapps.radares
+        PRODUCT_NAME: Radares
+        TARGETED_DEVICE_FAMILY: "1"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Radares
+        INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.navigation
+        INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait
+    info:
+      path: Radares/Info.plist
+      properties:
+        CFBundleDevelopmentRegion: es
+        # location: seguir recibiendo el GPS con la pantalla apagada.
+        # audio: poder hablar con la app en segundo plano.
+        UIBackgroundModes: [location, audio]
+        UILaunchScreen: {}
+        ITSAppUsesNonExemptEncryption: false
+        NSLocationWhenInUseUsageDescription: "Radares usa tu posición para avisarte de los radares que tienes delante. No sale del iPhone."
+        # La app no graba nada. iOS exige este texto porque el aviso por el canal de
+        # llamadas del coche y por el altavoz usa una sesión de audio de «reproducir y grabar».
+        NSMicrophoneUsageDescription: "Radares no graba ni escucha nada. iOS pide este permiso para poder dar el aviso por el canal de llamadas del coche."
+schemes:
+  Radares:
+    build:
+      targets:
+        Radares: all

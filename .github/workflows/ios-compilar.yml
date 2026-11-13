@@ -1,0 +1,47 @@
+name: Radares - Compilar iOS
+
+# Comprueba el núcleo y que la app compila (sin firmar). No necesita ningún secreto.
+on:
+  push:
+    paths:
+      - "ios/**"
+      - ".github/workflows/ios-compilar.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: radares-compilar-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  compilar:
+    runs-on: macos-15-intel
+    timeout-minutes: 30
+    steps:
+      - name: Descargar codigo
+        uses: actions/checkout@v4
+
+      - name: Elegir el Xcode mas reciente
+        run: |
+          XCODE="$(ls -d /Applications/Xcode_*.app | sort -V | tail -1)"
+          sudo xcode-select -s "$XCODE"
+          xcodebuild -version
+
+      - name: Comprobar el nucleo y la base de radares
+        working-directory: ios/RadaresCore
+        run: swift run RadaresChecks "$GITHUB_WORKSPACE/ios/Radares/Recursos/radares.json"
+
+      - name: Generar el proyecto de Xcode
+        working-directory: ios
+        run: |
+          brew install xcodegen
+          xcodegen generate
+
+      - name: Compilar sin firmar
+        working-directory: ios
+        run: |
+          set -o pipefail
+          xcodebuild -project Radares.xcodeproj -scheme Radares -configuration Release \
+            -destination 'generic/platform=iOS' CODE_SIGNING_ALLOWED=NO build | tail -n 60
