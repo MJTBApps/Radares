@@ -6,9 +6,11 @@ Fuentes (todas públicas, sin clave):
     Licencia ODbL: hay que citar «© colaboradores de OpenStreetMap» en la app.
   - Servei Català de Trànsit: radares fijos y de tramo de Cataluña, con carretera,
     punto kilométrico y límite (coordenadas UTM 31N ETRS89).
+  - DGT (inventario DATEX II): cabinas fijas y tramos del resto de España, con carretera
+    pero sin límite. Añade los que faltan; si su servidor falla se sigue sin ella.
 
 Solo usa la biblioteca estándar:  python3 scripts/actualizar_radares.py
-Con --osm ARCHIVO o --transit ARCHIVO se usa una copia ya descargada.
+Con --osm ARCHIVO, --transit ARCHIVO o --dgt ARCHIVO se usa una copia ya descargada.
 """
 import argparse
 import datetime
@@ -19,6 +21,7 @@ import sys
 import time
 import urllib.parse
 import urllib.request
+import xml.etree.ElementTree as ET
 
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
 SALIDA = RAIZ / "ios" / "Radares" / "Recursos" / "radares.json"
@@ -35,6 +38,10 @@ ZONAS = {
     "Canarias": (27.5, -18.3, 29.5, -13.3),
 }
 TRANSIT = "http://transit.gencat.cat/web/.content/documents/seguretat_viaria/radars.txt"
+# Inventario de la DGT en DATEX II (cabinas fijas y tramos de velocidad media). La dirección
+# antigua (infocar.dgt.es) da error 502 desde noviembre de 2026; esta es la del punto de acceso nacional.
+DGT = "https://nap.dgt.es/datex2/dgt/PredefinedLocationsPublication/radares/content.xml"
+DATEX = "{http://datex2.eu/schema/1_0/1_0}"
 
 
 def descargar(url, datos=None, espera=180):
@@ -238,6 +245,39 @@ def radares_transit(texto):
     return salida, descartados
 
 
+# ---------- DGT ----------
+
+def radares_dgt(xml):
+    """Cabinas y tramos del inventario de la DGT. Trae la carretera, pero no el límite ni
+    un sentido que se pueda usar (solo «kilómetros crecientes o decrecientes»)."""
+    def punto(nodo):
+        c = nodo.find(f".//{DATEX}pointCoordinates")
+        return float(c.find(DATEX + "latitude").text), float(c.find(DATEX + "longitude").text)
+
+    salida = []
+    for sitio in ET.fromstring(xml).iter(DATEX + "predefinedLocationSet"):
+        for ficha in sitio.findall(DATEX + "predefinedLocation"):
+            dentro = ficha.find(DATEX + "predefinedLocation")
+            if dentro is None:
+                continue
+            via = dentro.findtext(f".//{DATEX}roadNumber")
+            r = {"id": "dgt-" + ficha.get("id", "").replace("GUID_", ""), "tipo": "fijo",
+                 "via": via.strip() if via and via.strip() else None, "fuente": "dgt"}
+            try:
+                linea = dentro.find(DATEX + "tpeglinearLocation")
+                if linea is not None:
+                    (r["lat"], r["lon"]), fin = punto(linea.find(DATEX + "from")), punto(linea.find(DATEX + "to"))
+                    if 300 <= distancia(r["lat"], r["lon"], *fin) <= 40000:
+                        r["tipo"], r["finLat"], r["finLon"] = "tramo", fin[0], fin[1]
+                else:
+                    r["lat"], r["lon"] = punto(dentro)
+            except (AttributeError, TypeError, ValueError):
+                continue   # ficha sin coordenadas
+            if 27 <= r["lat"] <= 44.5 and -18.5 <= r["lon"] <= 4.6:
+                salida.append(r)
+    return salida
+
+
 # ---------- mezcla ----------
 
 def mezclar(osm, transit):
@@ -260,6 +300,26 @@ def mezclar(osm, transit):
     return radares, usados
 
 
+def sumar_dgt(radares, dgt):
+    """Añade los radares de la DGT que no estaban. Al que ya estaba (OSM suele traer el límite
+    y a veces el sentido) solo le pone la carretera y, si es un tramo sin final, el final."""
+    nuevos = []
+    for d in dgt:
+        radio = 400 if d["tipo"] == "tramo" else 150
+        gemelos = [r for r in radares
+                   if abs(r["lat"] - d["lat"]) < 0.01 and abs(r["lon"] - d["lon"]) < 0.01
+                   and distancia(r["lat"], r["lon"], d["lat"], d["lon"]) <= radio]
+        if not gemelos:
+            nuevos.append(d)
+            continue
+        for g in gemelos:
+            if not g.get("via") and d.get("via"):
+                g["via"] = d["via"]
+            if g["tipo"] == d["tipo"] == "tramo" and "finLat" not in g and "longitud" not in g:
+                g["finLat"], g["finLon"] = d["finLat"], d["finLon"]
+    return radares + nuevos, len(nuevos)
+
+
 def limpiar(r):
     r = {k: v for k, v in r.items() if v is not None}
     for clave in ("lat", "lon", "finLat", "finLon"):
@@ -272,6 +332,7 @@ def main():
     p = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     p.add_argument("--osm", help="archivo JSON de Overpass ya descargado")
     p.add_argument("--transit", help="radars.txt ya descargado")
+    p.add_argument("--dgt", help="content.xml de la DGT ya descargado")
     p.add_argument("--salida", default=str(SALIDA))
     a = p.parse_args()
 
@@ -288,6 +349,18 @@ def main():
     print(f"  {len(osm)} radares")
 
     radares, de_osm = mezclar(osm, transit)
+
+    print("DGT")
+    try:
+        xml = pathlib.Path(a.dgt).read_bytes() if a.dgt else descargar(DGT, espera=90)
+        dgt = radares_dgt(xml)
+        if len(dgt) < 300:
+            raise ValueError(f"solo {len(dgt)} radares")
+        radares, de_dgt = sumar_dgt(radares, dgt)
+        print(f"  {len(dgt)} radares; {de_dgt} no estaban en las otras fuentes")
+    except Exception as error:   # la DGT falla a menudo: se sigue sin ella y se dice
+        de_dgt = 0
+        print(f"  NO INCLUIDA: {error}")
     radares = sorted((limpiar(r) for r in radares), key=lambda r: r["id"])
     ids = [r["id"] for r in radares]
     if len(set(ids)) != len(ids):
@@ -297,7 +370,7 @@ def main():
         raise SystemExit(f"Solo {len(radares)} radares: alguna fuente ha fallado; no se escribe nada")
 
     base = {"generado": datetime.date.today().isoformat(),
-            "fuentes": {"transit": len(transit), "osm": de_osm},
+            "fuentes": {"transit": len(transit), "osm": de_osm, "dgt": de_dgt},
             "radares": radares}
     salida = pathlib.Path(a.salida)
     salida.parent.mkdir(parents=True, exist_ok=True)

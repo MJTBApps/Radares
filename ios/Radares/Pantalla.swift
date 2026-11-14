@@ -166,7 +166,7 @@ struct Pantalla: View {
         VStack(spacing: 4) {
             Text("\(modelo.totalRadares) radares fijos y de tramo · datos del \(modelo.fechaDatos)")
             Text("No avisa de radares móviles. Respeta siempre los límites.")
-            Text("Datos: © colaboradores de OpenStreetMap (ODbL) y Servei Català de Trànsit.")
+            Text("Datos: © colaboradores de OpenStreetMap (ODbL), Servei Català de Trànsit y DGT.")
         }
         .font(.footnote)
         .foregroundColor(.secondary)

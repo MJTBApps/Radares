@@ -2,7 +2,7 @@
 
 App de iPhone que avisa por voz de los radares fijos y de tramo mientras conduces, pensada para ir con el navegador y la música del propio coche (Tesla): sin mapa, sin cuentas, con el móvil bloqueado y gastando la menor batería posible.
 
-Estado: **0.1.0, escrita y sin probar todavía en un iPhone** (14/11/2026). El núcleo está comprobado en el iMac; la app aún no se ha compilado (aquí no hay Xcode: se compila en GitHub Actions, como OpoAlert).
+Estado: **0.1.1, en TestFlight y sin probar todavía en el coche** (14/11/2026). El núcleo está comprobado en el iMac; la app se compila en GitHub Actions (aquí no hay Xcode), como OpoAlert. En App Store Connect se llama «Radares MJTB» (nombre provisional: «Radares» estaba cogido).
 
 ## Qué hace
 
@@ -28,11 +28,11 @@ Para que arranque sola: app Atajos → Automatización → «Al conectarse al Bl
 
 ## Datos
 
-`python3 scripts/actualizar_radares.py` genera `ios/Radares/Recursos/radares.json` (3.427 radares el 14/11/2026: 355 de tramo, 3.209 con límite, 2.142 con sentido).
+`python3 scripts/actualizar_radares.py` genera `ios/Radares/Recursos/radares.json` (3.496 radares el 14/11/2026: 356 de tramo, 3.211 con límite, 2.144 con sentido).
 
 - **OpenStreetMap** (Overpass): península, Baleares y Canarias; por la forma de la consulta entran también Portugal y la franja de frontera. Licencia ODbL: obliga a citar «© colaboradores de OpenStreetMap» y a ofrecer la base derivada con la misma licencia.
 - **Servei Català de Trànsit**: 231 radares de Cataluña con carretera y límite. El archivo trae erratas en las coordenadas; el script arregla las que puede comprobar y descarta 11 filas.
-- **DGT**: no incluida. Su servidor de datos devolvía error 502 el 14/11/2026 y no se pudo ver el formato.
+- **DGT**: inventario de cabinas y tramos (737, publicado el 18/12/2025) desde `nap.dgt.es`; la dirección antigua de `infocar.dgt.es` da error 502. Trae la carretera pero no el límite ni el sentido. OpenStreetMap ya tenía 669; la DGT añade 68 y pone la carretera a los que coinciden. Si su servidor falla, el script sigue sin ella y lo dice.
 
 ## Carpetas
 
