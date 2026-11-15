@@ -1,10 +1,19 @@
 import CoreLocation
 import RadaresCore
+import StoreKit
 import SwiftUI
+
+/// Páginas públicas de la app (política de privacidad y condiciones de uso).
+enum Enlaces {
+    static let privacidad = URL(string: "https://mjtbapps.github.io/chivato-radar/privacidad.html")!
+    static let condiciones = URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")!
+}
 
 struct Pantalla: View {
     @EnvironmentObject private var modelo: Modelo
+    @EnvironmentObject private var tienda: Tienda
     @Environment(\.openURL) private var abrir
+    @State private var verPremium = false
 
     var body: some View {
         ScrollView {
@@ -15,15 +24,17 @@ struct Pantalla: View {
                 botonPrincipal
                 if modelo.permiso == .denied || modelo.permiso == .restricted { avisoPermiso }
                 sonido
-                Toggle("Empezar al abrir la app", isOn: $modelo.empezarAlAbrir)
-                    .padding()
-                    .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 14))
+                tarjetaPremium
+                arranque
                 if !modelo.diario.isEmpty { diario }
                 pie
             }
             .padding(16)
         }
         .background(Color(.systemBackground))
+        .sheet(isPresented: $verPremium) {
+            PantallaPremium().environmentObject(modelo).environmentObject(tienda)
+        }
     }
 
     // MARK: - Piezas
@@ -136,6 +147,22 @@ struct Pantalla: View {
             .labelsHidden()
             Text(modelo.salida.explicacion)
                 .font(.subheadline).foregroundColor(.secondary)
+            if modelo.salida == .llamada && !modelo.llamadaDisponible {
+                Label("La prueba ha terminado: ahora suena por el altavoz del iPhone.", systemImage: "lock.fill")
+                    .font(.subheadline).foregroundColor(.orange)
+                Button("Volver a oírlo por el coche") { verPremium = true }
+                    .buttonStyle(.borderedProminent)
+            }
+            Divider()
+            Text("Voz").font(.headline)
+            Picker("Voz", selection: $modelo.idVoz) {
+                Text("La del iPhone por defecto").tag("")
+                ForEach(modelo.voces) { voz in Text(voz.titulo).tag(voz.id) }
+            }
+            .pickerStyle(.menu)
+            .labelsHidden()
+            Text("Para tener más voces o de más calidad: Ajustes del iPhone → Accesibilidad → Contenido leído → Voces → Español.")
+                .font(.footnote).foregroundColor(.secondary)
             HStack {
                 Button("Probar ahora") { modelo.probarSonido() }
                 Spacer()
@@ -144,6 +171,52 @@ struct Pantalla: View {
             .buttonStyle(.bordered)
             Text("«Probar en 10 s» sirve para bloquear el móvil y comprobar que suena igual. Con la app parada puede no sonar en segundo plano.")
                 .font(.footnote).foregroundColor(.secondary)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding()
+        .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 14))
+    }
+
+    private var tarjetaPremium: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            if modelo.premium {
+                Label("Premium activo", systemImage: "checkmark.seal.fill").font(.headline)
+                Text("El aviso por los altavoces del coche está desbloqueado. Gracias por apoyar la app.")
+                    .font(.subheadline).foregroundColor(.secondary)
+            } else {
+                Label("Premium", systemImage: "star.fill").font(.headline)
+                let dias = modelo.diasDePruebaRestantes
+                Text(dias > 0
+                     ? "El aviso por los altavoces del coche es de Premium. Lo estás probando gratis: " + (dias == 1 ? "queda 1 día." : "quedan \(dias) días.")
+                     : "El aviso por los altavoces del coche es de Premium. Los avisos por el iPhone siguen siendo gratis.")
+                    .font(.subheadline).foregroundColor(.secondary)
+                Button("Ver Premium") { verPremium = true }
+                    .buttonStyle(.bordered)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding()
+        .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 14))
+    }
+
+    private var arranque: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Toggle("Empezar a vigilar al abrir la app", isOn: $modelo.empezarAlAbrir)
+            Text("Activado, la app empieza sola en cuanto se abre, sin pulsar «Empezar».")
+                .font(.subheadline).foregroundColor(.secondary)
+            DisclosureGroup("Que se abra sola al subir al coche") {
+                VStack(alignment: .leading, spacing: 6) {
+                    Text("1. Abre la app Atajos del iPhone y entra en «Automatización».")
+                    Text("2. Crea una nueva: «Bluetooth» → «Al conectarse» → elige tu coche → «Ejecutar inmediatamente».")
+                    Text("3. Añade la acción «Abrir app» y elige esta app.")
+                    Text("Desde entonces, al subir al coche la app se abre y empieza a vigilar sin tocar el móvil.")
+                }
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.top, 6)
+            }
+            .font(.subheadline)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding()
@@ -167,10 +240,86 @@ struct Pantalla: View {
             Text("\(modelo.totalRadares) radares fijos y de tramo · datos del \(modelo.fechaDatos)")
             Text("No avisa de radares móviles. Respeta siempre los límites.")
             Text("Datos: © colaboradores de OpenStreetMap (ODbL), Servei Català de Trànsit y DGT.")
+            Link("Política de privacidad", destination: Enlaces.privacidad)
         }
         .font(.footnote)
         .foregroundColor(.secondary)
         .multilineTextAlignment(.center)
         .padding(.top, 4)
+    }
+}
+
+/// Hoja de compra de Premium.
+struct PantallaPremium: View {
+    @EnvironmentObject private var modelo: Modelo
+    @EnvironmentObject private var tienda: Tienda
+    @Environment(\.dismiss) private var cerrar
+
+    var body: some View {
+        NavigationView {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 16) {
+                    Text("Los avisos, por los altavoces del coche")
+                        .font(.title2.weight(.bold))
+                    Text("Con Premium el aviso entra por el canal de llamadas: el coche baja su música y lo dice por sus altavoces, aunque estés usando su navegador y su música. Sin CarPlay y sin cambiar de fuente.")
+                        .foregroundColor(.secondary)
+                    Label("Avisos de radares fijos y de tramo: gratis, por el iPhone", systemImage: "checkmark")
+                    Label("Avisos por los altavoces del coche: Premium", systemImage: "star.fill")
+
+                    if modelo.premium {
+                        Label("Ya tienes Premium", systemImage: "checkmark.seal.fill")
+                            .font(.headline)
+                            .foregroundColor(.green)
+                    } else if tienda.productos.isEmpty {
+                        HStack {
+                            ProgressView()
+                            Text("Cargando precios…").foregroundColor(.secondary)
+                        }
+                    } else {
+                        ForEach(tienda.productos, id: \.id) { producto in
+                            Button {
+                                Task { await tienda.comprar(producto) }
+                            } label: {
+                                VStack(spacing: 2) {
+                                    Text(producto.displayName).font(.headline)
+                                    Text(precio(producto)).font(.subheadline)
+                                }
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical, 6)
+                            }
+                            .buttonStyle(.borderedProminent)
+                            .disabled(tienda.ocupada)
+                        }
+                    }
+
+                    if let aviso = tienda.aviso {
+                        Text(aviso).font(.subheadline).foregroundColor(.orange)
+                    }
+
+                    Button("Restaurar compras") { Task { await tienda.restaurar() } }
+                        .disabled(tienda.ocupada)
+
+                    Text("La suscripción anual se renueva sola cada año al mismo precio hasta que la canceles en Ajustes → tu nombre → Suscripciones, como mínimo 24 horas antes de la renovación. El pago se carga en tu cuenta de Apple al confirmar la compra.")
+                        .font(.footnote).foregroundColor(.secondary)
+                    HStack(spacing: 16) {
+                        Link("Condiciones de uso", destination: Enlaces.condiciones)
+                        Link("Política de privacidad", destination: Enlaces.privacidad)
+                    }
+                    .font(.footnote)
+                }
+                .padding(20)
+            }
+            .navigationTitle("Premium")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) { Button("Cerrar") { cerrar() } }
+            }
+            .task { await tienda.cargar() }
+            .onChange(of: modelo.premium) { ahora in if ahora { cerrar() } }
+        }
+    }
+
+    private func precio(_ producto: Product) -> String {
+        producto.type == .autoRenewable ? "\(producto.displayPrice) al año" : "\(producto.displayPrice), un solo pago"
     }
 }

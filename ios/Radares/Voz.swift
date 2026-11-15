@@ -29,8 +29,38 @@ enum SalidaVoz: String, CaseIterable, Identifiable {
     }
 }
 
+/// Una voz en castellano instalada en el iPhone.
+struct VozDisponible: Identifiable, Equatable {
+    let id: String
+    let titulo: String
+
+    /// Las voces en castellano del iPhone: primero las de España y, dentro de cada país, las de más calidad.
+    static func instaladas() -> [VozDisponible] {
+        AVSpeechSynthesisVoice.speechVoices()
+            .filter { $0.language.hasPrefix("es") }
+            .sorted { a, b in
+                let ea = a.language == "es-ES", eb = b.language == "es-ES"
+                if ea != eb { return ea }
+                if a.language != b.language { return a.language < b.language }
+                if a.quality.rawValue != b.quality.rawValue { return a.quality.rawValue > b.quality.rawValue }
+                return a.name < b.name
+            }
+            .map { VozDisponible(id: $0.identifier, titulo: titulo(de: $0)) }
+    }
+
+    private static func titulo(de voz: AVSpeechSynthesisVoice) -> String {
+        let pais = voz.language.split(separator: "-").last.map(String.init) ?? ""
+        let lugar = Locale(identifier: "es_ES").localizedString(forRegionCode: pais) ?? pais
+        // 1 = normal, 2 = mejorada, 3 = premium (las dos últimas se descargan en Ajustes).
+        let calidad = voz.quality.rawValue >= 3 ? ", premium" : (voz.quality.rawValue == 2 ? ", mejorada" : "")
+        return "\(voz.name) (\(lugar)\(calidad))"
+    }
+}
+
 final class Voz: NSObject, AVSpeechSynthesizerDelegate {
     var salida: SalidaVoz = .altavoz
+    /// Identificador de la voz elegida; nil = la voz en castellano por defecto del iPhone.
+    var idVoz: String?
     /// Recibe los errores de sonido para enseñarlos en el diario de la pantalla.
     var alFallar: ((String) -> Void)?
 
@@ -60,7 +90,8 @@ final class Voz: NSObject, AVSpeechSynthesizerDelegate {
             }
         }
         let frase = AVSpeechUtterance(string: texto)
-        frase.voice = AVSpeechSynthesisVoice(language: "es-ES")
+        // Si la voz elegida se ha borrado del iPhone, vuelve a la de por defecto.
+        frase.voice = idVoz.flatMap { AVSpeechSynthesisVoice(identifier: $0) } ?? AVSpeechSynthesisVoice(language: "es-ES")
         frase.volume = 1
         frase.preUtteranceDelay = espera
         pendientes += 1

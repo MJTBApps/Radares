@@ -18,8 +18,23 @@ final class Modelo: NSObject, ObservableObject, CLLocationManagerDelegate {
 
     @Published var salida: SalidaVoz {
         didSet {
-            voz.salida = salida
             UserDefaults.standard.set(salida.rawValue, forKey: "salida")
+            aplicarSalida()
+        }
+    }
+    /// Identificador de la voz elegida; vacío = la voz por defecto del iPhone.
+    @Published var idVoz: String {
+        didSet {
+            voz.idVoz = idVoz.isEmpty ? nil : idVoz
+            UserDefaults.standard.set(idVoz, forKey: "idVoz")
+        }
+    }
+    /// Lo último que dijo el App Store. Se guarda para no perder el modo coche si la app
+    /// arranca sola y sin cobertura.
+    @Published var premium: Bool {
+        didSet {
+            UserDefaults.standard.set(premium, forKey: "premium")
+            aplicarSalida()
         }
     }
     @Published var empezarAlAbrir: Bool {
@@ -28,6 +43,20 @@ final class Modelo: NSObject, ObservableObject, CLLocationManagerDelegate {
 
     let totalRadares: Int
     let fechaDatos: String
+    let voces = VozDisponible.instaladas()
+
+    /// Días que el aviso por los altavoces del coche funciona sin Premium, desde el primer uso.
+    static let diasDePrueba = 14
+    private let primerUso: Date
+    private var avisadoFinPrueba = false
+
+    var diasDePruebaRestantes: Int {
+        let pasados = Int(Date().timeIntervalSince(primerUso) / 86_400)
+        return max(0, Modelo.diasDePrueba - pasados)
+    }
+
+    /// El modo «Coche, como llamada» es de Premium; los primeros días se puede probar gratis.
+    var llamadaDisponible: Bool { premium || diasDePruebaRestantes > 0 }
 
     private let gestor = CLLocationManager()
     private let motor: MotorAvisos
@@ -42,6 +71,14 @@ final class Modelo: NSObject, ObservableObject, CLLocationManagerDelegate {
         let guardada = UserDefaults.standard.string(forKey: "salida").flatMap(SalidaVoz.init(rawValue:))
         salida = guardada ?? .altavoz
         empezarAlAbrir = UserDefaults.standard.object(forKey: "empezarAlAbrir") as? Bool ?? true
+        idVoz = UserDefaults.standard.string(forKey: "idVoz") ?? ""
+        premium = UserDefaults.standard.bool(forKey: "premium")
+        if let fecha = UserDefaults.standard.object(forKey: "primerUso") as? Date {
+            primerUso = fecha
+        } else {
+            primerUso = Date()
+            UserDefaults.standard.set(primerUso, forKey: "primerUso")
+        }
 
         var base: BaseRadares?
         var errorDatos: String?
@@ -55,7 +92,8 @@ final class Modelo: NSObject, ObservableObject, CLLocationManagerDelegate {
         fechaDatos = base?.generado ?? "—"
         super.init()
 
-        voz.salida = salida
+        voz.idVoz = idVoz.isEmpty ? nil : idVoz
+        aplicarSalida()
         voz.alFallar = { [weak self] texto in self?.anotar(texto) }
         gestor.delegate = self
         gestor.activityType = .automotiveNavigation
@@ -120,16 +158,34 @@ final class Modelo: NSObject, ObservableObject, CLLocationManagerDelegate {
         ahorro = !alta
     }
 
-    // MARK: - Pruebas de sonido
+    // MARK: - Sonido
+
+    /// Sin Premium y con la prueba terminada, el modo coche suena por el altavoz del iPhone.
+    private func aplicarSalida() {
+        if salida == .llamada && !llamadaDisponible {
+            voz.salida = .altavoz
+            if !avisadoFinPrueba {
+                avisadoFinPrueba = true
+                anotar("La prueba del aviso por el coche ha terminado: suena por el iPhone. Con Premium vuelve al coche.")
+            }
+        } else {
+            voz.salida = salida
+        }
+    }
+
+    private func decir(_ frase: String) {
+        aplicarSalida()   // la prueba puede terminar en mitad de un viaje
+        voz.decir(frase)
+    }
 
     func probarSonido(dentroDe segundos: Double = 0) {
         let frase = "Prueba. Radar a 500 metros. Límite 120."
         if segundos <= 0 {
-            voz.decir(frase)
+            decir(frase)
         } else {
             anotar("Prueba de sonido en \(Int(segundos)) segundos.")
             DispatchQueue.main.asyncAfter(deadline: .now() + segundos) { [weak self] in
-                self?.voz.decir(frase)
+                self?.decir(frase)
             }
         }
     }
@@ -161,7 +217,7 @@ final class Modelo: NSObject, ObservableObject, CLLocationManagerDelegate {
 
         for evento in motor.procesar(p) {
             let frase = Frases.texto(evento)
-            voz.decir(frase)
+            decir(frase)
             anotar(frase)
         }
 

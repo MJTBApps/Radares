@@ -1,8 +1,8 @@
-# Radares (nombre provisional)
+# Chivato Radar (carpeta y repositorio: Radares)
 
 App de iPhone que avisa por voz de los radares fijos y de tramo mientras conduces, pensada para ir con el navegador y la música del propio coche (Tesla): sin mapa, sin cuentas, con el móvil bloqueado y gastando la menor batería posible.
 
-Estado: **0.1.1, en TestFlight y sin probar todavía en el coche** (14/11/2026). El núcleo está comprobado en el iMac; la app se compila en GitHub Actions (aquí no hay Xcode), como OpoAlert. En App Store Connect se llama «Radares MJTB» (nombre provisional: «Radares» estaba cogido).
+Estado: **0.2.0 preparada para enviar a Apple** (15/11/2026). La 0.1.1 se probó en el Tesla el 15/11/2026: avisa bien y el modo «como llamada» funciona. El núcleo está comprobado en el iMac; la app se compila en GitHub Actions (aquí no hay Xcode), como OpoAlert. Nombre elegido: «Chivato Radar» («Chivato» bajo el icono). La app se creó en App Store Connect como «Radares MJTB».
 
 ## Qué hace
 
@@ -22,7 +22,16 @@ El coche suele estar con su propia música, no en la fuente Bluetooth, así que 
 | Coche, como llamada | Entra por el canal de llamadas (HFP): el coche baja la música y lo dice por sus altavoces |
 | Bluetooth normal | Como una app de música: solo si el coche está en la fuente Bluetooth |
 
-**Pendiente de probar en el coche:** cómo reacciona el Tesla al modo llamada (retraso, si enseña la pantalla de llamada) y si los tres modos suenan con el iPhone bloqueado. Los errores de sonido salen en «Últimos avisos».
+Los errores de sonido salen en «Últimos avisos». La voz se elige en la app entre las voces en castellano instaladas en el iPhone.
+
+## Premium
+
+El modo «Coche, como llamada» es de Premium, con 14 días de prueba desde el primer uso (`Modelo.diasDePrueba`); después suena por el altavoz del iPhone hasta que se compra. Los avisos por el iPhone y por Bluetooth normal son gratis. Compras con StoreKit 2 (`Tienda.swift`); los productos se crean en App Store Connect con estos identificadores:
+
+- `es.mjtbapps.radares.premium.anual`: suscripción anual.
+- `es.mjtbapps.radares.premium.siempre`: pago único.
+
+La prueba se cuenta con una fecha guardada en el iPhone: reinstalar la app la reinicia. Anuncios: aún no hay (pendiente para una versión posterior).
 
 Para que arranque sola: app Atajos → Automatización → «Al conectarse al Bluetooth del coche» → «Abrir app Radares» (con «Empezar al abrir la app» activado).
 
@@ -40,6 +49,7 @@ Para que arranque sola: app Atajos → Automatización → «Al conectarse al Bl
 - `ios/Radares/`: la app (SwiftUI). `Modelo.swift` (GPS y estado), `Voz.swift` (sonido), `Pantalla.swift`.
 - `ios/project.yml`: proyecto de Xcode, generado con XcodeGen.
 - `scripts/`: base de radares e icono.
+- `web/`: política de privacidad. Tiene que publicarse en una dirección pública; la app enlaza a `https://mjtbapps.github.io/chivato-radar/privacidad.html` (`Enlaces` en `Pantalla.swift`).
 
 En este iMac `swift run` falla por no tener Xcode; el núcleo se comprueba compilándolo a mano:
 
@@ -56,7 +66,8 @@ cd ios/RadaresCore && mkdir -p /tmp/radares && swiftc -O -parse-as-library -emit
 
 ## Antes de publicarla
 
-- Nombre definitivo (sin «Tesla») e icono.
-- Política de privacidad (la posición no sale del iPhone).
+- Publicar `web/privacidad.html` en la dirección que enlaza la app.
+- Crear los dos productos de Premium en App Store Connect y tener firmado el acuerdo de apps de pago.
+- Capturas de pantalla para la ficha.
 - Texto para la revisión de Apple explicando el uso de la ubicación en segundo plano y que el permiso de micrófono no graba nada.
 - Limitar la venta a los países donde estos avisadores son legales.
