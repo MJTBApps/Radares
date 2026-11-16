@@ -13,7 +13,7 @@ packages:
 settings:
   base:
     SWIFT_VERSION: "5.0"
-    MARKETING_VERSION: "0.2.0"
+    MARKETING_VERSION: "0.3.0"
     CURRENT_PROJECT_VERSION: "1"
     DEVELOPMENT_TEAM: ""
 targets:
@@ -22,8 +22,18 @@ targets:
     platform: iOS
     sources:
       - path: Radares
+        excludes:
+          - "Voces/**"
+      - path: Compartido
+      # Audios de las voces naturales (scripts/generar_voces.py), como carpeta para
+      # conservar Voces/<voz>/<pieza>.mp3.
+      - path: Radares/Voces
+        type: folder
+        buildPhase: resources
     dependencies:
       - package: RadaresCore
+      - target: Aviso
+        embed: true
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: es.mjtbapps.radares
@@ -42,12 +52,37 @@ targets:
         # location: seguir recibiendo el GPS con la pantalla apagada.
         # audio: poder hablar con la app en segundo plano.
         UIBackgroundModes: [location, audio]
+        # Tarjeta con el próximo radar en la pantalla de bloqueo (extensión Aviso).
+        NSSupportsLiveActivities: true
+        NSSupportsLiveActivitiesFrequentUpdates: true
         UILaunchScreen: {}
         ITSAppUsesNonExemptEncryption: false
         NSLocationWhenInUseUsageDescription: "Chivato Radar usa tu posición para avisarte de los radares que tienes delante. No sale del iPhone."
+        # Solo si se activa «Empezar sola al ir en coche».
+        NSLocationAlwaysAndWhenInUseUsageDescription: "Con «Siempre», Chivato Radar se pone a vigilar sola cuando detecta que vas en coche, sin que abras la app. Tu posición no sale del iPhone."
         # La app no graba nada. iOS exige este texto porque el aviso por el canal de
         # llamadas del coche y por el altavoz usa una sesión de audio de «reproducir y grabar».
         NSMicrophoneUsageDescription: "Chivato Radar no graba ni escucha nada. iOS pide este permiso para poder dar el aviso por el canal de llamadas del coche."
+  Aviso:
+    type: app-extension
+    platform: iOS
+    deploymentTarget: "16.2"
+    sources:
+      - path: Aviso
+      - path: Compartido
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: es.mjtbapps.radares.Aviso
+        PRODUCT_NAME: Aviso
+        TARGETED_DEVICE_FAMILY: "1"
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Chivato
+        SKIP_INSTALL: YES
+    info:
+      path: Aviso/Info.plist
+      properties:
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
 schemes:
   Radares:
     build:

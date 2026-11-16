@@ -29,10 +29,33 @@ enum SalidaVoz: String, CaseIterable, Identifiable {
     }
 }
 
-/// Una voz en castellano instalada en el iPhone.
+/// Una voz para los avisos: grabada (audios que van con la app, generados con IA)
+/// o una de las voces en castellano del iPhone.
 struct VozDisponible: Identifiable, Equatable {
+    /// «grabada:<carpeta>» o el identificador de la voz del iPhone.
     let id: String
     let titulo: String
+
+    static let prefijoGrabada = "grabada:"
+    var grabada: Bool { id.hasPrefix(Self.prefijoGrabada) }
+
+    /// Carpeta con los audios de las voces grabadas (`Voces/<voz>/<pieza>.mp3`).
+    static var carpetaVoces: URL? { Bundle.main.url(forResource: "Voces", withExtension: nil) }
+
+    /// Nombres bonitos de las voces grabadas, por carpeta.
+    private static let nombres = ["lucia": "Lucía", "pablo": "Pablo", "sara": "Sara", "dani": "Dani"]
+
+    static func grabadas() -> [VozDisponible] {
+        guard let carpeta = carpetaVoces,
+              let lista = try? FileManager.default.contentsOfDirectory(atPath: carpeta.path) else { return [] }
+        return lista.sorted().compactMap { nombre in
+            var dir: ObjCBool = false
+            guard FileManager.default.fileExists(atPath: carpeta.appendingPathComponent(nombre).path, isDirectory: &dir),
+                  dir.boolValue else { return nil }
+            return VozDisponible(id: prefijoGrabada + nombre,
+                                 titulo: (nombres[nombre] ?? nombre.capitalized) + " (natural)")
+        }
+    }
 
     /// Las voces en castellano del iPhone: primero las de España y, dentro de cada país, las de más calidad.
     static func instaladas() -> [VozDisponible] {
@@ -57,29 +80,55 @@ struct VozDisponible: Identifiable, Equatable {
     }
 }
 
-final class Voz: NSObject, AVSpeechSynthesizerDelegate {
+final class Voz: NSObject, AVSpeechSynthesizerDelegate, AVAudioPlayerDelegate {
     var salida: SalidaVoz = .altavoz
-    /// Identificador de la voz elegida; nil = la voz en castellano por defecto del iPhone.
+    /// Voz elegida: «grabada:<carpeta>», el identificador de una voz del iPhone, o nil (la de por defecto).
     var idVoz: String?
     /// Recibe los errores de sonido para enseñarlos en el diario de la pantalla.
     var alFallar: ((String) -> Void)?
 
+    private enum Frase {
+        case texto(String)
+        case audios([URL])
+    }
+
     private let sintetizador = AVSpeechSynthesizer()
     private let sesion = AVAudioSession.sharedInstance()
-    private var pendientes = 0
+    private var cola: [Frase] = []
+    private var hablando = false
+    private var reproductor: AVAudioPlayer?
+    private var audiosPendientes: [URL] = []
 
     override init() {
         super.init()
         sintetizador.delegate = self
     }
 
-    func decir(_ texto: String) {
-        var espera = 0.1
+    /// Dice un aviso. Con una voz grabada usa `piezas` (si están todas); si no, la voz del iPhone con `texto`.
+    func decir(_ texto: String, piezas: [String]? = nil) {
+        cola.append(audios(piezas).map(Frase.audios) ?? .texto(texto))
+        guard !hablando else { return }
+        hablando = true
+        // El canal de llamadas del coche tarda en abrirse; sin esta espera se pierde el principio.
+        let espera = abrirSesion() ? (salida == .llamada ? 1.2 : 0.1) : 0.1
+        DispatchQueue.main.asyncAfter(deadline: .now() + espera) { self.siguiente() }
+    }
+
+    /// URLs de los audios de la voz grabada elegida, o nil si falta alguno.
+    private func audios(_ piezas: [String]?) -> [URL]? {
+        guard let piezas, !piezas.isEmpty, let id = idVoz, id.hasPrefix(VozDisponible.prefijoGrabada),
+              let carpeta = VozDisponible.carpetaVoces else { return nil }
+        let dir = carpeta.appendingPathComponent(String(id.dropFirst(VozDisponible.prefijoGrabada.count)))
+        let urls = piezas.map { dir.appendingPathComponent($0 + ".mp3") }
+        return urls.allSatisfy { FileManager.default.fileExists(atPath: $0.path) } ? urls : nil
+    }
+
+    /// Activa la sesión de audio. Devuelve false si ha tenido que pasar al modo normal.
+    private func abrirSesion() -> Bool {
         do {
             try preparar(salida)
             try sesion.setActive(true)
-            // El canal de llamadas del coche tarda en abrirse; sin esta espera se pierde el principio.
-            if salida == .llamada { espera = 1.2 }
+            return true
         } catch {
             alFallar?("Sonido «\(salida.titulo)»: \(error.localizedDescription). Pruebo el modo normal.")
             do {
@@ -88,14 +137,58 @@ final class Voz: NSObject, AVSpeechSynthesizerDelegate {
             } catch {
                 alFallar?("Sonido normal: \(error.localizedDescription)")
             }
+            return false
         }
-        let frase = AVSpeechUtterance(string: texto)
-        // Si la voz elegida se ha borrado del iPhone, vuelve a la de por defecto.
-        frase.voice = idVoz.flatMap { AVSpeechSynthesisVoice(identifier: $0) } ?? AVSpeechSynthesisVoice(language: "es-ES")
-        frase.volume = 1
-        frase.preUtteranceDelay = espera
-        pendientes += 1
-        sintetizador.speak(frase)
+    }
+
+    private func siguiente() {
+        guard !cola.isEmpty else { terminar(); return }
+        switch cola.removeFirst() {
+        case let .texto(texto):
+            let frase = AVSpeechUtterance(string: texto)
+            // Con una voz grabada que no tiene esta frase, o si la elegida se ha borrado, la de por defecto.
+            let sistema = idVoz.flatMap { $0.hasPrefix(VozDisponible.prefijoGrabada) ? nil : AVSpeechSynthesisVoice(identifier: $0) }
+            frase.voice = sistema ?? AVSpeechSynthesisVoice(language: "es-ES")
+            frase.volume = 1
+            sintetizador.speak(frase)
+        case let .audios(urls):
+            audiosPendientes = urls
+            siguienteAudio()
+        }
+    }
+
+    private func siguienteAudio() {
+        guard !audiosPendientes.isEmpty else { siguiente(); return }
+        let url = audiosPendientes.removeFirst()
+        do {
+            let r = try AVAudioPlayer(contentsOf: url)
+            r.delegate = self
+            r.volume = 1
+            reproductor = r
+            if !r.play() { siguienteAudio() }
+        } catch {
+            alFallar?("Audio \(url.lastPathComponent): \(error.localizedDescription)")
+            siguienteAudio()
+        }
+    }
+
+    private func terminar() {
+        hablando = false
+        reproductor = nil
+        // Soltar la sesión: el coche cierra el canal de llamada y la música vuelve a su volumen.
+        try? sesion.setActive(false, options: .notifyOthersOnDeactivation)
+    }
+
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        DispatchQueue.main.async { self.siguienteAudio() }
+    }
+
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        DispatchQueue.main.async { self.siguiente() }
+    }
+
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
+        DispatchQueue.main.async { self.siguiente() }
     }
 
     /// Todas las opciones llevan `duckOthers`: baja el sonido de otras apps del iPhone mientras
@@ -111,20 +204,5 @@ final class Voz: NSObject, AVSpeechSynthesizerDelegate {
         case .multimedia:
             try sesion.setCategory(.playback, mode: .voicePrompt, options: [.duckOthers])
         }
-    }
-
-    private func terminar() {
-        pendientes = max(0, pendientes - 1)
-        guard pendientes == 0 else { return }
-        // Soltar la sesión: el coche cierra el canal de llamada y la música vuelve a su volumen.
-        try? sesion.setActive(false, options: .notifyOthersOnDeactivation)
-    }
-
-    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
-        DispatchQueue.main.async { self.terminar() }
-    }
-
-    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
-        DispatchQueue.main.async { self.terminar() }
     }
 }

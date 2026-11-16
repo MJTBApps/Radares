@@ -112,7 +112,7 @@ struct Pantalla: View {
 
     private var botonPrincipal: some View {
         Button {
-            if modelo.activo { modelo.parar() } else { modelo.empezar() }
+            if modelo.activo { modelo.parar(manual: true) } else { modelo.empezar() }
         } label: {
             Text(modelo.activo ? "Parar" : "Empezar")
                 .font(.title2.weight(.semibold))
@@ -161,7 +161,9 @@ struct Pantalla: View {
             }
             .pickerStyle(.menu)
             .labelsHidden()
-            Text("Para tener más voces o de más calidad: Ajustes del iPhone → Accesibilidad → Contenido leído → Voces → Español.")
+            Text(modelo.idVoz.hasPrefix(VozDisponible.prefijoGrabada)
+                 ? "Las voces «natural» están generadas con inteligencia artificial y van dentro de la app: funcionan sin cobertura."
+                 : "Para tener más voces del iPhone: Ajustes → Accesibilidad → Contenido leído → Voces → Español.")
                 .font(.footnote).foregroundColor(.secondary)
             HStack {
                 Button("Probar ahora") { modelo.probarSonido() }
@@ -200,23 +202,30 @@ struct Pantalla: View {
     }
 
     private var arranque: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Toggle("Empezar a vigilar al abrir la app", isOn: $modelo.empezarAlAbrir)
-            Text("Activado, la app empieza sola en cuanto se abre, sin pulsar «Empezar».")
+        VStack(alignment: .leading, spacing: 12) {
+            Toggle("Empezar sola al ir en coche", isOn: $modelo.arranqueAutomatico)
+            Text("Detecta que vas en coche y se pone a vigilar sin que abras la app. Al aparcar se apaga sola.")
                 .font(.subheadline).foregroundColor(.secondary)
-            DisclosureGroup("Que se abra sola al subir al coche") {
+            if modelo.arranqueAutomatico && modelo.permiso != .authorizedAlways {
                 VStack(alignment: .leading, spacing: 6) {
-                    Text("1. Abre la app Atajos del iPhone y entra en «Automatización».")
-                    Text("2. Crea una nueva: «Bluetooth» → «Al conectarse» → elige tu coche → «Ejecutar inmediatamente».")
-                    Text("3. Añade la acción «Abrir app» y elige esta app.")
-                    Text("Desde entonces, al subir al coche la app se abre y empieza a vigilar sin tocar el móvil.")
+                    Label("Necesita la ubicación «Siempre».", systemImage: "exclamationmark.triangle.fill")
+                        .font(.subheadline).foregroundColor(.orange)
+                    Button("Abrir Ajustes") {
+                        if let url = URL(string: UIApplication.openSettingsURLString) { abrir(url) }
+                    }
+                    .font(.subheadline)
                 }
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.top, 6)
             }
-            .font(.subheadline)
+            Divider()
+            Toggle("Empezar al abrir la app", isOn: $modelo.empezarAlAbrir)
+            Divider()
+            Toggle("Avisos de tráfico de la DGT", isOn: $modelo.avisosDGT)
+            Text("Accidentes, retenciones, obstáculos y mal tiempo en tu carretera, a unos 2 km. Usa unos 2 MB de datos por hora de viaje.")
+                .font(.subheadline).foregroundColor(.secondary)
+            Divider()
+            Toggle("Aviso en la pantalla de bloqueo", isOn: $modelo.pantallaBloqueo)
+            Text("El próximo radar, la distancia y el límite en la pantalla de bloqueo y en la isla dinámica.")
+                .font(.subheadline).foregroundColor(.secondary)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding()
@@ -238,6 +247,7 @@ struct Pantalla: View {
     private var pie: some View {
         VStack(spacing: 4) {
             Text("\(modelo.totalRadares) radares fijos y de tramo · datos del \(modelo.fechaDatos)")
+            if let n = modelo.totalIncidencias { Text("\(n) incidencias de la DGT en este momento") }
             Text("No avisa de radares móviles. Respeta siempre los límites.")
             Text("Datos: © colaboradores de OpenStreetMap (ODbL), Servei Català de Trànsit y DGT.")
             Link("Política de privacidad", destination: Enlaces.privacidad)

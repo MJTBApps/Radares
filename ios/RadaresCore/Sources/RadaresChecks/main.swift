@@ -3,6 +3,14 @@
 import Foundation
 import RadaresCore
 
+// `RadaresChecks --catalogo`: escribe en JSON todas las piezas de voz (para generar los audios).
+if CommandLine.arguments.count > 1, CommandLine.arguments[1] == "--catalogo" {
+    let lista = Frases.catalogo.map { ["clave": $0.clave, "texto": $0.texto] }
+    let datos = try! JSONSerialization.data(withJSONObject: lista, options: [.prettyPrinted, .sortedKeys])
+    print(String(data: datos, encoding: .utf8)!)
+    exit(0)
+}
+
 var fallos = 0
 func comprobar(_ ok: Bool, _ que: String) {
     print((ok ? "  bien   " : "  FALLO  ") + que)
@@ -130,6 +138,82 @@ comprobar(Frases.texto(.radar(Radar(id: "a", lat: 0, lon: 0, limite: 120), dista
           == "Radar a 650 metros. Límite 120. Vas a 131.", "frase de radar con exceso")
 comprobar(Frases.texto(.radar(Radar(id: "a", lat: 0, lon: 0, tipo: .tramo, limite: 100, longitud: 3000), distancia: 500, velocidad: 90))
           == "Radar de tramo a 500 metros. Dura 3 kilómetros. Límite 100.", "frase de tramo")
+
+print("Piezas de voz")
+do {
+    let claves = Frases.catalogo.map(\.clave)
+    comprobar(Set(claves).count == claves.count, "el catálogo no repite claves (\(claves.count) piezas)")
+    let todas = Set(claves)
+    var faltan: [String] = []
+    let tramo = Radar(id: "t", lat: 0, lon: 0, tipo: .tramo, limite: 100, longitud: 7300)
+    var eventos: [Evento] = [.excesoTramo(tramo, media: 113), .finTramo(tramo, media: 98)]
+    for d in stride(from: 380.0, through: 1_100, by: 7) {
+        eventos.append(.radar(Radar(id: "a", lat: 0, lon: 0, limite: 120), distancia: d, velocidad: 131))
+        eventos.append(.radar(tramo, distancia: d, velocidad: 95))
+    }
+    for t in TipoIncidencia.allCases {
+        for d in stride(from: 150.0, through: 2_100, by: 37) {
+            eventos.append(.incidencia(Incidencia(id: "i", tipo: t, lat: 0, lon: 0), distancia: d))
+        }
+    }
+    for e in eventos { for c in Frases.piezas(e) ?? ["sin piezas"] where !todas.contains(c) { faltan.append(c) } }
+    comprobar(faltan.isEmpty, "todas las piezas de los avisos están en el catálogo \(faltan.prefix(3))")
+    comprobar(Frases.piezas(.radar(Radar(id: "a", lat: 0, lon: 0, limite: 120), distancia: 640, velocidad: 131))
+              == ["radar_650", "limite_120", "vas_131"], "piezas de un radar con exceso")
+    comprobar(Frases.distancia(7300) == "7,5 kilómetros", "7300 m se dice «7,5 kilómetros»")
+    comprobar(Frases.distancia(23_400) == "23 kilómetros", "23,4 km se dice «23 kilómetros»")
+}
+
+print("Incidencias de la DGT")
+do {
+    let xml = """
+    <d2:payload xmlns:d2="a" xmlns:sit="b" xmlns:loc="c" xmlns:com="d">
+    <sit:situation id="1"><sit:situationRecord id="r1">
+      <sit:validity><com:validityTimeSpecification><com:overallStartTime>2026-11-16T10:00:00.000+01:00</com:overallStartTime></com:validityTimeSpecification></sit:validity>
+      <sit:cause><sit:causeType>accident</sit:causeType></sit:cause>
+      <sit:locationReference><loc:supplementaryPositionalDescription><loc:roadInformation><loc:roadName>A-7</loc:roadName></loc:roadInformation></loc:supplementaryPositionalDescription>
+      <loc:tpegLinearLocation><loc:tpegDirection>northBound</loc:tpegDirection>
+        <loc:to><loc:pointCoordinates><loc:latitude>41.62</loc:latitude><loc:longitude>1.80</loc:longitude></loc:pointCoordinates></loc:to>
+        <loc:from><loc:pointCoordinates><loc:latitude>41.61</loc:latitude><loc:longitude>1.80</loc:longitude></loc:pointCoordinates></loc:from>
+      </loc:tpegLinearLocation></sit:locationReference>
+    </sit:situationRecord></sit:situation>
+    <sit:situation id="2"><sit:situationRecord id="r2">
+      <sit:validity><com:validityTimeSpecification><com:overallStartTime>2026-05-01T10:00:00.000+01:00</com:overallStartTime></com:validityTimeSpecification></sit:validity>
+      <sit:cause><sit:causeType>accident</sit:causeType></sit:cause>
+      <sit:locationReference><loc:tpegLinearLocation><loc:to><loc:pointCoordinates><loc:latitude>40</loc:latitude><loc:longitude>-3</loc:longitude></loc:pointCoordinates></loc:to></loc:tpegLinearLocation></sit:locationReference>
+    </sit:situationRecord></sit:situation>
+    <sit:situation id="3"><sit:situationRecord id="r3">
+      <sit:cause><sit:causeType>roadMaintenance</sit:causeType></sit:cause>
+      <sit:locationReference><loc:tpegLinearLocation><loc:to><loc:pointCoordinates><loc:latitude>40</loc:latitude><loc:longitude>-3</loc:longitude></loc:pointCoordinates></loc:to></loc:tpegLinearLocation></sit:locationReference>
+    </sit:situationRecord></sit:situation>
+    </d2:payload>
+    """
+    let ahora = ISO8601DateFormatter().date(from: "2026-11-16T12:00:00Z")!
+    let lista = LectorIncidenciasDGT.leer(Data(xml.utf8), ahora: ahora)
+    comprobar(lista.count == 1, "solo queda el accidente reciente (hay \(lista.count))")
+    if let i = lista.first {
+        comprobar(i.tipo == .accidente && i.via == "A-7", "tipo y carretera")
+        comprobar(abs(i.lat - 41.61) < 1e-9, "el punto es el inicio («from»)")
+        comprobar(i.rumbo.map { abs(Geo.diferencia($0, 0)) < 1 } ?? false, "sentido hacia el norte")
+    }
+
+    let delante = Geo.avanzar(inicio.lat, inicio.lon, rumbo: 0, metros: 5_000)
+    let motor = MotorIncidencias()
+    motor.cambiar([Incidencia(id: "x", tipo: .retencion, lat: delante.lat, lon: delante.lon, rumbo: 0),
+                   Incidencia(id: "y", tipo: .accidente, lat: delante.lat, lon: delante.lon, rumbo: 180)])
+    var avisos: [(Evento, Double)] = []
+    var s = 0.0
+    while s < 6_000 {
+        let q = Geo.avanzar(inicio.lat, inicio.lon, rumbo: 0, metros: s)
+        for e in motor.procesar(Posicion(lat: q.lat, lon: q.lon, velocidad: 25, rumbo: 0, precision: 5, instante: s)) { avisos.append((e, s)) }
+        s += 25
+    }
+    comprobar(avisos.count == 1, "avisa una vez, solo de la de nuestro sentido (hay \(avisos.count))")
+    if let (e, recorrido) = avisos.first, case let .incidencia(i, d) = e {
+        comprobar(i.id == "x" && d <= 2_000 && recorrido >= 2_950, "a unos 2 km (\(Int(d)) m)")
+        comprobar(Frases.texto(e) == "Retención a 2 kilómetros.", "frase: \(Frases.texto(e))")
+    }
+}
 
 // Con un argumento: comprobar también la base de datos real.
 if CommandLine.arguments.count > 1 {

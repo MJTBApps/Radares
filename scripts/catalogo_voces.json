@@ -1,0 +1,5426 @@
+[
+  {
+    "clave" : "prueba",
+    "texto" : "Prueba."
+  },
+  {
+    "clave" : "radar_50",
+    "texto" : "Radar a 50 metros."
+  },
+  {
+    "clave" : "radar_100",
+    "texto" : "Radar a 100 metros."
+  },
+  {
+    "clave" : "radar_150",
+    "texto" : "Radar a 150 metros."
+  },
+  {
+    "clave" : "radar_200",
+    "texto" : "Radar a 200 metros."
+  },
+  {
+    "clave" : "radar_250",
+    "texto" : "Radar a 250 metros."
+  },
+  {
+    "clave" : "radar_300",
+    "texto" : "Radar a 300 metros."
+  },
+  {
+    "clave" : "radar_350",
+    "texto" : "Radar a 350 metros."
+  },
+  {
+    "clave" : "radar_400",
+    "texto" : "Radar a 400 metros."
+  },
+  {
+    "clave" : "radar_450",
+    "texto" : "Radar a 450 metros."
+  },
+  {
+    "clave" : "radar_500",
+    "texto" : "Radar a 500 metros."
+  },
+  {
+    "clave" : "radar_550",
+    "texto" : "Radar a 550 metros."
+  },
+  {
+    "clave" : "radar_600",
+    "texto" : "Radar a 600 metros."
+  },
+  {
+    "clave" : "radar_650",
+    "texto" : "Radar a 650 metros."
+  },
+  {
+    "clave" : "radar_700",
+    "texto" : "Radar a 700 metros."
+  },
+  {
+    "clave" : "radar_750",
+    "texto" : "Radar a 750 metros."
+  },
+  {
+    "clave" : "radar_800",
+    "texto" : "Radar a 800 metros."
+  },
+  {
+    "clave" : "radar_850",
+    "texto" : "Radar a 850 metros."
+  },
+  {
+    "clave" : "radar_900",
+    "texto" : "Radar a 900 metros."
+  },
+  {
+    "clave" : "radar_1000",
+    "texto" : "Radar a 1 kilómetro."
+  },
+  {
+    "clave" : "radar_1500",
+    "texto" : "Radar a 1,5 kilómetros."
+  },
+  {
+    "clave" : "radar_2000",
+    "texto" : "Radar a 2 kilómetros."
+  },
+  {
+    "clave" : "radar_2500",
+    "texto" : "Radar a 2,5 kilómetros."
+  },
+  {
+    "clave" : "radar_3000",
+    "texto" : "Radar a 3 kilómetros."
+  },
+  {
+    "clave" : "radar_3500",
+    "texto" : "Radar a 3,5 kilómetros."
+  },
+  {
+    "clave" : "radar_4000",
+    "texto" : "Radar a 4 kilómetros."
+  },
+  {
+    "clave" : "radar_4500",
+    "texto" : "Radar a 4,5 kilómetros."
+  },
+  {
+    "clave" : "radar_5000",
+    "texto" : "Radar a 5 kilómetros."
+  },
+  {
+    "clave" : "radar_5500",
+    "texto" : "Radar a 5,5 kilómetros."
+  },
+  {
+    "clave" : "radar_6000",
+    "texto" : "Radar a 6 kilómetros."
+  },
+  {
+    "clave" : "radar_6500",
+    "texto" : "Radar a 6,5 kilómetros."
+  },
+  {
+    "clave" : "radar_7000",
+    "texto" : "Radar a 7 kilómetros."
+  },
+  {
+    "clave" : "radar_7500",
+    "texto" : "Radar a 7,5 kilómetros."
+  },
+  {
+    "clave" : "radar_8000",
+    "texto" : "Radar a 8 kilómetros."
+  },
+  {
+    "clave" : "radar_8500",
+    "texto" : "Radar a 8,5 kilómetros."
+  },
+  {
+    "clave" : "radar_9000",
+    "texto" : "Radar a 9 kilómetros."
+  },
+  {
+    "clave" : "radar_9500",
+    "texto" : "Radar a 9,5 kilómetros."
+  },
+  {
+    "clave" : "radar_10000",
+    "texto" : "Radar a 10 kilómetros."
+  },
+  {
+    "clave" : "radar_11000",
+    "texto" : "Radar a 11 kilómetros."
+  },
+  {
+    "clave" : "radar_12000",
+    "texto" : "Radar a 12 kilómetros."
+  },
+  {
+    "clave" : "radar_13000",
+    "texto" : "Radar a 13 kilómetros."
+  },
+  {
+    "clave" : "radar_14000",
+    "texto" : "Radar a 14 kilómetros."
+  },
+  {
+    "clave" : "radar_15000",
+    "texto" : "Radar a 15 kilómetros."
+  },
+  {
+    "clave" : "radar_16000",
+    "texto" : "Radar a 16 kilómetros."
+  },
+  {
+    "clave" : "radar_17000",
+    "texto" : "Radar a 17 kilómetros."
+  },
+  {
+    "clave" : "radar_18000",
+    "texto" : "Radar a 18 kilómetros."
+  },
+  {
+    "clave" : "radar_19000",
+    "texto" : "Radar a 19 kilómetros."
+  },
+  {
+    "clave" : "radar_20000",
+    "texto" : "Radar a 20 kilómetros."
+  },
+  {
+    "clave" : "radar_21000",
+    "texto" : "Radar a 21 kilómetros."
+  },
+  {
+    "clave" : "radar_22000",
+    "texto" : "Radar a 22 kilómetros."
+  },
+  {
+    "clave" : "radar_23000",
+    "texto" : "Radar a 23 kilómetros."
+  },
+  {
+    "clave" : "radar_24000",
+    "texto" : "Radar a 24 kilómetros."
+  },
+  {
+    "clave" : "radar_25000",
+    "texto" : "Radar a 25 kilómetros."
+  },
+  {
+    "clave" : "radar_26000",
+    "texto" : "Radar a 26 kilómetros."
+  },
+  {
+    "clave" : "radar_27000",
+    "texto" : "Radar a 27 kilómetros."
+  },
+  {
+    "clave" : "radar_28000",
+    "texto" : "Radar a 28 kilómetros."
+  },
+  {
+    "clave" : "radar_29000",
+    "texto" : "Radar a 29 kilómetros."
+  },
+  {
+    "clave" : "radar_30000",
+    "texto" : "Radar a 30 kilómetros."
+  },
+  {
+    "clave" : "radar_31000",
+    "texto" : "Radar a 31 kilómetros."
+  },
+  {
+    "clave" : "radar_32000",
+    "texto" : "Radar a 32 kilómetros."
+  },
+  {
+    "clave" : "radar_33000",
+    "texto" : "Radar a 33 kilómetros."
+  },
+  {
+    "clave" : "radar_34000",
+    "texto" : "Radar a 34 kilómetros."
+  },
+  {
+    "clave" : "radar_35000",
+    "texto" : "Radar a 35 kilómetros."
+  },
+  {
+    "clave" : "radar_36000",
+    "texto" : "Radar a 36 kilómetros."
+  },
+  {
+    "clave" : "radar_37000",
+    "texto" : "Radar a 37 kilómetros."
+  },
+  {
+    "clave" : "radar_38000",
+    "texto" : "Radar a 38 kilómetros."
+  },
+  {
+    "clave" : "radar_39000",
+    "texto" : "Radar a 39 kilómetros."
+  },
+  {
+    "clave" : "radar_40000",
+    "texto" : "Radar a 40 kilómetros."
+  },
+  {
+    "clave" : "radar_41000",
+    "texto" : "Radar a 41 kilómetros."
+  },
+  {
+    "clave" : "radar_42000",
+    "texto" : "Radar a 42 kilómetros."
+  },
+  {
+    "clave" : "radar_43000",
+    "texto" : "Radar a 43 kilómetros."
+  },
+  {
+    "clave" : "radar_44000",
+    "texto" : "Radar a 44 kilómetros."
+  },
+  {
+    "clave" : "radar_45000",
+    "texto" : "Radar a 45 kilómetros."
+  },
+  {
+    "clave" : "radar_46000",
+    "texto" : "Radar a 46 kilómetros."
+  },
+  {
+    "clave" : "radar_47000",
+    "texto" : "Radar a 47 kilómetros."
+  },
+  {
+    "clave" : "radar_48000",
+    "texto" : "Radar a 48 kilómetros."
+  },
+  {
+    "clave" : "radar_49000",
+    "texto" : "Radar a 49 kilómetros."
+  },
+  {
+    "clave" : "radar_50000",
+    "texto" : "Radar a 50 kilómetros."
+  },
+  {
+    "clave" : "tramo_50",
+    "texto" : "Radar de tramo a 50 metros."
+  },
+  {
+    "clave" : "tramo_100",
+    "texto" : "Radar de tramo a 100 metros."
+  },
+  {
+    "clave" : "tramo_150",
+    "texto" : "Radar de tramo a 150 metros."
+  },
+  {
+    "clave" : "tramo_200",
+    "texto" : "Radar de tramo a 200 metros."
+  },
+  {
+    "clave" : "tramo_250",
+    "texto" : "Radar de tramo a 250 metros."
+  },
+  {
+    "clave" : "tramo_300",
+    "texto" : "Radar de tramo a 300 metros."
+  },
+  {
+    "clave" : "tramo_350",
+    "texto" : "Radar de tramo a 350 metros."
+  },
+  {
+    "clave" : "tramo_400",
+    "texto" : "Radar de tramo a 400 metros."
+  },
+  {
+    "clave" : "tramo_450",
+    "texto" : "Radar de tramo a 450 metros."
+  },
+  {
+    "clave" : "tramo_500",
+    "texto" : "Radar de tramo a 500 metros."
+  },
+  {
+    "clave" : "tramo_550",
+    "texto" : "Radar de tramo a 550 metros."
+  },
+  {
+    "clave" : "tramo_600",
+    "texto" : "Radar de tramo a 600 metros."
+  },
+  {
+    "clave" : "tramo_650",
+    "texto" : "Radar de tramo a 650 metros."
+  },
+  {
+    "clave" : "tramo_700",
+    "texto" : "Radar de tramo a 700 metros."
+  },
+  {
+    "clave" : "tramo_750",
+    "texto" : "Radar de tramo a 750 metros."
+  },
+  {
+    "clave" : "tramo_800",
+    "texto" : "Radar de tramo a 800 metros."
+  },
+  {
+    "clave" : "tramo_850",
+    "texto" : "Radar de tramo a 850 metros."
+  },
+  {
+    "clave" : "tramo_900",
+    "texto" : "Radar de tramo a 900 metros."
+  },
+  {
+    "clave" : "tramo_1000",
+    "texto" : "Radar de tramo a 1 kilómetro."
+  },
+  {
+    "clave" : "tramo_1500",
+    "texto" : "Radar de tramo a 1,5 kilómetros."
+  },
+  {
+    "clave" : "tramo_2000",
+    "texto" : "Radar de tramo a 2 kilómetros."
+  },
+  {
+    "clave" : "tramo_2500",
+    "texto" : "Radar de tramo a 2,5 kilómetros."
+  },
+  {
+    "clave" : "tramo_3000",
+    "texto" : "Radar de tramo a 3 kilómetros."
+  },
+  {
+    "clave" : "tramo_3500",
+    "texto" : "Radar de tramo a 3,5 kilómetros."
+  },
+  {
+    "clave" : "tramo_4000",
+    "texto" : "Radar de tramo a 4 kilómetros."
+  },
+  {
+    "clave" : "tramo_4500",
+    "texto" : "Radar de tramo a 4,5 kilómetros."
+  },
+  {
+    "clave" : "tramo_5000",
+    "texto" : "Radar de tramo a 5 kilómetros."
+  },
+  {
+    "clave" : "tramo_5500",
+    "texto" : "Radar de tramo a 5,5 kilómetros."
+  },
+  {
+    "clave" : "tramo_6000",
+    "texto" : "Radar de tramo a 6 kilómetros."
+  },
+  {
+    "clave" : "tramo_6500",
+    "texto" : "Radar de tramo a 6,5 kilómetros."
+  },
+  {
+    "clave" : "tramo_7000",
+    "texto" : "Radar de tramo a 7 kilómetros."
+  },
+  {
+    "clave" : "tramo_7500",
+    "texto" : "Radar de tramo a 7,5 kilómetros."
+  },
+  {
+    "clave" : "tramo_8000",
+    "texto" : "Radar de tramo a 8 kilómetros."
+  },
+  {
+    "clave" : "tramo_8500",
+    "texto" : "Radar de tramo a 8,5 kilómetros."
+  },
+  {
+    "clave" : "tramo_9000",
+    "texto" : "Radar de tramo a 9 kilómetros."
+  },
+  {
+    "clave" : "tramo_9500",
+    "texto" : "Radar de tramo a 9,5 kilómetros."
+  },
+  {
+    "clave" : "tramo_10000",
+    "texto" : "Radar de tramo a 10 kilómetros."
+  },
+  {
+    "clave" : "tramo_11000",
+    "texto" : "Radar de tramo a 11 kilómetros."
+  },
+  {
+    "clave" : "tramo_12000",
+    "texto" : "Radar de tramo a 12 kilómetros."
+  },
+  {
+    "clave" : "tramo_13000",
+    "texto" : "Radar de tramo a 13 kilómetros."
+  },
+  {
+    "clave" : "tramo_14000",
+    "texto" : "Radar de tramo a 14 kilómetros."
+  },
+  {
+    "clave" : "tramo_15000",
+    "texto" : "Radar de tramo a 15 kilómetros."
+  },
+  {
+    "clave" : "tramo_16000",
+    "texto" : "Radar de tramo a 16 kilómetros."
+  },
+  {
+    "clave" : "tramo_17000",
+    "texto" : "Radar de tramo a 17 kilómetros."
+  },
+  {
+    "clave" : "tramo_18000",
+    "texto" : "Radar de tramo a 18 kilómetros."
+  },
+  {
+    "clave" : "tramo_19000",
+    "texto" : "Radar de tramo a 19 kilómetros."
+  },
+  {
+    "clave" : "tramo_20000",
+    "texto" : "Radar de tramo a 20 kilómetros."
+  },
+  {
+    "clave" : "tramo_21000",
+    "texto" : "Radar de tramo a 21 kilómetros."
+  },
+  {
+    "clave" : "tramo_22000",
+    "texto" : "Radar de tramo a 22 kilómetros."
+  },
+  {
+    "clave" : "tramo_23000",
+    "texto" : "Radar de tramo a 23 kilómetros."
+  },
+  {
+    "clave" : "tramo_24000",
+    "texto" : "Radar de tramo a 24 kilómetros."
+  },
+  {
+    "clave" : "tramo_25000",
+    "texto" : "Radar de tramo a 25 kilómetros."
+  },
+  {
+    "clave" : "tramo_26000",
+    "texto" : "Radar de tramo a 26 kilómetros."
+  },
+  {
+    "clave" : "tramo_27000",
+    "texto" : "Radar de tramo a 27 kilómetros."
+  },
+  {
+    "clave" : "tramo_28000",
+    "texto" : "Radar de tramo a 28 kilómetros."
+  },
+  {
+    "clave" : "tramo_29000",
+    "texto" : "Radar de tramo a 29 kilómetros."
+  },
+  {
+    "clave" : "tramo_30000",
+    "texto" : "Radar de tramo a 30 kilómetros."
+  },
+  {
+    "clave" : "tramo_31000",
+    "texto" : "Radar de tramo a 31 kilómetros."
+  },
+  {
+    "clave" : "tramo_32000",
+    "texto" : "Radar de tramo a 32 kilómetros."
+  },
+  {
+    "clave" : "tramo_33000",
+    "texto" : "Radar de tramo a 33 kilómetros."
+  },
+  {
+    "clave" : "tramo_34000",
+    "texto" : "Radar de tramo a 34 kilómetros."
+  },
+  {
+    "clave" : "tramo_35000",
+    "texto" : "Radar de tramo a 35 kilómetros."
+  },
+  {
+    "clave" : "tramo_36000",
+    "texto" : "Radar de tramo a 36 kilómetros."
+  },
+  {
+    "clave" : "tramo_37000",
+    "texto" : "Radar de tramo a 37 kilómetros."
+  },
+  {
+    "clave" : "tramo_38000",
+    "texto" : "Radar de tramo a 38 kilómetros."
+  },
+  {
+    "clave" : "tramo_39000",
+    "texto" : "Radar de tramo a 39 kilómetros."
+  },
+  {
+    "clave" : "tramo_40000",
+    "texto" : "Radar de tramo a 40 kilómetros."
+  },
+  {
+    "clave" : "tramo_41000",
+    "texto" : "Radar de tramo a 41 kilómetros."
+  },
+  {
+    "clave" : "tramo_42000",
+    "texto" : "Radar de tramo a 42 kilómetros."
+  },
+  {
+    "clave" : "tramo_43000",
+    "texto" : "Radar de tramo a 43 kilómetros."
+  },
+  {
+    "clave" : "tramo_44000",
+    "texto" : "Radar de tramo a 44 kilómetros."
+  },
+  {
+    "clave" : "tramo_45000",
+    "texto" : "Radar de tramo a 45 kilómetros."
+  },
+  {
+    "clave" : "tramo_46000",
+    "texto" : "Radar de tramo a 46 kilómetros."
+  },
+  {
+    "clave" : "tramo_47000",
+    "texto" : "Radar de tramo a 47 kilómetros."
+  },
+  {
+    "clave" : "tramo_48000",
+    "texto" : "Radar de tramo a 48 kilómetros."
+  },
+  {
+    "clave" : "tramo_49000",
+    "texto" : "Radar de tramo a 49 kilómetros."
+  },
+  {
+    "clave" : "tramo_50000",
+    "texto" : "Radar de tramo a 50 kilómetros."
+  },
+  {
+    "clave" : "accidente_50",
+    "texto" : "Accidente a 50 metros."
+  },
+  {
+    "clave" : "accidente_100",
+    "texto" : "Accidente a 100 metros."
+  },
+  {
+    "clave" : "accidente_150",
+    "texto" : "Accidente a 150 metros."
+  },
+  {
+    "clave" : "accidente_200",
+    "texto" : "Accidente a 200 metros."
+  },
+  {
+    "clave" : "accidente_250",
+    "texto" : "Accidente a 250 metros."
+  },
+  {
+    "clave" : "accidente_300",
+    "texto" : "Accidente a 300 metros."
+  },
+  {
+    "clave" : "accidente_350",
+    "texto" : "Accidente a 350 metros."
+  },
+  {
+    "clave" : "accidente_400",
+    "texto" : "Accidente a 400 metros."
+  },
+  {
+    "clave" : "accidente_450",
+    "texto" : "Accidente a 450 metros."
+  },
+  {
+    "clave" : "accidente_500",
+    "texto" : "Accidente a 500 metros."
+  },
+  {
+    "clave" : "accidente_550",
+    "texto" : "Accidente a 550 metros."
+  },
+  {
+    "clave" : "accidente_600",
+    "texto" : "Accidente a 600 metros."
+  },
+  {
+    "clave" : "accidente_650",
+    "texto" : "Accidente a 650 metros."
+  },
+  {
+    "clave" : "accidente_700",
+    "texto" : "Accidente a 700 metros."
+  },
+  {
+    "clave" : "accidente_750",
+    "texto" : "Accidente a 750 metros."
+  },
+  {
+    "clave" : "accidente_800",
+    "texto" : "Accidente a 800 metros."
+  },
+  {
+    "clave" : "accidente_850",
+    "texto" : "Accidente a 850 metros."
+  },
+  {
+    "clave" : "accidente_900",
+    "texto" : "Accidente a 900 metros."
+  },
+  {
+    "clave" : "accidente_1000",
+    "texto" : "Accidente a 1 kilómetro."
+  },
+  {
+    "clave" : "accidente_1500",
+    "texto" : "Accidente a 1,5 kilómetros."
+  },
+  {
+    "clave" : "accidente_2000",
+    "texto" : "Accidente a 2 kilómetros."
+  },
+  {
+    "clave" : "accidente_2500",
+    "texto" : "Accidente a 2,5 kilómetros."
+  },
+  {
+    "clave" : "accidente_3000",
+    "texto" : "Accidente a 3 kilómetros."
+  },
+  {
+    "clave" : "accidente_3500",
+    "texto" : "Accidente a 3,5 kilómetros."
+  },
+  {
+    "clave" : "accidente_4000",
+    "texto" : "Accidente a 4 kilómetros."
+  },
+  {
+    "clave" : "accidente_4500",
+    "texto" : "Accidente a 4,5 kilómetros."
+  },
+  {
+    "clave" : "accidente_5000",
+    "texto" : "Accidente a 5 kilómetros."
+  },
+  {
+    "clave" : "accidente_5500",
+    "texto" : "Accidente a 5,5 kilómetros."
+  },
+  {
+    "clave" : "accidente_6000",
+    "texto" : "Accidente a 6 kilómetros."
+  },
+  {
+    "clave" : "accidente_6500",
+    "texto" : "Accidente a 6,5 kilómetros."
+  },
+  {
+    "clave" : "accidente_7000",
+    "texto" : "Accidente a 7 kilómetros."
+  },
+  {
+    "clave" : "accidente_7500",
+    "texto" : "Accidente a 7,5 kilómetros."
+  },
+  {
+    "clave" : "accidente_8000",
+    "texto" : "Accidente a 8 kilómetros."
+  },
+  {
+    "clave" : "accidente_8500",
+    "texto" : "Accidente a 8,5 kilómetros."
+  },
+  {
+    "clave" : "accidente_9000",
+    "texto" : "Accidente a 9 kilómetros."
+  },
+  {
+    "clave" : "accidente_9500",
+    "texto" : "Accidente a 9,5 kilómetros."
+  },
+  {
+    "clave" : "accidente_10000",
+    "texto" : "Accidente a 10 kilómetros."
+  },
+  {
+    "clave" : "accidente_11000",
+    "texto" : "Accidente a 11 kilómetros."
+  },
+  {
+    "clave" : "accidente_12000",
+    "texto" : "Accidente a 12 kilómetros."
+  },
+  {
+    "clave" : "accidente_13000",
+    "texto" : "Accidente a 13 kilómetros."
+  },
+  {
+    "clave" : "accidente_14000",
+    "texto" : "Accidente a 14 kilómetros."
+  },
+  {
+    "clave" : "accidente_15000",
+    "texto" : "Accidente a 15 kilómetros."
+  },
+  {
+    "clave" : "accidente_16000",
+    "texto" : "Accidente a 16 kilómetros."
+  },
+  {
+    "clave" : "accidente_17000",
+    "texto" : "Accidente a 17 kilómetros."
+  },
+  {
+    "clave" : "accidente_18000",
+    "texto" : "Accidente a 18 kilómetros."
+  },
+  {
+    "clave" : "accidente_19000",
+    "texto" : "Accidente a 19 kilómetros."
+  },
+  {
+    "clave" : "accidente_20000",
+    "texto" : "Accidente a 20 kilómetros."
+  },
+  {
+    "clave" : "accidente_21000",
+    "texto" : "Accidente a 21 kilómetros."
+  },
+  {
+    "clave" : "accidente_22000",
+    "texto" : "Accidente a 22 kilómetros."
+  },
+  {
+    "clave" : "accidente_23000",
+    "texto" : "Accidente a 23 kilómetros."
+  },
+  {
+    "clave" : "accidente_24000",
+    "texto" : "Accidente a 24 kilómetros."
+  },
+  {
+    "clave" : "accidente_25000",
+    "texto" : "Accidente a 25 kilómetros."
+  },
+  {
+    "clave" : "accidente_26000",
+    "texto" : "Accidente a 26 kilómetros."
+  },
+  {
+    "clave" : "accidente_27000",
+    "texto" : "Accidente a 27 kilómetros."
+  },
+  {
+    "clave" : "accidente_28000",
+    "texto" : "Accidente a 28 kilómetros."
+  },
+  {
+    "clave" : "accidente_29000",
+    "texto" : "Accidente a 29 kilómetros."
+  },
+  {
+    "clave" : "accidente_30000",
+    "texto" : "Accidente a 30 kilómetros."
+  },
+  {
+    "clave" : "accidente_31000",
+    "texto" : "Accidente a 31 kilómetros."
+  },
+  {
+    "clave" : "accidente_32000",
+    "texto" : "Accidente a 32 kilómetros."
+  },
+  {
+    "clave" : "accidente_33000",
+    "texto" : "Accidente a 33 kilómetros."
+  },
+  {
+    "clave" : "accidente_34000",
+    "texto" : "Accidente a 34 kilómetros."
+  },
+  {
+    "clave" : "accidente_35000",
+    "texto" : "Accidente a 35 kilómetros."
+  },
+  {
+    "clave" : "accidente_36000",
+    "texto" : "Accidente a 36 kilómetros."
+  },
+  {
+    "clave" : "accidente_37000",
+    "texto" : "Accidente a 37 kilómetros."
+  },
+  {
+    "clave" : "accidente_38000",
+    "texto" : "Accidente a 38 kilómetros."
+  },
+  {
+    "clave" : "accidente_39000",
+    "texto" : "Accidente a 39 kilómetros."
+  },
+  {
+    "clave" : "accidente_40000",
+    "texto" : "Accidente a 40 kilómetros."
+  },
+  {
+    "clave" : "accidente_41000",
+    "texto" : "Accidente a 41 kilómetros."
+  },
+  {
+    "clave" : "accidente_42000",
+    "texto" : "Accidente a 42 kilómetros."
+  },
+  {
+    "clave" : "accidente_43000",
+    "texto" : "Accidente a 43 kilómetros."
+  },
+  {
+    "clave" : "accidente_44000",
+    "texto" : "Accidente a 44 kilómetros."
+  },
+  {
+    "clave" : "accidente_45000",
+    "texto" : "Accidente a 45 kilómetros."
+  },
+  {
+    "clave" : "accidente_46000",
+    "texto" : "Accidente a 46 kilómetros."
+  },
+  {
+    "clave" : "accidente_47000",
+    "texto" : "Accidente a 47 kilómetros."
+  },
+  {
+    "clave" : "accidente_48000",
+    "texto" : "Accidente a 48 kilómetros."
+  },
+  {
+    "clave" : "accidente_49000",
+    "texto" : "Accidente a 49 kilómetros."
+  },
+  {
+    "clave" : "accidente_50000",
+    "texto" : "Accidente a 50 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_50",
+    "texto" : "Vehículo detenido a 50 metros."
+  },
+  {
+    "clave" : "vehiculo_100",
+    "texto" : "Vehículo detenido a 100 metros."
+  },
+  {
+    "clave" : "vehiculo_150",
+    "texto" : "Vehículo detenido a 150 metros."
+  },
+  {
+    "clave" : "vehiculo_200",
+    "texto" : "Vehículo detenido a 200 metros."
+  },
+  {
+    "clave" : "vehiculo_250",
+    "texto" : "Vehículo detenido a 250 metros."
+  },
+  {
+    "clave" : "vehiculo_300",
+    "texto" : "Vehículo detenido a 300 metros."
+  },
+  {
+    "clave" : "vehiculo_350",
+    "texto" : "Vehículo detenido a 350 metros."
+  },
+  {
+    "clave" : "vehiculo_400",
+    "texto" : "Vehículo detenido a 400 metros."
+  },
+  {
+    "clave" : "vehiculo_450",
+    "texto" : "Vehículo detenido a 450 metros."
+  },
+  {
+    "clave" : "vehiculo_500",
+    "texto" : "Vehículo detenido a 500 metros."
+  },
+  {
+    "clave" : "vehiculo_550",
+    "texto" : "Vehículo detenido a 550 metros."
+  },
+  {
+    "clave" : "vehiculo_600",
+    "texto" : "Vehículo detenido a 600 metros."
+  },
+  {
+    "clave" : "vehiculo_650",
+    "texto" : "Vehículo detenido a 650 metros."
+  },
+  {
+    "clave" : "vehiculo_700",
+    "texto" : "Vehículo detenido a 700 metros."
+  },
+  {
+    "clave" : "vehiculo_750",
+    "texto" : "Vehículo detenido a 750 metros."
+  },
+  {
+    "clave" : "vehiculo_800",
+    "texto" : "Vehículo detenido a 800 metros."
+  },
+  {
+    "clave" : "vehiculo_850",
+    "texto" : "Vehículo detenido a 850 metros."
+  },
+  {
+    "clave" : "vehiculo_900",
+    "texto" : "Vehículo detenido a 900 metros."
+  },
+  {
+    "clave" : "vehiculo_1000",
+    "texto" : "Vehículo detenido a 1 kilómetro."
+  },
+  {
+    "clave" : "vehiculo_1500",
+    "texto" : "Vehículo detenido a 1,5 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_2000",
+    "texto" : "Vehículo detenido a 2 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_2500",
+    "texto" : "Vehículo detenido a 2,5 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_3000",
+    "texto" : "Vehículo detenido a 3 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_3500",
+    "texto" : "Vehículo detenido a 3,5 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_4000",
+    "texto" : "Vehículo detenido a 4 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_4500",
+    "texto" : "Vehículo detenido a 4,5 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_5000",
+    "texto" : "Vehículo detenido a 5 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_5500",
+    "texto" : "Vehículo detenido a 5,5 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_6000",
+    "texto" : "Vehículo detenido a 6 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_6500",
+    "texto" : "Vehículo detenido a 6,5 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_7000",
+    "texto" : "Vehículo detenido a 7 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_7500",
+    "texto" : "Vehículo detenido a 7,5 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_8000",
+    "texto" : "Vehículo detenido a 8 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_8500",
+    "texto" : "Vehículo detenido a 8,5 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_9000",
+    "texto" : "Vehículo detenido a 9 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_9500",
+    "texto" : "Vehículo detenido a 9,5 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_10000",
+    "texto" : "Vehículo detenido a 10 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_11000",
+    "texto" : "Vehículo detenido a 11 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_12000",
+    "texto" : "Vehículo detenido a 12 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_13000",
+    "texto" : "Vehículo detenido a 13 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_14000",
+    "texto" : "Vehículo detenido a 14 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_15000",
+    "texto" : "Vehículo detenido a 15 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_16000",
+    "texto" : "Vehículo detenido a 16 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_17000",
+    "texto" : "Vehículo detenido a 17 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_18000",
+    "texto" : "Vehículo detenido a 18 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_19000",
+    "texto" : "Vehículo detenido a 19 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_20000",
+    "texto" : "Vehículo detenido a 20 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_21000",
+    "texto" : "Vehículo detenido a 21 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_22000",
+    "texto" : "Vehículo detenido a 22 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_23000",
+    "texto" : "Vehículo detenido a 23 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_24000",
+    "texto" : "Vehículo detenido a 24 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_25000",
+    "texto" : "Vehículo detenido a 25 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_26000",
+    "texto" : "Vehículo detenido a 26 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_27000",
+    "texto" : "Vehículo detenido a 27 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_28000",
+    "texto" : "Vehículo detenido a 28 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_29000",
+    "texto" : "Vehículo detenido a 29 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_30000",
+    "texto" : "Vehículo detenido a 30 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_31000",
+    "texto" : "Vehículo detenido a 31 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_32000",
+    "texto" : "Vehículo detenido a 32 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_33000",
+    "texto" : "Vehículo detenido a 33 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_34000",
+    "texto" : "Vehículo detenido a 34 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_35000",
+    "texto" : "Vehículo detenido a 35 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_36000",
+    "texto" : "Vehículo detenido a 36 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_37000",
+    "texto" : "Vehículo detenido a 37 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_38000",
+    "texto" : "Vehículo detenido a 38 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_39000",
+    "texto" : "Vehículo detenido a 39 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_40000",
+    "texto" : "Vehículo detenido a 40 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_41000",
+    "texto" : "Vehículo detenido a 41 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_42000",
+    "texto" : "Vehículo detenido a 42 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_43000",
+    "texto" : "Vehículo detenido a 43 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_44000",
+    "texto" : "Vehículo detenido a 44 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_45000",
+    "texto" : "Vehículo detenido a 45 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_46000",
+    "texto" : "Vehículo detenido a 46 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_47000",
+    "texto" : "Vehículo detenido a 47 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_48000",
+    "texto" : "Vehículo detenido a 48 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_49000",
+    "texto" : "Vehículo detenido a 49 kilómetros."
+  },
+  {
+    "clave" : "vehiculo_50000",
+    "texto" : "Vehículo detenido a 50 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_50",
+    "texto" : "Obstáculo en la calzada a 50 metros."
+  },
+  {
+    "clave" : "obstaculo_100",
+    "texto" : "Obstáculo en la calzada a 100 metros."
+  },
+  {
+    "clave" : "obstaculo_150",
+    "texto" : "Obstáculo en la calzada a 150 metros."
+  },
+  {
+    "clave" : "obstaculo_200",
+    "texto" : "Obstáculo en la calzada a 200 metros."
+  },
+  {
+    "clave" : "obstaculo_250",
+    "texto" : "Obstáculo en la calzada a 250 metros."
+  },
+  {
+    "clave" : "obstaculo_300",
+    "texto" : "Obstáculo en la calzada a 300 metros."
+  },
+  {
+    "clave" : "obstaculo_350",
+    "texto" : "Obstáculo en la calzada a 350 metros."
+  },
+  {
+    "clave" : "obstaculo_400",
+    "texto" : "Obstáculo en la calzada a 400 metros."
+  },
+  {
+    "clave" : "obstaculo_450",
+    "texto" : "Obstáculo en la calzada a 450 metros."
+  },
+  {
+    "clave" : "obstaculo_500",
+    "texto" : "Obstáculo en la calzada a 500 metros."
+  },
+  {
+    "clave" : "obstaculo_550",
+    "texto" : "Obstáculo en la calzada a 550 metros."
+  },
+  {
+    "clave" : "obstaculo_600",
+    "texto" : "Obstáculo en la calzada a 600 metros."
+  },
+  {
+    "clave" : "obstaculo_650",
+    "texto" : "Obstáculo en la calzada a 650 metros."
+  },
+  {
+    "clave" : "obstaculo_700",
+    "texto" : "Obstáculo en la calzada a 700 metros."
+  },
+  {
+    "clave" : "obstaculo_750",
+    "texto" : "Obstáculo en la calzada a 750 metros."
+  },
+  {
+    "clave" : "obstaculo_800",
+    "texto" : "Obstáculo en la calzada a 800 metros."
+  },
+  {
+    "clave" : "obstaculo_850",
+    "texto" : "Obstáculo en la calzada a 850 metros."
+  },
+  {
+    "clave" : "obstaculo_900",
+    "texto" : "Obstáculo en la calzada a 900 metros."
+  },
+  {
+    "clave" : "obstaculo_1000",
+    "texto" : "Obstáculo en la calzada a 1 kilómetro."
+  },
+  {
+    "clave" : "obstaculo_1500",
+    "texto" : "Obstáculo en la calzada a 1,5 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_2000",
+    "texto" : "Obstáculo en la calzada a 2 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_2500",
+    "texto" : "Obstáculo en la calzada a 2,5 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_3000",
+    "texto" : "Obstáculo en la calzada a 3 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_3500",
+    "texto" : "Obstáculo en la calzada a 3,5 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_4000",
+    "texto" : "Obstáculo en la calzada a 4 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_4500",
+    "texto" : "Obstáculo en la calzada a 4,5 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_5000",
+    "texto" : "Obstáculo en la calzada a 5 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_5500",
+    "texto" : "Obstáculo en la calzada a 5,5 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_6000",
+    "texto" : "Obstáculo en la calzada a 6 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_6500",
+    "texto" : "Obstáculo en la calzada a 6,5 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_7000",
+    "texto" : "Obstáculo en la calzada a 7 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_7500",
+    "texto" : "Obstáculo en la calzada a 7,5 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_8000",
+    "texto" : "Obstáculo en la calzada a 8 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_8500",
+    "texto" : "Obstáculo en la calzada a 8,5 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_9000",
+    "texto" : "Obstáculo en la calzada a 9 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_9500",
+    "texto" : "Obstáculo en la calzada a 9,5 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_10000",
+    "texto" : "Obstáculo en la calzada a 10 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_11000",
+    "texto" : "Obstáculo en la calzada a 11 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_12000",
+    "texto" : "Obstáculo en la calzada a 12 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_13000",
+    "texto" : "Obstáculo en la calzada a 13 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_14000",
+    "texto" : "Obstáculo en la calzada a 14 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_15000",
+    "texto" : "Obstáculo en la calzada a 15 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_16000",
+    "texto" : "Obstáculo en la calzada a 16 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_17000",
+    "texto" : "Obstáculo en la calzada a 17 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_18000",
+    "texto" : "Obstáculo en la calzada a 18 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_19000",
+    "texto" : "Obstáculo en la calzada a 19 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_20000",
+    "texto" : "Obstáculo en la calzada a 20 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_21000",
+    "texto" : "Obstáculo en la calzada a 21 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_22000",
+    "texto" : "Obstáculo en la calzada a 22 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_23000",
+    "texto" : "Obstáculo en la calzada a 23 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_24000",
+    "texto" : "Obstáculo en la calzada a 24 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_25000",
+    "texto" : "Obstáculo en la calzada a 25 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_26000",
+    "texto" : "Obstáculo en la calzada a 26 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_27000",
+    "texto" : "Obstáculo en la calzada a 27 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_28000",
+    "texto" : "Obstáculo en la calzada a 28 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_29000",
+    "texto" : "Obstáculo en la calzada a 29 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_30000",
+    "texto" : "Obstáculo en la calzada a 30 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_31000",
+    "texto" : "Obstáculo en la calzada a 31 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_32000",
+    "texto" : "Obstáculo en la calzada a 32 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_33000",
+    "texto" : "Obstáculo en la calzada a 33 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_34000",
+    "texto" : "Obstáculo en la calzada a 34 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_35000",
+    "texto" : "Obstáculo en la calzada a 35 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_36000",
+    "texto" : "Obstáculo en la calzada a 36 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_37000",
+    "texto" : "Obstáculo en la calzada a 37 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_38000",
+    "texto" : "Obstáculo en la calzada a 38 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_39000",
+    "texto" : "Obstáculo en la calzada a 39 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_40000",
+    "texto" : "Obstáculo en la calzada a 40 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_41000",
+    "texto" : "Obstáculo en la calzada a 41 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_42000",
+    "texto" : "Obstáculo en la calzada a 42 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_43000",
+    "texto" : "Obstáculo en la calzada a 43 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_44000",
+    "texto" : "Obstáculo en la calzada a 44 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_45000",
+    "texto" : "Obstáculo en la calzada a 45 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_46000",
+    "texto" : "Obstáculo en la calzada a 46 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_47000",
+    "texto" : "Obstáculo en la calzada a 47 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_48000",
+    "texto" : "Obstáculo en la calzada a 48 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_49000",
+    "texto" : "Obstáculo en la calzada a 49 kilómetros."
+  },
+  {
+    "clave" : "obstaculo_50000",
+    "texto" : "Obstáculo en la calzada a 50 kilómetros."
+  },
+  {
+    "clave" : "retencion_50",
+    "texto" : "Retención a 50 metros."
+  },
+  {
+    "clave" : "retencion_100",
+    "texto" : "Retención a 100 metros."
+  },
+  {
+    "clave" : "retencion_150",
+    "texto" : "Retención a 150 metros."
+  },
+  {
+    "clave" : "retencion_200",
+    "texto" : "Retención a 200 metros."
+  },
+  {
+    "clave" : "retencion_250",
+    "texto" : "Retención a 250 metros."
+  },
+  {
+    "clave" : "retencion_300",
+    "texto" : "Retención a 300 metros."
+  },
+  {
+    "clave" : "retencion_350",
+    "texto" : "Retención a 350 metros."
+  },
+  {
+    "clave" : "retencion_400",
+    "texto" : "Retención a 400 metros."
+  },
+  {
+    "clave" : "retencion_450",
+    "texto" : "Retención a 450 metros."
+  },
+  {
+    "clave" : "retencion_500",
+    "texto" : "Retención a 500 metros."
+  },
+  {
+    "clave" : "retencion_550",
+    "texto" : "Retención a 550 metros."
+  },
+  {
+    "clave" : "retencion_600",
+    "texto" : "Retención a 600 metros."
+  },
+  {
+    "clave" : "retencion_650",
+    "texto" : "Retención a 650 metros."
+  },
+  {
+    "clave" : "retencion_700",
+    "texto" : "Retención a 700 metros."
+  },
+  {
+    "clave" : "retencion_750",
+    "texto" : "Retención a 750 metros."
+  },
+  {
+    "clave" : "retencion_800",
+    "texto" : "Retención a 800 metros."
+  },
+  {
+    "clave" : "retencion_850",
+    "texto" : "Retención a 850 metros."
+  },
+  {
+    "clave" : "retencion_900",
+    "texto" : "Retención a 900 metros."
+  },
+  {
+    "clave" : "retencion_1000",
+    "texto" : "Retención a 1 kilómetro."
+  },
+  {
+    "clave" : "retencion_1500",
+    "texto" : "Retención a 1,5 kilómetros."
+  },
+  {
+    "clave" : "retencion_2000",
+    "texto" : "Retención a 2 kilómetros."
+  },
+  {
+    "clave" : "retencion_2500",
+    "texto" : "Retención a 2,5 kilómetros."
+  },
+  {
+    "clave" : "retencion_3000",
+    "texto" : "Retención a 3 kilómetros."
+  },
+  {
+    "clave" : "retencion_3500",
+    "texto" : "Retención a 3,5 kilómetros."
+  },
+  {
+    "clave" : "retencion_4000",
+    "texto" : "Retención a 4 kilómetros."
+  },
+  {
+    "clave" : "retencion_4500",
+    "texto" : "Retención a 4,5 kilómetros."
+  },
+  {
+    "clave" : "retencion_5000",
+    "texto" : "Retención a 5 kilómetros."
+  },
+  {
+    "clave" : "retencion_5500",
+    "texto" : "Retención a 5,5 kilómetros."
+  },
+  {
+    "clave" : "retencion_6000",
+    "texto" : "Retención a 6 kilómetros."
+  },
+  {
+    "clave" : "retencion_6500",
+    "texto" : "Retención a 6,5 kilómetros."
+  },
+  {
+    "clave" : "retencion_7000",
+    "texto" : "Retención a 7 kilómetros."
+  },
+  {
+    "clave" : "retencion_7500",
+    "texto" : "Retención a 7,5 kilómetros."
+  },
+  {
+    "clave" : "retencion_8000",
+    "texto" : "Retención a 8 kilómetros."
+  },
+  {
+    "clave" : "retencion_8500",
+    "texto" : "Retención a 8,5 kilómetros."
+  },
+  {
+    "clave" : "retencion_9000",
+    "texto" : "Retención a 9 kilómetros."
+  },
+  {
+    "clave" : "retencion_9500",
+    "texto" : "Retención a 9,5 kilómetros."
+  },
+  {
+    "clave" : "retencion_10000",
+    "texto" : "Retención a 10 kilómetros."
+  },
+  {
+    "clave" : "retencion_11000",
+    "texto" : "Retención a 11 kilómetros."
+  },
+  {
+    "clave" : "retencion_12000",
+    "texto" : "Retención a 12 kilómetros."
+  },
+  {
+    "clave" : "retencion_13000",
+    "texto" : "Retención a 13 kilómetros."
+  },
+  {
+    "clave" : "retencion_14000",
+    "texto" : "Retención a 14 kilómetros."
+  },
+  {
+    "clave" : "retencion_15000",
+    "texto" : "Retención a 15 kilómetros."
+  },
+  {
+    "clave" : "retencion_16000",
+    "texto" : "Retención a 16 kilómetros."
+  },
+  {
+    "clave" : "retencion_17000",
+    "texto" : "Retención a 17 kilómetros."
+  },
+  {
+    "clave" : "retencion_18000",
+    "texto" : "Retención a 18 kilómetros."
+  },
+  {
+    "clave" : "retencion_19000",
+    "texto" : "Retención a 19 kilómetros."
+  },
+  {
+    "clave" : "retencion_20000",
+    "texto" : "Retención a 20 kilómetros."
+  },
+  {
+    "clave" : "retencion_21000",
+    "texto" : "Retención a 21 kilómetros."
+  },
+  {
+    "clave" : "retencion_22000",
+    "texto" : "Retención a 22 kilómetros."
+  },
+  {
+    "clave" : "retencion_23000",
+    "texto" : "Retención a 23 kilómetros."
+  },
+  {
+    "clave" : "retencion_24000",
+    "texto" : "Retención a 24 kilómetros."
+  },
+  {
+    "clave" : "retencion_25000",
+    "texto" : "Retención a 25 kilómetros."
+  },
+  {
+    "clave" : "retencion_26000",
+    "texto" : "Retención a 26 kilómetros."
+  },
+  {
+    "clave" : "retencion_27000",
+    "texto" : "Retención a 27 kilómetros."
+  },
+  {
+    "clave" : "retencion_28000",
+    "texto" : "Retención a 28 kilómetros."
+  },
+  {
+    "clave" : "retencion_29000",
+    "texto" : "Retención a 29 kilómetros."
+  },
+  {
+    "clave" : "retencion_30000",
+    "texto" : "Retención a 30 kilómetros."
+  },
+  {
+    "clave" : "retencion_31000",
+    "texto" : "Retención a 31 kilómetros."
+  },
+  {
+    "clave" : "retencion_32000",
+    "texto" : "Retención a 32 kilómetros."
+  },
+  {
+    "clave" : "retencion_33000",
+    "texto" : "Retención a 33 kilómetros."
+  },
+  {
+    "clave" : "retencion_34000",
+    "texto" : "Retención a 34 kilómetros."
+  },
+  {
+    "clave" : "retencion_35000",
+    "texto" : "Retención a 35 kilómetros."
+  },
+  {
+    "clave" : "retencion_36000",
+    "texto" : "Retención a 36 kilómetros."
+  },
+  {
+    "clave" : "retencion_37000",
+    "texto" : "Retención a 37 kilómetros."
+  },
+  {
+    "clave" : "retencion_38000",
+    "texto" : "Retención a 38 kilómetros."
+  },
+  {
+    "clave" : "retencion_39000",
+    "texto" : "Retención a 39 kilómetros."
+  },
+  {
+    "clave" : "retencion_40000",
+    "texto" : "Retención a 40 kilómetros."
+  },
+  {
+    "clave" : "retencion_41000",
+    "texto" : "Retención a 41 kilómetros."
+  },
+  {
+    "clave" : "retencion_42000",
+    "texto" : "Retención a 42 kilómetros."
+  },
+  {
+    "clave" : "retencion_43000",
+    "texto" : "Retención a 43 kilómetros."
+  },
+  {
+    "clave" : "retencion_44000",
+    "texto" : "Retención a 44 kilómetros."
+  },
+  {
+    "clave" : "retencion_45000",
+    "texto" : "Retención a 45 kilómetros."
+  },
+  {
+    "clave" : "retencion_46000",
+    "texto" : "Retención a 46 kilómetros."
+  },
+  {
+    "clave" : "retencion_47000",
+    "texto" : "Retención a 47 kilómetros."
+  },
+  {
+    "clave" : "retencion_48000",
+    "texto" : "Retención a 48 kilómetros."
+  },
+  {
+    "clave" : "retencion_49000",
+    "texto" : "Retención a 49 kilómetros."
+  },
+  {
+    "clave" : "retencion_50000",
+    "texto" : "Retención a 50 kilómetros."
+  },
+  {
+    "clave" : "meteo_50",
+    "texto" : "Tiempo adverso a 50 metros."
+  },
+  {
+    "clave" : "meteo_100",
+    "texto" : "Tiempo adverso a 100 metros."
+  },
+  {
+    "clave" : "meteo_150",
+    "texto" : "Tiempo adverso a 150 metros."
+  },
+  {
+    "clave" : "meteo_200",
+    "texto" : "Tiempo adverso a 200 metros."
+  },
+  {
+    "clave" : "meteo_250",
+    "texto" : "Tiempo adverso a 250 metros."
+  },
+  {
+    "clave" : "meteo_300",
+    "texto" : "Tiempo adverso a 300 metros."
+  },
+  {
+    "clave" : "meteo_350",
+    "texto" : "Tiempo adverso a 350 metros."
+  },
+  {
+    "clave" : "meteo_400",
+    "texto" : "Tiempo adverso a 400 metros."
+  },
+  {
+    "clave" : "meteo_450",
+    "texto" : "Tiempo adverso a 450 metros."
+  },
+  {
+    "clave" : "meteo_500",
+    "texto" : "Tiempo adverso a 500 metros."
+  },
+  {
+    "clave" : "meteo_550",
+    "texto" : "Tiempo adverso a 550 metros."
+  },
+  {
+    "clave" : "meteo_600",
+    "texto" : "Tiempo adverso a 600 metros."
+  },
+  {
+    "clave" : "meteo_650",
+    "texto" : "Tiempo adverso a 650 metros."
+  },
+  {
+    "clave" : "meteo_700",
+    "texto" : "Tiempo adverso a 700 metros."
+  },
+  {
+    "clave" : "meteo_750",
+    "texto" : "Tiempo adverso a 750 metros."
+  },
+  {
+    "clave" : "meteo_800",
+    "texto" : "Tiempo adverso a 800 metros."
+  },
+  {
+    "clave" : "meteo_850",
+    "texto" : "Tiempo adverso a 850 metros."
+  },
+  {
+    "clave" : "meteo_900",
+    "texto" : "Tiempo adverso a 900 metros."
+  },
+  {
+    "clave" : "meteo_1000",
+    "texto" : "Tiempo adverso a 1 kilómetro."
+  },
+  {
+    "clave" : "meteo_1500",
+    "texto" : "Tiempo adverso a 1,5 kilómetros."
+  },
+  {
+    "clave" : "meteo_2000",
+    "texto" : "Tiempo adverso a 2 kilómetros."
+  },
+  {
+    "clave" : "meteo_2500",
+    "texto" : "Tiempo adverso a 2,5 kilómetros."
+  },
+  {
+    "clave" : "meteo_3000",
+    "texto" : "Tiempo adverso a 3 kilómetros."
+  },
+  {
+    "clave" : "meteo_3500",
+    "texto" : "Tiempo adverso a 3,5 kilómetros."
+  },
+  {
+    "clave" : "meteo_4000",
+    "texto" : "Tiempo adverso a 4 kilómetros."
+  },
+  {
+    "clave" : "meteo_4500",
+    "texto" : "Tiempo adverso a 4,5 kilómetros."
+  },
+  {
+    "clave" : "meteo_5000",
+    "texto" : "Tiempo adverso a 5 kilómetros."
+  },
+  {
+    "clave" : "meteo_5500",
+    "texto" : "Tiempo adverso a 5,5 kilómetros."
+  },
+  {
+    "clave" : "meteo_6000",
+    "texto" : "Tiempo adverso a 6 kilómetros."
+  },
+  {
+    "clave" : "meteo_6500",
+    "texto" : "Tiempo adverso a 6,5 kilómetros."
+  },
+  {
+    "clave" : "meteo_7000",
+    "texto" : "Tiempo adverso a 7 kilómetros."
+  },
+  {
+    "clave" : "meteo_7500",
+    "texto" : "Tiempo adverso a 7,5 kilómetros."
+  },
+  {
+    "clave" : "meteo_8000",
+    "texto" : "Tiempo adverso a 8 kilómetros."
+  },
+  {
+    "clave" : "meteo_8500",
+    "texto" : "Tiempo adverso a 8,5 kilómetros."
+  },
+  {
+    "clave" : "meteo_9000",
+    "texto" : "Tiempo adverso a 9 kilómetros."
+  },
+  {
+    "clave" : "meteo_9500",
+    "texto" : "Tiempo adverso a 9,5 kilómetros."
+  },
+  {
+    "clave" : "meteo_10000",
+    "texto" : "Tiempo adverso a 10 kilómetros."
+  },
+  {
+    "clave" : "meteo_11000",
+    "texto" : "Tiempo adverso a 11 kilómetros."
+  },
+  {
+    "clave" : "meteo_12000",
+    "texto" : "Tiempo adverso a 12 kilómetros."
+  },
+  {
+    "clave" : "meteo_13000",
+    "texto" : "Tiempo adverso a 13 kilómetros."
+  },
+  {
+    "clave" : "meteo_14000",
+    "texto" : "Tiempo adverso a 14 kilómetros."
+  },
+  {
+    "clave" : "meteo_15000",
+    "texto" : "Tiempo adverso a 15 kilómetros."
+  },
+  {
+    "clave" : "meteo_16000",
+    "texto" : "Tiempo adverso a 16 kilómetros."
+  },
+  {
+    "clave" : "meteo_17000",
+    "texto" : "Tiempo adverso a 17 kilómetros."
+  },
+  {
+    "clave" : "meteo_18000",
+    "texto" : "Tiempo adverso a 18 kilómetros."
+  },
+  {
+    "clave" : "meteo_19000",
+    "texto" : "Tiempo adverso a 19 kilómetros."
+  },
+  {
+    "clave" : "meteo_20000",
+    "texto" : "Tiempo adverso a 20 kilómetros."
+  },
+  {
+    "clave" : "meteo_21000",
+    "texto" : "Tiempo adverso a 21 kilómetros."
+  },
+  {
+    "clave" : "meteo_22000",
+    "texto" : "Tiempo adverso a 22 kilómetros."
+  },
+  {
+    "clave" : "meteo_23000",
+    "texto" : "Tiempo adverso a 23 kilómetros."
+  },
+  {
+    "clave" : "meteo_24000",
+    "texto" : "Tiempo adverso a 24 kilómetros."
+  },
+  {
+    "clave" : "meteo_25000",
+    "texto" : "Tiempo adverso a 25 kilómetros."
+  },
+  {
+    "clave" : "meteo_26000",
+    "texto" : "Tiempo adverso a 26 kilómetros."
+  },
+  {
+    "clave" : "meteo_27000",
+    "texto" : "Tiempo adverso a 27 kilómetros."
+  },
+  {
+    "clave" : "meteo_28000",
+    "texto" : "Tiempo adverso a 28 kilómetros."
+  },
+  {
+    "clave" : "meteo_29000",
+    "texto" : "Tiempo adverso a 29 kilómetros."
+  },
+  {
+    "clave" : "meteo_30000",
+    "texto" : "Tiempo adverso a 30 kilómetros."
+  },
+  {
+    "clave" : "meteo_31000",
+    "texto" : "Tiempo adverso a 31 kilómetros."
+  },
+  {
+    "clave" : "meteo_32000",
+    "texto" : "Tiempo adverso a 32 kilómetros."
+  },
+  {
+    "clave" : "meteo_33000",
+    "texto" : "Tiempo adverso a 33 kilómetros."
+  },
+  {
+    "clave" : "meteo_34000",
+    "texto" : "Tiempo adverso a 34 kilómetros."
+  },
+  {
+    "clave" : "meteo_35000",
+    "texto" : "Tiempo adverso a 35 kilómetros."
+  },
+  {
+    "clave" : "meteo_36000",
+    "texto" : "Tiempo adverso a 36 kilómetros."
+  },
+  {
+    "clave" : "meteo_37000",
+    "texto" : "Tiempo adverso a 37 kilómetros."
+  },
+  {
+    "clave" : "meteo_38000",
+    "texto" : "Tiempo adverso a 38 kilómetros."
+  },
+  {
+    "clave" : "meteo_39000",
+    "texto" : "Tiempo adverso a 39 kilómetros."
+  },
+  {
+    "clave" : "meteo_40000",
+    "texto" : "Tiempo adverso a 40 kilómetros."
+  },
+  {
+    "clave" : "meteo_41000",
+    "texto" : "Tiempo adverso a 41 kilómetros."
+  },
+  {
+    "clave" : "meteo_42000",
+    "texto" : "Tiempo adverso a 42 kilómetros."
+  },
+  {
+    "clave" : "meteo_43000",
+    "texto" : "Tiempo adverso a 43 kilómetros."
+  },
+  {
+    "clave" : "meteo_44000",
+    "texto" : "Tiempo adverso a 44 kilómetros."
+  },
+  {
+    "clave" : "meteo_45000",
+    "texto" : "Tiempo adverso a 45 kilómetros."
+  },
+  {
+    "clave" : "meteo_46000",
+    "texto" : "Tiempo adverso a 46 kilómetros."
+  },
+  {
+    "clave" : "meteo_47000",
+    "texto" : "Tiempo adverso a 47 kilómetros."
+  },
+  {
+    "clave" : "meteo_48000",
+    "texto" : "Tiempo adverso a 48 kilómetros."
+  },
+  {
+    "clave" : "meteo_49000",
+    "texto" : "Tiempo adverso a 49 kilómetros."
+  },
+  {
+    "clave" : "meteo_50000",
+    "texto" : "Tiempo adverso a 50 kilómetros."
+  },
+  {
+    "clave" : "dura_500",
+    "texto" : "Dura 500 metros."
+  },
+  {
+    "clave" : "dura_550",
+    "texto" : "Dura 550 metros."
+  },
+  {
+    "clave" : "dura_600",
+    "texto" : "Dura 600 metros."
+  },
+  {
+    "clave" : "dura_650",
+    "texto" : "Dura 650 metros."
+  },
+  {
+    "clave" : "dura_700",
+    "texto" : "Dura 700 metros."
+  },
+  {
+    "clave" : "dura_750",
+    "texto" : "Dura 750 metros."
+  },
+  {
+    "clave" : "dura_800",
+    "texto" : "Dura 800 metros."
+  },
+  {
+    "clave" : "dura_850",
+    "texto" : "Dura 850 metros."
+  },
+  {
+    "clave" : "dura_900",
+    "texto" : "Dura 900 metros."
+  },
+  {
+    "clave" : "dura_1000",
+    "texto" : "Dura 1 kilómetro."
+  },
+  {
+    "clave" : "dura_1500",
+    "texto" : "Dura 1,5 kilómetros."
+  },
+  {
+    "clave" : "dura_2000",
+    "texto" : "Dura 2 kilómetros."
+  },
+  {
+    "clave" : "dura_2500",
+    "texto" : "Dura 2,5 kilómetros."
+  },
+  {
+    "clave" : "dura_3000",
+    "texto" : "Dura 3 kilómetros."
+  },
+  {
+    "clave" : "dura_3500",
+    "texto" : "Dura 3,5 kilómetros."
+  },
+  {
+    "clave" : "dura_4000",
+    "texto" : "Dura 4 kilómetros."
+  },
+  {
+    "clave" : "dura_4500",
+    "texto" : "Dura 4,5 kilómetros."
+  },
+  {
+    "clave" : "dura_5000",
+    "texto" : "Dura 5 kilómetros."
+  },
+  {
+    "clave" : "dura_5500",
+    "texto" : "Dura 5,5 kilómetros."
+  },
+  {
+    "clave" : "dura_6000",
+    "texto" : "Dura 6 kilómetros."
+  },
+  {
+    "clave" : "dura_6500",
+    "texto" : "Dura 6,5 kilómetros."
+  },
+  {
+    "clave" : "dura_7000",
+    "texto" : "Dura 7 kilómetros."
+  },
+  {
+    "clave" : "dura_7500",
+    "texto" : "Dura 7,5 kilómetros."
+  },
+  {
+    "clave" : "dura_8000",
+    "texto" : "Dura 8 kilómetros."
+  },
+  {
+    "clave" : "dura_8500",
+    "texto" : "Dura 8,5 kilómetros."
+  },
+  {
+    "clave" : "dura_9000",
+    "texto" : "Dura 9 kilómetros."
+  },
+  {
+    "clave" : "dura_9500",
+    "texto" : "Dura 9,5 kilómetros."
+  },
+  {
+    "clave" : "dura_10000",
+    "texto" : "Dura 10 kilómetros."
+  },
+  {
+    "clave" : "dura_11000",
+    "texto" : "Dura 11 kilómetros."
+  },
+  {
+    "clave" : "dura_12000",
+    "texto" : "Dura 12 kilómetros."
+  },
+  {
+    "clave" : "dura_13000",
+    "texto" : "Dura 13 kilómetros."
+  },
+  {
+    "clave" : "dura_14000",
+    "texto" : "Dura 14 kilómetros."
+  },
+  {
+    "clave" : "dura_15000",
+    "texto" : "Dura 15 kilómetros."
+  },
+  {
+    "clave" : "dura_16000",
+    "texto" : "Dura 16 kilómetros."
+  },
+  {
+    "clave" : "dura_17000",
+    "texto" : "Dura 17 kilómetros."
+  },
+  {
+    "clave" : "dura_18000",
+    "texto" : "Dura 18 kilómetros."
+  },
+  {
+    "clave" : "dura_19000",
+    "texto" : "Dura 19 kilómetros."
+  },
+  {
+    "clave" : "dura_20000",
+    "texto" : "Dura 20 kilómetros."
+  },
+  {
+    "clave" : "dura_21000",
+    "texto" : "Dura 21 kilómetros."
+  },
+  {
+    "clave" : "dura_22000",
+    "texto" : "Dura 22 kilómetros."
+  },
+  {
+    "clave" : "dura_23000",
+    "texto" : "Dura 23 kilómetros."
+  },
+  {
+    "clave" : "dura_24000",
+    "texto" : "Dura 24 kilómetros."
+  },
+  {
+    "clave" : "dura_25000",
+    "texto" : "Dura 25 kilómetros."
+  },
+  {
+    "clave" : "dura_26000",
+    "texto" : "Dura 26 kilómetros."
+  },
+  {
+    "clave" : "dura_27000",
+    "texto" : "Dura 27 kilómetros."
+  },
+  {
+    "clave" : "dura_28000",
+    "texto" : "Dura 28 kilómetros."
+  },
+  {
+    "clave" : "dura_29000",
+    "texto" : "Dura 29 kilómetros."
+  },
+  {
+    "clave" : "dura_30000",
+    "texto" : "Dura 30 kilómetros."
+  },
+  {
+    "clave" : "dura_31000",
+    "texto" : "Dura 31 kilómetros."
+  },
+  {
+    "clave" : "dura_32000",
+    "texto" : "Dura 32 kilómetros."
+  },
+  {
+    "clave" : "dura_33000",
+    "texto" : "Dura 33 kilómetros."
+  },
+  {
+    "clave" : "dura_34000",
+    "texto" : "Dura 34 kilómetros."
+  },
+  {
+    "clave" : "dura_35000",
+    "texto" : "Dura 35 kilómetros."
+  },
+  {
+    "clave" : "dura_36000",
+    "texto" : "Dura 36 kilómetros."
+  },
+  {
+    "clave" : "dura_37000",
+    "texto" : "Dura 37 kilómetros."
+  },
+  {
+    "clave" : "dura_38000",
+    "texto" : "Dura 38 kilómetros."
+  },
+  {
+    "clave" : "dura_39000",
+    "texto" : "Dura 39 kilómetros."
+  },
+  {
+    "clave" : "dura_40000",
+    "texto" : "Dura 40 kilómetros."
+  },
+  {
+    "clave" : "dura_41000",
+    "texto" : "Dura 41 kilómetros."
+  },
+  {
+    "clave" : "dura_42000",
+    "texto" : "Dura 42 kilómetros."
+  },
+  {
+    "clave" : "dura_43000",
+    "texto" : "Dura 43 kilómetros."
+  },
+  {
+    "clave" : "dura_44000",
+    "texto" : "Dura 44 kilómetros."
+  },
+  {
+    "clave" : "dura_45000",
+    "texto" : "Dura 45 kilómetros."
+  },
+  {
+    "clave" : "dura_46000",
+    "texto" : "Dura 46 kilómetros."
+  },
+  {
+    "clave" : "dura_47000",
+    "texto" : "Dura 47 kilómetros."
+  },
+  {
+    "clave" : "dura_48000",
+    "texto" : "Dura 48 kilómetros."
+  },
+  {
+    "clave" : "dura_49000",
+    "texto" : "Dura 49 kilómetros."
+  },
+  {
+    "clave" : "dura_50000",
+    "texto" : "Dura 50 kilómetros."
+  },
+  {
+    "clave" : "limite_10",
+    "texto" : "Límite 10."
+  },
+  {
+    "clave" : "limite_15",
+    "texto" : "Límite 15."
+  },
+  {
+    "clave" : "limite_20",
+    "texto" : "Límite 20."
+  },
+  {
+    "clave" : "limite_25",
+    "texto" : "Límite 25."
+  },
+  {
+    "clave" : "limite_30",
+    "texto" : "Límite 30."
+  },
+  {
+    "clave" : "limite_35",
+    "texto" : "Límite 35."
+  },
+  {
+    "clave" : "limite_40",
+    "texto" : "Límite 40."
+  },
+  {
+    "clave" : "limite_45",
+    "texto" : "Límite 45."
+  },
+  {
+    "clave" : "limite_50",
+    "texto" : "Límite 50."
+  },
+  {
+    "clave" : "limite_55",
+    "texto" : "Límite 55."
+  },
+  {
+    "clave" : "limite_60",
+    "texto" : "Límite 60."
+  },
+  {
+    "clave" : "limite_65",
+    "texto" : "Límite 65."
+  },
+  {
+    "clave" : "limite_70",
+    "texto" : "Límite 70."
+  },
+  {
+    "clave" : "limite_75",
+    "texto" : "Límite 75."
+  },
+  {
+    "clave" : "limite_80",
+    "texto" : "Límite 80."
+  },
+  {
+    "clave" : "limite_85",
+    "texto" : "Límite 85."
+  },
+  {
+    "clave" : "limite_90",
+    "texto" : "Límite 90."
+  },
+  {
+    "clave" : "limite_95",
+    "texto" : "Límite 95."
+  },
+  {
+    "clave" : "limite_100",
+    "texto" : "Límite 100."
+  },
+  {
+    "clave" : "limite_105",
+    "texto" : "Límite 105."
+  },
+  {
+    "clave" : "limite_110",
+    "texto" : "Límite 110."
+  },
+  {
+    "clave" : "limite_115",
+    "texto" : "Límite 115."
+  },
+  {
+    "clave" : "limite_120",
+    "texto" : "Límite 120."
+  },
+  {
+    "clave" : "limite_125",
+    "texto" : "Límite 125."
+  },
+  {
+    "clave" : "limite_130",
+    "texto" : "Límite 130."
+  },
+  {
+    "clave" : "vas_10",
+    "texto" : "Vas a 10."
+  },
+  {
+    "clave" : "media_10",
+    "texto" : "Media del tramo 10."
+  },
+  {
+    "clave" : "fin_10",
+    "texto" : "Fin del tramo. Media 10."
+  },
+  {
+    "clave" : "vas_11",
+    "texto" : "Vas a 11."
+  },
+  {
+    "clave" : "media_11",
+    "texto" : "Media del tramo 11."
+  },
+  {
+    "clave" : "fin_11",
+    "texto" : "Fin del tramo. Media 11."
+  },
+  {
+    "clave" : "vas_12",
+    "texto" : "Vas a 12."
+  },
+  {
+    "clave" : "media_12",
+    "texto" : "Media del tramo 12."
+  },
+  {
+    "clave" : "fin_12",
+    "texto" : "Fin del tramo. Media 12."
+  },
+  {
+    "clave" : "vas_13",
+    "texto" : "Vas a 13."
+  },
+  {
+    "clave" : "media_13",
+    "texto" : "Media del tramo 13."
+  },
+  {
+    "clave" : "fin_13",
+    "texto" : "Fin del tramo. Media 13."
+  },
+  {
+    "clave" : "vas_14",
+    "texto" : "Vas a 14."
+  },
+  {
+    "clave" : "media_14",
+    "texto" : "Media del tramo 14."
+  },
+  {
+    "clave" : "fin_14",
+    "texto" : "Fin del tramo. Media 14."
+  },
+  {
+    "clave" : "vas_15",
+    "texto" : "Vas a 15."
+  },
+  {
+    "clave" : "media_15",
+    "texto" : "Media del tramo 15."
+  },
+  {
+    "clave" : "fin_15",
+    "texto" : "Fin del tramo. Media 15."
+  },
+  {
+    "clave" : "vas_16",
+    "texto" : "Vas a 16."
+  },
+  {
+    "clave" : "media_16",
+    "texto" : "Media del tramo 16."
+  },
+  {
+    "clave" : "fin_16",
+    "texto" : "Fin del tramo. Media 16."
+  },
+  {
+    "clave" : "vas_17",
+    "texto" : "Vas a 17."
+  },
+  {
+    "clave" : "media_17",
+    "texto" : "Media del tramo 17."
+  },
+  {
+    "clave" : "fin_17",
+    "texto" : "Fin del tramo. Media 17."
+  },
+  {
+    "clave" : "vas_18",
+    "texto" : "Vas a 18."
+  },
+  {
+    "clave" : "media_18",
+    "texto" : "Media del tramo 18."
+  },
+  {
+    "clave" : "fin_18",
+    "texto" : "Fin del tramo. Media 18."
+  },
+  {
+    "clave" : "vas_19",
+    "texto" : "Vas a 19."
+  },
+  {
+    "clave" : "media_19",
+    "texto" : "Media del tramo 19."
+  },
+  {
+    "clave" : "fin_19",
+    "texto" : "Fin del tramo. Media 19."
+  },
+  {
+    "clave" : "vas_20",
+    "texto" : "Vas a 20."
+  },
+  {
+    "clave" : "media_20",
+    "texto" : "Media del tramo 20."
+  },
+  {
+    "clave" : "fin_20",
+    "texto" : "Fin del tramo. Media 20."
+  },
+  {
+    "clave" : "vas_21",
+    "texto" : "Vas a 21."
+  },
+  {
+    "clave" : "media_21",
+    "texto" : "Media del tramo 21."
+  },
+  {
+    "clave" : "fin_21",
+    "texto" : "Fin del tramo. Media 21."
+  },
+  {
+    "clave" : "vas_22",
+    "texto" : "Vas a 22."
+  },
+  {
+    "clave" : "media_22",
+    "texto" : "Media del tramo 22."
+  },
+  {
+    "clave" : "fin_22",
+    "texto" : "Fin del tramo. Media 22."
+  },
+  {
+    "clave" : "vas_23",
+    "texto" : "Vas a 23."
+  },
+  {
+    "clave" : "media_23",
+    "texto" : "Media del tramo 23."
+  },
+  {
+    "clave" : "fin_23",
+    "texto" : "Fin del tramo. Media 23."
+  },
+  {
+    "clave" : "vas_24",
+    "texto" : "Vas a 24."
+  },
+  {
+    "clave" : "media_24",
+    "texto" : "Media del tramo 24."
+  },
+  {
+    "clave" : "fin_24",
+    "texto" : "Fin del tramo. Media 24."
+  },
+  {
+    "clave" : "vas_25",
+    "texto" : "Vas a 25."
+  },
+  {
+    "clave" : "media_25",
+    "texto" : "Media del tramo 25."
+  },
+  {
+    "clave" : "fin_25",
+    "texto" : "Fin del tramo. Media 25."
+  },
+  {
+    "clave" : "vas_26",
+    "texto" : "Vas a 26."
+  },
+  {
+    "clave" : "media_26",
+    "texto" : "Media del tramo 26."
+  },
+  {
+    "clave" : "fin_26",
+    "texto" : "Fin del tramo. Media 26."
+  },
+  {
+    "clave" : "vas_27",
+    "texto" : "Vas a 27."
+  },
+  {
+    "clave" : "media_27",
+    "texto" : "Media del tramo 27."
+  },
+  {
+    "clave" : "fin_27",
+    "texto" : "Fin del tramo. Media 27."
+  },
+  {
+    "clave" : "vas_28",
+    "texto" : "Vas a 28."
+  },
+  {
+    "clave" : "media_28",
+    "texto" : "Media del tramo 28."
+  },
+  {
+    "clave" : "fin_28",
+    "texto" : "Fin del tramo. Media 28."
+  },
+  {
+    "clave" : "vas_29",
+    "texto" : "Vas a 29."
+  },
+  {
+    "clave" : "media_29",
+    "texto" : "Media del tramo 29."
+  },
+  {
+    "clave" : "fin_29",
+    "texto" : "Fin del tramo. Media 29."
+  },
+  {
+    "clave" : "vas_30",
+    "texto" : "Vas a 30."
+  },
+  {
+    "clave" : "media_30",
+    "texto" : "Media del tramo 30."
+  },
+  {
+    "clave" : "fin_30",
+    "texto" : "Fin del tramo. Media 30."
+  },
+  {
+    "clave" : "vas_31",
+    "texto" : "Vas a 31."
+  },
+  {
+    "clave" : "media_31",
+    "texto" : "Media del tramo 31."
+  },
+  {
+    "clave" : "fin_31",
+    "texto" : "Fin del tramo. Media 31."
+  },
+  {
+    "clave" : "vas_32",
+    "texto" : "Vas a 32."
+  },
+  {
+    "clave" : "media_32",
+    "texto" : "Media del tramo 32."
+  },
+  {
+    "clave" : "fin_32",
+    "texto" : "Fin del tramo. Media 32."
+  },
+  {
+    "clave" : "vas_33",
+    "texto" : "Vas a 33."
+  },
+  {
+    "clave" : "media_33",
+    "texto" : "Media del tramo 33."
+  },
+  {
+    "clave" : "fin_33",
+    "texto" : "Fin del tramo. Media 33."
+  },
+  {
+    "clave" : "vas_34",
+    "texto" : "Vas a 34."
+  },
+  {
+    "clave" : "media_34",
+    "texto" : "Media del tramo 34."
+  },
+  {
+    "clave" : "fin_34",
+    "texto" : "Fin del tramo. Media 34."
+  },
+  {
+    "clave" : "vas_35",
+    "texto" : "Vas a 35."
+  },
+  {
+    "clave" : "media_35",
+    "texto" : "Media del tramo 35."
+  },
+  {
+    "clave" : "fin_35",
+    "texto" : "Fin del tramo. Media 35."
+  },
+  {
+    "clave" : "vas_36",
+    "texto" : "Vas a 36."
+  },
+  {
+    "clave" : "media_36",
+    "texto" : "Media del tramo 36."
+  },
+  {
+    "clave" : "fin_36",
+    "texto" : "Fin del tramo. Media 36."
+  },
+  {
+    "clave" : "vas_37",
+    "texto" : "Vas a 37."
+  },
+  {
+    "clave" : "media_37",
+    "texto" : "Media del tramo 37."
+  },
+  {
+    "clave" : "fin_37",
+    "texto" : "Fin del tramo. Media 37."
+  },
+  {
+    "clave" : "vas_38",
+    "texto" : "Vas a 38."
+  },
+  {
+    "clave" : "media_38",
+    "texto" : "Media del tramo 38."
+  },
+  {
+    "clave" : "fin_38",
+    "texto" : "Fin del tramo. Media 38."
+  },
+  {
+    "clave" : "vas_39",
+    "texto" : "Vas a 39."
+  },
+  {
+    "clave" : "media_39",
+    "texto" : "Media del tramo 39."
+  },
+  {
+    "clave" : "fin_39",
+    "texto" : "Fin del tramo. Media 39."
+  },
+  {
+    "clave" : "vas_40",
+    "texto" : "Vas a 40."
+  },
+  {
+    "clave" : "media_40",
+    "texto" : "Media del tramo 40."
+  },
+  {
+    "clave" : "fin_40",
+    "texto" : "Fin del tramo. Media 40."
+  },
+  {
+    "clave" : "vas_41",
+    "texto" : "Vas a 41."
+  },
+  {
+    "clave" : "media_41",
+    "texto" : "Media del tramo 41."
+  },
+  {
+    "clave" : "fin_41",
+    "texto" : "Fin del tramo. Media 41."
+  },
+  {
+    "clave" : "vas_42",
+    "texto" : "Vas a 42."
+  },
+  {
+    "clave" : "media_42",
+    "texto" : "Media del tramo 42."
+  },
+  {
+    "clave" : "fin_42",
+    "texto" : "Fin del tramo. Media 42."
+  },
+  {
+    "clave" : "vas_43",
+    "texto" : "Vas a 43."
+  },
+  {
+    "clave" : "media_43",
+    "texto" : "Media del tramo 43."
+  },
+  {
+    "clave" : "fin_43",
+    "texto" : "Fin del tramo. Media 43."
+  },
+  {
+    "clave" : "vas_44",
+    "texto" : "Vas a 44."
+  },
+  {
+    "clave" : "media_44",
+    "texto" : "Media del tramo 44."
+  },
+  {
+    "clave" : "fin_44",
+    "texto" : "Fin del tramo. Media 44."
+  },
+  {
+    "clave" : "vas_45",
+    "texto" : "Vas a 45."
+  },
+  {
+    "clave" : "media_45",
+    "texto" : "Media del tramo 45."
+  },
+  {
+    "clave" : "fin_45",
+    "texto" : "Fin del tramo. Media 45."
+  },
+  {
+    "clave" : "vas_46",
+    "texto" : "Vas a 46."
+  },
+  {
+    "clave" : "media_46",
+    "texto" : "Media del tramo 46."
+  },
+  {
+    "clave" : "fin_46",
+    "texto" : "Fin del tramo. Media 46."
+  },
+  {
+    "clave" : "vas_47",
+    "texto" : "Vas a 47."
+  },
+  {
+    "clave" : "media_47",
+    "texto" : "Media del tramo 47."
+  },
+  {
+    "clave" : "fin_47",
+    "texto" : "Fin del tramo. Media 47."
+  },
+  {
+    "clave" : "vas_48",
+    "texto" : "Vas a 48."
+  },
+  {
+    "clave" : "media_48",
+    "texto" : "Media del tramo 48."
+  },
+  {
+    "clave" : "fin_48",
+    "texto" : "Fin del tramo. Media 48."
+  },
+  {
+    "clave" : "vas_49",
+    "texto" : "Vas a 49."
+  },
+  {
+    "clave" : "media_49",
+    "texto" : "Media del tramo 49."
+  },
+  {
+    "clave" : "fin_49",
+    "texto" : "Fin del tramo. Media 49."
+  },
+  {
+    "clave" : "vas_50",
+    "texto" : "Vas a 50."
+  },
+  {
+    "clave" : "media_50",
+    "texto" : "Media del tramo 50."
+  },
+  {
+    "clave" : "fin_50",
+    "texto" : "Fin del tramo. Media 50."
+  },
+  {
+    "clave" : "vas_51",
+    "texto" : "Vas a 51."
+  },
+  {
+    "clave" : "media_51",
+    "texto" : "Media del tramo 51."
+  },
+  {
+    "clave" : "fin_51",
+    "texto" : "Fin del tramo. Media 51."
+  },
+  {
+    "clave" : "vas_52",
+    "texto" : "Vas a 52."
+  },
+  {
+    "clave" : "media_52",
+    "texto" : "Media del tramo 52."
+  },
+  {
+    "clave" : "fin_52",
+    "texto" : "Fin del tramo. Media 52."
+  },
+  {
+    "clave" : "vas_53",
+    "texto" : "Vas a 53."
+  },
+  {
+    "clave" : "media_53",
+    "texto" : "Media del tramo 53."
+  },
+  {
+    "clave" : "fin_53",
+    "texto" : "Fin del tramo. Media 53."
+  },
+  {
+    "clave" : "vas_54",
+    "texto" : "Vas a 54."
+  },
+  {
+    "clave" : "media_54",
+    "texto" : "Media del tramo 54."
+  },
+  {
+    "clave" : "fin_54",
+    "texto" : "Fin del tramo. Media 54."
+  },
+  {
+    "clave" : "vas_55",
+    "texto" : "Vas a 55."
+  },
+  {
+    "clave" : "media_55",
+    "texto" : "Media del tramo 55."
+  },
+  {
+    "clave" : "fin_55",
+    "texto" : "Fin del tramo. Media 55."
+  },
+  {
+    "clave" : "vas_56",
+    "texto" : "Vas a 56."
+  },
+  {
+    "clave" : "media_56",
+    "texto" : "Media del tramo 56."
+  },
+  {
+    "clave" : "fin_56",
+    "texto" : "Fin del tramo. Media 56."
+  },
+  {
+    "clave" : "vas_57",
+    "texto" : "Vas a 57."
+  },
+  {
+    "clave" : "media_57",
+    "texto" : "Media del tramo 57."
+  },
+  {
+    "clave" : "fin_57",
+    "texto" : "Fin del tramo. Media 57."
+  },
+  {
+    "clave" : "vas_58",
+    "texto" : "Vas a 58."
+  },
+  {
+    "clave" : "media_58",
+    "texto" : "Media del tramo 58."
+  },
+  {
+    "clave" : "fin_58",
+    "texto" : "Fin del tramo. Media 58."
+  },
+  {
+    "clave" : "vas_59",
+    "texto" : "Vas a 59."
+  },
+  {
+    "clave" : "media_59",
+    "texto" : "Media del tramo 59."
+  },
+  {
+    "clave" : "fin_59",
+    "texto" : "Fin del tramo. Media 59."
+  },
+  {
+    "clave" : "vas_60",
+    "texto" : "Vas a 60."
+  },
+  {
+    "clave" : "media_60",
+    "texto" : "Media del tramo 60."
+  },
+  {
+    "clave" : "fin_60",
+    "texto" : "Fin del tramo. Media 60."
+  },
+  {
+    "clave" : "vas_61",
+    "texto" : "Vas a 61."
+  },
+  {
+    "clave" : "media_61",
+    "texto" : "Media del tramo 61."
+  },
+  {
+    "clave" : "fin_61",
+    "texto" : "Fin del tramo. Media 61."
+  },
+  {
+    "clave" : "vas_62",
+    "texto" : "Vas a 62."
+  },
+  {
+    "clave" : "media_62",
+    "texto" : "Media del tramo 62."
+  },
+  {
+    "clave" : "fin_62",
+    "texto" : "Fin del tramo. Media 62."
+  },
+  {
+    "clave" : "vas_63",
+    "texto" : "Vas a 63."
+  },
+  {
+    "clave" : "media_63",
+    "texto" : "Media del tramo 63."
+  },
+  {
+    "clave" : "fin_63",
+    "texto" : "Fin del tramo. Media 63."
+  },
+  {
+    "clave" : "vas_64",
+    "texto" : "Vas a 64."
+  },
+  {
+    "clave" : "media_64",
+    "texto" : "Media del tramo 64."
+  },
+  {
+    "clave" : "fin_64",
+    "texto" : "Fin del tramo. Media 64."
+  },
+  {
+    "clave" : "vas_65",
+    "texto" : "Vas a 65."
+  },
+  {
+    "clave" : "media_65",
+    "texto" : "Media del tramo 65."
+  },
+  {
+    "clave" : "fin_65",
+    "texto" : "Fin del tramo. Media 65."
+  },
+  {
+    "clave" : "vas_66",
+    "texto" : "Vas a 66."
+  },
+  {
+    "clave" : "media_66",
+    "texto" : "Media del tramo 66."
+  },
+  {
+    "clave" : "fin_66",
+    "texto" : "Fin del tramo. Media 66."
+  },
+  {
+    "clave" : "vas_67",
+    "texto" : "Vas a 67."
+  },
+  {
+    "clave" : "media_67",
+    "texto" : "Media del tramo 67."
+  },
+  {
+    "clave" : "fin_67",
+    "texto" : "Fin del tramo. Media 67."
+  },
+  {
+    "clave" : "vas_68",
+    "texto" : "Vas a 68."
+  },
+  {
+    "clave" : "media_68",
+    "texto" : "Media del tramo 68."
+  },
+  {
+    "clave" : "fin_68",
+    "texto" : "Fin del tramo. Media 68."
+  },
+  {
+    "clave" : "vas_69",
+    "texto" : "Vas a 69."
+  },
+  {
+    "clave" : "media_69",
+    "texto" : "Media del tramo 69."
+  },
+  {
+    "clave" : "fin_69",
+    "texto" : "Fin del tramo. Media 69."
+  },
+  {
+    "clave" : "vas_70",
+    "texto" : "Vas a 70."
+  },
+  {
+    "clave" : "media_70",
+    "texto" : "Media del tramo 70."
+  },
+  {
+    "clave" : "fin_70",
+    "texto" : "Fin del tramo. Media 70."
+  },
+  {
+    "clave" : "vas_71",
+    "texto" : "Vas a 71."
+  },
+  {
+    "clave" : "media_71",
+    "texto" : "Media del tramo 71."
+  },
+  {
+    "clave" : "fin_71",
+    "texto" : "Fin del tramo. Media 71."
+  },
+  {
+    "clave" : "vas_72",
+    "texto" : "Vas a 72."
+  },
+  {
+    "clave" : "media_72",
+    "texto" : "Media del tramo 72."
+  },
+  {
+    "clave" : "fin_72",
+    "texto" : "Fin del tramo. Media 72."
+  },
+  {
+    "clave" : "vas_73",
+    "texto" : "Vas a 73."
+  },
+  {
+    "clave" : "media_73",
+    "texto" : "Media del tramo 73."
+  },
+  {
+    "clave" : "fin_73",
+    "texto" : "Fin del tramo. Media 73."
+  },
+  {
+    "clave" : "vas_74",
+    "texto" : "Vas a 74."
+  },
+  {
+    "clave" : "media_74",
+    "texto" : "Media del tramo 74."
+  },
+  {
+    "clave" : "fin_74",
+    "texto" : "Fin del tramo. Media 74."
+  },
+  {
+    "clave" : "vas_75",
+    "texto" : "Vas a 75."
+  },
+  {
+    "clave" : "media_75",
+    "texto" : "Media del tramo 75."
+  },
+  {
+    "clave" : "fin_75",
+    "texto" : "Fin del tramo. Media 75."
+  },
+  {
+    "clave" : "vas_76",
+    "texto" : "Vas a 76."
+  },
+  {
+    "clave" : "media_76",
+    "texto" : "Media del tramo 76."
+  },
+  {
+    "clave" : "fin_76",
+    "texto" : "Fin del tramo. Media 76."
+  },
+  {
+    "clave" : "vas_77",
+    "texto" : "Vas a 77."
+  },
+  {
+    "clave" : "media_77",
+    "texto" : "Media del tramo 77."
+  },
+  {
+    "clave" : "fin_77",
+    "texto" : "Fin del tramo. Media 77."
+  },
+  {
+    "clave" : "vas_78",
+    "texto" : "Vas a 78."
+  },
+  {
+    "clave" : "media_78",
+    "texto" : "Media del tramo 78."
+  },
+  {
+    "clave" : "fin_78",
+    "texto" : "Fin del tramo. Media 78."
+  },
+  {
+    "clave" : "vas_79",
+    "texto" : "Vas a 79."
+  },
+  {
+    "clave" : "media_79",
+    "texto" : "Media del tramo 79."
+  },
+  {
+    "clave" : "fin_79",
+    "texto" : "Fin del tramo. Media 79."
+  },
+  {
+    "clave" : "vas_80",
+    "texto" : "Vas a 80."
+  },
+  {
+    "clave" : "media_80",
+    "texto" : "Media del tramo 80."
+  },
+  {
+    "clave" : "fin_80",
+    "texto" : "Fin del tramo. Media 80."
+  },
+  {
+    "clave" : "vas_81",
+    "texto" : "Vas a 81."
+  },
+  {
+    "clave" : "media_81",
+    "texto" : "Media del tramo 81."
+  },
+  {
+    "clave" : "fin_81",
+    "texto" : "Fin del tramo. Media 81."
+  },
+  {
+    "clave" : "vas_82",
+    "texto" : "Vas a 82."
+  },
+  {
+    "clave" : "media_82",
+    "texto" : "Media del tramo 82."
+  },
+  {
+    "clave" : "fin_82",
+    "texto" : "Fin del tramo. Media 82."
+  },
+  {
+    "clave" : "vas_83",
+    "texto" : "Vas a 83."
+  },
+  {
+    "clave" : "media_83",
+    "texto" : "Media del tramo 83."
+  },
+  {
+    "clave" : "fin_83",
+    "texto" : "Fin del tramo. Media 83."
+  },
+  {
+    "clave" : "vas_84",
+    "texto" : "Vas a 84."
+  },
+  {
+    "clave" : "media_84",
+    "texto" : "Media del tramo 84."
+  },
+  {
+    "clave" : "fin_84",
+    "texto" : "Fin del tramo. Media 84."
+  },
+  {
+    "clave" : "vas_85",
+    "texto" : "Vas a 85."
+  },
+  {
+    "clave" : "media_85",
+    "texto" : "Media del tramo 85."
+  },
+  {
+    "clave" : "fin_85",
+    "texto" : "Fin del tramo. Media 85."
+  },
+  {
+    "clave" : "vas_86",
+    "texto" : "Vas a 86."
+  },
+  {
+    "clave" : "media_86",
+    "texto" : "Media del tramo 86."
+  },
+  {
+    "clave" : "fin_86",
+    "texto" : "Fin del tramo. Media 86."
+  },
+  {
+    "clave" : "vas_87",
+    "texto" : "Vas a 87."
+  },
+  {
+    "clave" : "media_87",
+    "texto" : "Media del tramo 87."
+  },
+  {
+    "clave" : "fin_87",
+    "texto" : "Fin del tramo. Media 87."
+  },
+  {
+    "clave" : "vas_88",
+    "texto" : "Vas a 88."
+  },
+  {
+    "clave" : "media_88",
+    "texto" : "Media del tramo 88."
+  },
+  {
+    "clave" : "fin_88",
+    "texto" : "Fin del tramo. Media 88."
+  },
+  {
+    "clave" : "vas_89",
+    "texto" : "Vas a 89."
+  },
+  {
+    "clave" : "media_89",
+    "texto" : "Media del tramo 89."
+  },
+  {
+    "clave" : "fin_89",
+    "texto" : "Fin del tramo. Media 89."
+  },
+  {
+    "clave" : "vas_90",
+    "texto" : "Vas a 90."
+  },
+  {
+    "clave" : "media_90",
+    "texto" : "Media del tramo 90."
+  },
+  {
+    "clave" : "fin_90",
+    "texto" : "Fin del tramo. Media 90."
+  },
+  {
+    "clave" : "vas_91",
+    "texto" : "Vas a 91."
+  },
+  {
+    "clave" : "media_91",
+    "texto" : "Media del tramo 91."
+  },
+  {
+    "clave" : "fin_91",
+    "texto" : "Fin del tramo. Media 91."
+  },
+  {
+    "clave" : "vas_92",
+    "texto" : "Vas a 92."
+  },
+  {
+    "clave" : "media_92",
+    "texto" : "Media del tramo 92."
+  },
+  {
+    "clave" : "fin_92",
+    "texto" : "Fin del tramo. Media 92."
+  },
+  {
+    "clave" : "vas_93",
+    "texto" : "Vas a 93."
+  },
+  {
+    "clave" : "media_93",
+    "texto" : "Media del tramo 93."
+  },
+  {
+    "clave" : "fin_93",
+    "texto" : "Fin del tramo. Media 93."
+  },
+  {
+    "clave" : "vas_94",
+    "texto" : "Vas a 94."
+  },
+  {
+    "clave" : "media_94",
+    "texto" : "Media del tramo 94."
+  },
+  {
+    "clave" : "fin_94",
+    "texto" : "Fin del tramo. Media 94."
+  },
+  {
+    "clave" : "vas_95",
+    "texto" : "Vas a 95."
+  },
+  {
+    "clave" : "media_95",
+    "texto" : "Media del tramo 95."
+  },
+  {
+    "clave" : "fin_95",
+    "texto" : "Fin del tramo. Media 95."
+  },
+  {
+    "clave" : "vas_96",
+    "texto" : "Vas a 96."
+  },
+  {
+    "clave" : "media_96",
+    "texto" : "Media del tramo 96."
+  },
+  {
+    "clave" : "fin_96",
+    "texto" : "Fin del tramo. Media 96."
+  },
+  {
+    "clave" : "vas_97",
+    "texto" : "Vas a 97."
+  },
+  {
+    "clave" : "media_97",
+    "texto" : "Media del tramo 97."
+  },
+  {
+    "clave" : "fin_97",
+    "texto" : "Fin del tramo. Media 97."
+  },
+  {
+    "clave" : "vas_98",
+    "texto" : "Vas a 98."
+  },
+  {
+    "clave" : "media_98",
+    "texto" : "Media del tramo 98."
+  },
+  {
+    "clave" : "fin_98",
+    "texto" : "Fin del tramo. Media 98."
+  },
+  {
+    "clave" : "vas_99",
+    "texto" : "Vas a 99."
+  },
+  {
+    "clave" : "media_99",
+    "texto" : "Media del tramo 99."
+  },
+  {
+    "clave" : "fin_99",
+    "texto" : "Fin del tramo. Media 99."
+  },
+  {
+    "clave" : "vas_100",
+    "texto" : "Vas a 100."
+  },
+  {
+    "clave" : "media_100",
+    "texto" : "Media del tramo 100."
+  },
+  {
+    "clave" : "fin_100",
+    "texto" : "Fin del tramo. Media 100."
+  },
+  {
+    "clave" : "vas_101",
+    "texto" : "Vas a 101."
+  },
+  {
+    "clave" : "media_101",
+    "texto" : "Media del tramo 101."
+  },
+  {
+    "clave" : "fin_101",
+    "texto" : "Fin del tramo. Media 101."
+  },
+  {
+    "clave" : "vas_102",
+    "texto" : "Vas a 102."
+  },
+  {
+    "clave" : "media_102",
+    "texto" : "Media del tramo 102."
+  },
+  {
+    "clave" : "fin_102",
+    "texto" : "Fin del tramo. Media 102."
+  },
+  {
+    "clave" : "vas_103",
+    "texto" : "Vas a 103."
+  },
+  {
+    "clave" : "media_103",
+    "texto" : "Media del tramo 103."
+  },
+  {
+    "clave" : "fin_103",
+    "texto" : "Fin del tramo. Media 103."
+  },
+  {
+    "clave" : "vas_104",
+    "texto" : "Vas a 104."
+  },
+  {
+    "clave" : "media_104",
+    "texto" : "Media del tramo 104."
+  },
+  {
+    "clave" : "fin_104",
+    "texto" : "Fin del tramo. Media 104."
+  },
+  {
+    "clave" : "vas_105",
+    "texto" : "Vas a 105."
+  },
+  {
+    "clave" : "media_105",
+    "texto" : "Media del tramo 105."
+  },
+  {
+    "clave" : "fin_105",
+    "texto" : "Fin del tramo. Media 105."
+  },
+  {
+    "clave" : "vas_106",
+    "texto" : "Vas a 106."
+  },
+  {
+    "clave" : "media_106",
+    "texto" : "Media del tramo 106."
+  },
+  {
+    "clave" : "fin_106",
+    "texto" : "Fin del tramo. Media 106."
+  },
+  {
+    "clave" : "vas_107",
+    "texto" : "Vas a 107."
+  },
+  {
+    "clave" : "media_107",
+    "texto" : "Media del tramo 107."
+  },
+  {
+    "clave" : "fin_107",
+    "texto" : "Fin del tramo. Media 107."
+  },
+  {
+    "clave" : "vas_108",
+    "texto" : "Vas a 108."
+  },
+  {
+    "clave" : "media_108",
+    "texto" : "Media del tramo 108."
+  },
+  {
+    "clave" : "fin_108",
+    "texto" : "Fin del tramo. Media 108."
+  },
+  {
+    "clave" : "vas_109",
+    "texto" : "Vas a 109."
+  },
+  {
+    "clave" : "media_109",
+    "texto" : "Media del tramo 109."
+  },
+  {
+    "clave" : "fin_109",
+    "texto" : "Fin del tramo. Media 109."
+  },
+  {
+    "clave" : "vas_110",
+    "texto" : "Vas a 110."
+  },
+  {
+    "clave" : "media_110",
+    "texto" : "Media del tramo 110."
+  },
+  {
+    "clave" : "fin_110",
+    "texto" : "Fin del tramo. Media 110."
+  },
+  {
+    "clave" : "vas_111",
+    "texto" : "Vas a 111."
+  },
+  {
+    "clave" : "media_111",
+    "texto" : "Media del tramo 111."
+  },
+  {
+    "clave" : "fin_111",
+    "texto" : "Fin del tramo. Media 111."
+  },
+  {
+    "clave" : "vas_112",
+    "texto" : "Vas a 112."
+  },
+  {
+    "clave" : "media_112",
+    "texto" : "Media del tramo 112."
+  },
+  {
+    "clave" : "fin_112",
+    "texto" : "Fin del tramo. Media 112."
+  },
+  {
+    "clave" : "vas_113",
+    "texto" : "Vas a 113."
+  },
+  {
+    "clave" : "media_113",
+    "texto" : "Media del tramo 113."
+  },
+  {
+    "clave" : "fin_113",
+    "texto" : "Fin del tramo. Media 113."
+  },
+  {
+    "clave" : "vas_114",
+    "texto" : "Vas a 114."
+  },
+  {
+    "clave" : "media_114",
+    "texto" : "Media del tramo 114."
+  },
+  {
+    "clave" : "fin_114",
+    "texto" : "Fin del tramo. Media 114."
+  },
+  {
+    "clave" : "vas_115",
+    "texto" : "Vas a 115."
+  },
+  {
+    "clave" : "media_115",
+    "texto" : "Media del tramo 115."
+  },
+  {
+    "clave" : "fin_115",
+    "texto" : "Fin del tramo. Media 115."
+  },
+  {
+    "clave" : "vas_116",
+    "texto" : "Vas a 116."
+  },
+  {
+    "clave" : "media_116",
+    "texto" : "Media del tramo 116."
+  },
+  {
+    "clave" : "fin_116",
+    "texto" : "Fin del tramo. Media 116."
+  },
+  {
+    "clave" : "vas_117",
+    "texto" : "Vas a 117."
+  },
+  {
+    "clave" : "media_117",
+    "texto" : "Media del tramo 117."
+  },
+  {
+    "clave" : "fin_117",
+    "texto" : "Fin del tramo. Media 117."
+  },
+  {
+    "clave" : "vas_118",
+    "texto" : "Vas a 118."
+  },
+  {
+    "clave" : "media_118",
+    "texto" : "Media del tramo 118."
+  },
+  {
+    "clave" : "fin_118",
+    "texto" : "Fin del tramo. Media 118."
+  },
+  {
+    "clave" : "vas_119",
+    "texto" : "Vas a 119."
+  },
+  {
+    "clave" : "media_119",
+    "texto" : "Media del tramo 119."
+  },
+  {
+    "clave" : "fin_119",
+    "texto" : "Fin del tramo. Media 119."
+  },
+  {
+    "clave" : "vas_120",
+    "texto" : "Vas a 120."
+  },
+  {
+    "clave" : "media_120",
+    "texto" : "Media del tramo 120."
+  },
+  {
+    "clave" : "fin_120",
+    "texto" : "Fin del tramo. Media 120."
+  },
+  {
+    "clave" : "vas_121",
+    "texto" : "Vas a 121."
+  },
+  {
+    "clave" : "media_121",
+    "texto" : "Media del tramo 121."
+  },
+  {
+    "clave" : "fin_121",
+    "texto" : "Fin del tramo. Media 121."
+  },
+  {
+    "clave" : "vas_122",
+    "texto" : "Vas a 122."
+  },
+  {
+    "clave" : "media_122",
+    "texto" : "Media del tramo 122."
+  },
+  {
+    "clave" : "fin_122",
+    "texto" : "Fin del tramo. Media 122."
+  },
+  {
+    "clave" : "vas_123",
+    "texto" : "Vas a 123."
+  },
+  {
+    "clave" : "media_123",
+    "texto" : "Media del tramo 123."
+  },
+  {
+    "clave" : "fin_123",
+    "texto" : "Fin del tramo. Media 123."
+  },
+  {
+    "clave" : "vas_124",
+    "texto" : "Vas a 124."
+  },
+  {
+    "clave" : "media_124",
+    "texto" : "Media del tramo 124."
+  },
+  {
+    "clave" : "fin_124",
+    "texto" : "Fin del tramo. Media 124."
+  },
+  {
+    "clave" : "vas_125",
+    "texto" : "Vas a 125."
+  },
+  {
+    "clave" : "media_125",
+    "texto" : "Media del tramo 125."
+  },
+  {
+    "clave" : "fin_125",
+    "texto" : "Fin del tramo. Media 125."
+  },
+  {
+    "clave" : "vas_126",
+    "texto" : "Vas a 126."
+  },
+  {
+    "clave" : "media_126",
+    "texto" : "Media del tramo 126."
+  },
+  {
+    "clave" : "fin_126",
+    "texto" : "Fin del tramo. Media 126."
+  },
+  {
+    "clave" : "vas_127",
+    "texto" : "Vas a 127."
+  },
+  {
+    "clave" : "media_127",
+    "texto" : "Media del tramo 127."
+  },
+  {
+    "clave" : "fin_127",
+    "texto" : "Fin del tramo. Media 127."
+  },
+  {
+    "clave" : "vas_128",
+    "texto" : "Vas a 128."
+  },
+  {
+    "clave" : "media_128",
+    "texto" : "Media del tramo 128."
+  },
+  {
+    "clave" : "fin_128",
+    "texto" : "Fin del tramo. Media 128."
+  },
+  {
+    "clave" : "vas_129",
+    "texto" : "Vas a 129."
+  },
+  {
+    "clave" : "media_129",
+    "texto" : "Media del tramo 129."
+  },
+  {
+    "clave" : "fin_129",
+    "texto" : "Fin del tramo. Media 129."
+  },
+  {
+    "clave" : "vas_130",
+    "texto" : "Vas a 130."
+  },
+  {
+    "clave" : "media_130",
+    "texto" : "Media del tramo 130."
+  },
+  {
+    "clave" : "fin_130",
+    "texto" : "Fin del tramo. Media 130."
+  },
+  {
+    "clave" : "vas_131",
+    "texto" : "Vas a 131."
+  },
+  {
+    "clave" : "media_131",
+    "texto" : "Media del tramo 131."
+  },
+  {
+    "clave" : "fin_131",
+    "texto" : "Fin del tramo. Media 131."
+  },
+  {
+    "clave" : "vas_132",
+    "texto" : "Vas a 132."
+  },
+  {
+    "clave" : "media_132",
+    "texto" : "Media del tramo 132."
+  },
+  {
+    "clave" : "fin_132",
+    "texto" : "Fin del tramo. Media 132."
+  },
+  {
+    "clave" : "vas_133",
+    "texto" : "Vas a 133."
+  },
+  {
+    "clave" : "media_133",
+    "texto" : "Media del tramo 133."
+  },
+  {
+    "clave" : "fin_133",
+    "texto" : "Fin del tramo. Media 133."
+  },
+  {
+    "clave" : "vas_134",
+    "texto" : "Vas a 134."
+  },
+  {
+    "clave" : "media_134",
+    "texto" : "Media del tramo 134."
+  },
+  {
+    "clave" : "fin_134",
+    "texto" : "Fin del tramo. Media 134."
+  },
+  {
+    "clave" : "vas_135",
+    "texto" : "Vas a 135."
+  },
+  {
+    "clave" : "media_135",
+    "texto" : "Media del tramo 135."
+  },
+  {
+    "clave" : "fin_135",
+    "texto" : "Fin del tramo. Media 135."
+  },
+  {
+    "clave" : "vas_136",
+    "texto" : "Vas a 136."
+  },
+  {
+    "clave" : "media_136",
+    "texto" : "Media del tramo 136."
+  },
+  {
+    "clave" : "fin_136",
+    "texto" : "Fin del tramo. Media 136."
+  },
+  {
+    "clave" : "vas_137",
+    "texto" : "Vas a 137."
+  },
+  {
+    "clave" : "media_137",
+    "texto" : "Media del tramo 137."
+  },
+  {
+    "clave" : "fin_137",
+    "texto" : "Fin del tramo. Media 137."
+  },
+  {
+    "clave" : "vas_138",
+    "texto" : "Vas a 138."
+  },
+  {
+    "clave" : "media_138",
+    "texto" : "Media del tramo 138."
+  },
+  {
+    "clave" : "fin_138",
+    "texto" : "Fin del tramo. Media 138."
+  },
+  {
+    "clave" : "vas_139",
+    "texto" : "Vas a 139."
+  },
+  {
+    "clave" : "media_139",
+    "texto" : "Media del tramo 139."
+  },
+  {
+    "clave" : "fin_139",
+    "texto" : "Fin del tramo. Media 139."
+  },
+  {
+    "clave" : "vas_140",
+    "texto" : "Vas a 140."
+  },
+  {
+    "clave" : "media_140",
+    "texto" : "Media del tramo 140."
+  },
+  {
+    "clave" : "fin_140",
+    "texto" : "Fin del tramo. Media 140."
+  },
+  {
+    "clave" : "vas_141",
+    "texto" : "Vas a 141."
+  },
+  {
+    "clave" : "media_141",
+    "texto" : "Media del tramo 141."
+  },
+  {
+    "clave" : "fin_141",
+    "texto" : "Fin del tramo. Media 141."
+  },
+  {
+    "clave" : "vas_142",
+    "texto" : "Vas a 142."
+  },
+  {
+    "clave" : "media_142",
+    "texto" : "Media del tramo 142."
+  },
+  {
+    "clave" : "fin_142",
+    "texto" : "Fin del tramo. Media 142."
+  },
+  {
+    "clave" : "vas_143",
+    "texto" : "Vas a 143."
+  },
+  {
+    "clave" : "media_143",
+    "texto" : "Media del tramo 143."
+  },
+  {
+    "clave" : "fin_143",
+    "texto" : "Fin del tramo. Media 143."
+  },
+  {
+    "clave" : "vas_144",
+    "texto" : "Vas a 144."
+  },
+  {
+    "clave" : "media_144",
+    "texto" : "Media del tramo 144."
+  },
+  {
+    "clave" : "fin_144",
+    "texto" : "Fin del tramo. Media 144."
+  },
+  {
+    "clave" : "vas_145",
+    "texto" : "Vas a 145."
+  },
+  {
+    "clave" : "media_145",
+    "texto" : "Media del tramo 145."
+  },
+  {
+    "clave" : "fin_145",
+    "texto" : "Fin del tramo. Media 145."
+  },
+  {
+    "clave" : "vas_146",
+    "texto" : "Vas a 146."
+  },
+  {
+    "clave" : "media_146",
+    "texto" : "Media del tramo 146."
+  },
+  {
+    "clave" : "fin_146",
+    "texto" : "Fin del tramo. Media 146."
+  },
+  {
+    "clave" : "vas_147",
+    "texto" : "Vas a 147."
+  },
+  {
+    "clave" : "media_147",
+    "texto" : "Media del tramo 147."
+  },
+  {
+    "clave" : "fin_147",
+    "texto" : "Fin del tramo. Media 147."
+  },
+  {
+    "clave" : "vas_148",
+    "texto" : "Vas a 148."
+  },
+  {
+    "clave" : "media_148",
+    "texto" : "Media del tramo 148."
+  },
+  {
+    "clave" : "fin_148",
+    "texto" : "Fin del tramo. Media 148."
+  },
+  {
+    "clave" : "vas_149",
+    "texto" : "Vas a 149."
+  },
+  {
+    "clave" : "media_149",
+    "texto" : "Media del tramo 149."
+  },
+  {
+    "clave" : "fin_149",
+    "texto" : "Fin del tramo. Media 149."
+  },
+  {
+    "clave" : "vas_150",
+    "texto" : "Vas a 150."
+  },
+  {
+    "clave" : "media_150",
+    "texto" : "Media del tramo 150."
+  },
+  {
+    "clave" : "fin_150",
+    "texto" : "Fin del tramo. Media 150."
+  },
+  {
+    "clave" : "vas_151",
+    "texto" : "Vas a 151."
+  },
+  {
+    "clave" : "media_151",
+    "texto" : "Media del tramo 151."
+  },
+  {
+    "clave" : "fin_151",
+    "texto" : "Fin del tramo. Media 151."
+  },
+  {
+    "clave" : "vas_152",
+    "texto" : "Vas a 152."
+  },
+  {
+    "clave" : "media_152",
+    "texto" : "Media del tramo 152."
+  },
+  {
+    "clave" : "fin_152",
+    "texto" : "Fin del tramo. Media 152."
+  },
+  {
+    "clave" : "vas_153",
+    "texto" : "Vas a 153."
+  },
+  {
+    "clave" : "media_153",
+    "texto" : "Media del tramo 153."
+  },
+  {
+    "clave" : "fin_153",
+    "texto" : "Fin del tramo. Media 153."
+  },
+  {
+    "clave" : "vas_154",
+    "texto" : "Vas a 154."
+  },
+  {
+    "clave" : "media_154",
+    "texto" : "Media del tramo 154."
+  },
+  {
+    "clave" : "fin_154",
+    "texto" : "Fin del tramo. Media 154."
+  },
+  {
+    "clave" : "vas_155",
+    "texto" : "Vas a 155."
+  },
+  {
+    "clave" : "media_155",
+    "texto" : "Media del tramo 155."
+  },
+  {
+    "clave" : "fin_155",
+    "texto" : "Fin del tramo. Media 155."
+  },
+  {
+    "clave" : "vas_156",
+    "texto" : "Vas a 156."
+  },
+  {
+    "clave" : "media_156",
+    "texto" : "Media del tramo 156."
+  },
+  {
+    "clave" : "fin_156",
+    "texto" : "Fin del tramo. Media 156."
+  },
+  {
+    "clave" : "vas_157",
+    "texto" : "Vas a 157."
+  },
+  {
+    "clave" : "media_157",
+    "texto" : "Media del tramo 157."
+  },
+  {
+    "clave" : "fin_157",
+    "texto" : "Fin del tramo. Media 157."
+  },
+  {
+    "clave" : "vas_158",
+    "texto" : "Vas a 158."
+  },
+  {
+    "clave" : "media_158",
+    "texto" : "Media del tramo 158."
+  },
+  {
+    "clave" : "fin_158",
+    "texto" : "Fin del tramo. Media 158."
+  },
+  {
+    "clave" : "vas_159",
+    "texto" : "Vas a 159."
+  },
+  {
+    "clave" : "media_159",
+    "texto" : "Media del tramo 159."
+  },
+  {
+    "clave" : "fin_159",
+    "texto" : "Fin del tramo. Media 159."
+  },
+  {
+    "clave" : "vas_160",
+    "texto" : "Vas a 160."
+  },
+  {
+    "clave" : "media_160",
+    "texto" : "Media del tramo 160."
+  },
+  {
+    "clave" : "fin_160",
+    "texto" : "Fin del tramo. Media 160."
+  },
+  {
+    "clave" : "vas_161",
+    "texto" : "Vas a 161."
+  },
+  {
+    "clave" : "media_161",
+    "texto" : "Media del tramo 161."
+  },
+  {
+    "clave" : "fin_161",
+    "texto" : "Fin del tramo. Media 161."
+  },
+  {
+    "clave" : "vas_162",
+    "texto" : "Vas a 162."
+  },
+  {
+    "clave" : "media_162",
+    "texto" : "Media del tramo 162."
+  },
+  {
+    "clave" : "fin_162",
+    "texto" : "Fin del tramo. Media 162."
+  },
+  {
+    "clave" : "vas_163",
+    "texto" : "Vas a 163."
+  },
+  {
+    "clave" : "media_163",
+    "texto" : "Media del tramo 163."
+  },
+  {
+    "clave" : "fin_163",
+    "texto" : "Fin del tramo. Media 163."
+  },
+  {
+    "clave" : "vas_164",
+    "texto" : "Vas a 164."
+  },
+  {
+    "clave" : "media_164",
+    "texto" : "Media del tramo 164."
+  },
+  {
+    "clave" : "fin_164",
+    "texto" : "Fin del tramo. Media 164."
+  },
+  {
+    "clave" : "vas_165",
+    "texto" : "Vas a 165."
+  },
+  {
+    "clave" : "media_165",
+    "texto" : "Media del tramo 165."
+  },
+  {
+    "clave" : "fin_165",
+    "texto" : "Fin del tramo. Media 165."
+  },
+  {
+    "clave" : "vas_166",
+    "texto" : "Vas a 166."
+  },
+  {
+    "clave" : "media_166",
+    "texto" : "Media del tramo 166."
+  },
+  {
+    "clave" : "fin_166",
+    "texto" : "Fin del tramo. Media 166."
+  },
+  {
+    "clave" : "vas_167",
+    "texto" : "Vas a 167."
+  },
+  {
+    "clave" : "media_167",
+    "texto" : "Media del tramo 167."
+  },
+  {
+    "clave" : "fin_167",
+    "texto" : "Fin del tramo. Media 167."
+  },
+  {
+    "clave" : "vas_168",
+    "texto" : "Vas a 168."
+  },
+  {
+    "clave" : "media_168",
+    "texto" : "Media del tramo 168."
+  },
+  {
+    "clave" : "fin_168",
+    "texto" : "Fin del tramo. Media 168."
+  },
+  {
+    "clave" : "vas_169",
+    "texto" : "Vas a 169."
+  },
+  {
+    "clave" : "media_169",
+    "texto" : "Media del tramo 169."
+  },
+  {
+    "clave" : "fin_169",
+    "texto" : "Fin del tramo. Media 169."
+  },
+  {
+    "clave" : "vas_170",
+    "texto" : "Vas a 170."
+  },
+  {
+    "clave" : "media_170",
+    "texto" : "Media del tramo 170."
+  },
+  {
+    "clave" : "fin_170",
+    "texto" : "Fin del tramo. Media 170."
+  },
+  {
+    "clave" : "vas_171",
+    "texto" : "Vas a 171."
+  },
+  {
+    "clave" : "media_171",
+    "texto" : "Media del tramo 171."
+  },
+  {
+    "clave" : "fin_171",
+    "texto" : "Fin del tramo. Media 171."
+  },
+  {
+    "clave" : "vas_172",
+    "texto" : "Vas a 172."
+  },
+  {
+    "clave" : "media_172",
+    "texto" : "Media del tramo 172."
+  },
+  {
+    "clave" : "fin_172",
+    "texto" : "Fin del tramo. Media 172."
+  },
+  {
+    "clave" : "vas_173",
+    "texto" : "Vas a 173."
+  },
+  {
+    "clave" : "media_173",
+    "texto" : "Media del tramo 173."
+  },
+  {
+    "clave" : "fin_173",
+    "texto" : "Fin del tramo. Media 173."
+  },
+  {
+    "clave" : "vas_174",
+    "texto" : "Vas a 174."
+  },
+  {
+    "clave" : "media_174",
+    "texto" : "Media del tramo 174."
+  },
+  {
+    "clave" : "fin_174",
+    "texto" : "Fin del tramo. Media 174."
+  },
+  {
+    "clave" : "vas_175",
+    "texto" : "Vas a 175."
+  },
+  {
+    "clave" : "media_175",
+    "texto" : "Media del tramo 175."
+  },
+  {
+    "clave" : "fin_175",
+    "texto" : "Fin del tramo. Media 175."
+  },
+  {
+    "clave" : "vas_176",
+    "texto" : "Vas a 176."
+  },
+  {
+    "clave" : "media_176",
+    "texto" : "Media del tramo 176."
+  },
+  {
+    "clave" : "fin_176",
+    "texto" : "Fin del tramo. Media 176."
+  },
+  {
+    "clave" : "vas_177",
+    "texto" : "Vas a 177."
+  },
+  {
+    "clave" : "media_177",
+    "texto" : "Media del tramo 177."
+  },
+  {
+    "clave" : "fin_177",
+    "texto" : "Fin del tramo. Media 177."
+  },
+  {
+    "clave" : "vas_178",
+    "texto" : "Vas a 178."
+  },
+  {
+    "clave" : "media_178",
+    "texto" : "Media del tramo 178."
+  },
+  {
+    "clave" : "fin_178",
+    "texto" : "Fin del tramo. Media 178."
+  },
+  {
+    "clave" : "vas_179",
+    "texto" : "Vas a 179."
+  },
+  {
+    "clave" : "media_179",
+    "texto" : "Media del tramo 179."
+  },
+  {
+    "clave" : "fin_179",
+    "texto" : "Fin del tramo. Media 179."
+  },
+  {
+    "clave" : "vas_180",
+    "texto" : "Vas a 180."
+  },
+  {
+    "clave" : "media_180",
+    "texto" : "Media del tramo 180."
+  },
+  {
+    "clave" : "fin_180",
+    "texto" : "Fin del tramo. Media 180."
+  },
+  {
+    "clave" : "vas_181",
+    "texto" : "Vas a 181."
+  },
+  {
+    "clave" : "media_181",
+    "texto" : "Media del tramo 181."
+  },
+  {
+    "clave" : "fin_181",
+    "texto" : "Fin del tramo. Media 181."
+  },
+  {
+    "clave" : "vas_182",
+    "texto" : "Vas a 182."
+  },
+  {
+    "clave" : "media_182",
+    "texto" : "Media del tramo 182."
+  },
+  {
+    "clave" : "fin_182",
+    "texto" : "Fin del tramo. Media 182."
+  },
+  {
+    "clave" : "vas_183",
+    "texto" : "Vas a 183."
+  },
+  {
+    "clave" : "media_183",
+    "texto" : "Media del tramo 183."
+  },
+  {
+    "clave" : "fin_183",
+    "texto" : "Fin del tramo. Media 183."
+  },
+  {
+    "clave" : "vas_184",
+    "texto" : "Vas a 184."
+  },
+  {
+    "clave" : "media_184",
+    "texto" : "Media del tramo 184."
+  },
+  {
+    "clave" : "fin_184",
+    "texto" : "Fin del tramo. Media 184."
+  },
+  {
+    "clave" : "vas_185",
+    "texto" : "Vas a 185."
+  },
+  {
+    "clave" : "media_185",
+    "texto" : "Media del tramo 185."
+  },
+  {
+    "clave" : "fin_185",
+    "texto" : "Fin del tramo. Media 185."
+  },
+  {
+    "clave" : "vas_186",
+    "texto" : "Vas a 186."
+  },
+  {
+    "clave" : "media_186",
+    "texto" : "Media del tramo 186."
+  },
+  {
+    "clave" : "fin_186",
+    "texto" : "Fin del tramo. Media 186."
+  },
+  {
+    "clave" : "vas_187",
+    "texto" : "Vas a 187."
+  },
+  {
+    "clave" : "media_187",
+    "texto" : "Media del tramo 187."
+  },
+  {
+    "clave" : "fin_187",
+    "texto" : "Fin del tramo. Media 187."
+  },
+  {
+    "clave" : "vas_188",
+    "texto" : "Vas a 188."
+  },
+  {
+    "clave" : "media_188",
+    "texto" : "Media del tramo 188."
+  },
+  {
+    "clave" : "fin_188",
+    "texto" : "Fin del tramo. Media 188."
+  },
+  {
+    "clave" : "vas_189",
+    "texto" : "Vas a 189."
+  },
+  {
+    "clave" : "media_189",
+    "texto" : "Media del tramo 189."
+  },
+  {
+    "clave" : "fin_189",
+    "texto" : "Fin del tramo. Media 189."
+  },
+  {
+    "clave" : "vas_190",
+    "texto" : "Vas a 190."
+  },
+  {
+    "clave" : "media_190",
+    "texto" : "Media del tramo 190."
+  },
+  {
+    "clave" : "fin_190",
+    "texto" : "Fin del tramo. Media 190."
+  },
+  {
+    "clave" : "vas_191",
+    "texto" : "Vas a 191."
+  },
+  {
+    "clave" : "media_191",
+    "texto" : "Media del tramo 191."
+  },
+  {
+    "clave" : "fin_191",
+    "texto" : "Fin del tramo. Media 191."
+  },
+  {
+    "clave" : "vas_192",
+    "texto" : "Vas a 192."
+  },
+  {
+    "clave" : "media_192",
+    "texto" : "Media del tramo 192."
+  },
+  {
+    "clave" : "fin_192",
+    "texto" : "Fin del tramo. Media 192."
+  },
+  {
+    "clave" : "vas_193",
+    "texto" : "Vas a 193."
+  },
+  {
+    "clave" : "media_193",
+    "texto" : "Media del tramo 193."
+  },
+  {
+    "clave" : "fin_193",
+    "texto" : "Fin del tramo. Media 193."
+  },
+  {
+    "clave" : "vas_194",
+    "texto" : "Vas a 194."
+  },
+  {
+    "clave" : "media_194",
+    "texto" : "Media del tramo 194."
+  },
+  {
+    "clave" : "fin_194",
+    "texto" : "Fin del tramo. Media 194."
+  },
+  {
+    "clave" : "vas_195",
+    "texto" : "Vas a 195."
+  },
+  {
+    "clave" : "media_195",
+    "texto" : "Media del tramo 195."
+  },
+  {
+    "clave" : "fin_195",
+    "texto" : "Fin del tramo. Media 195."
+  },
+  {
+    "clave" : "vas_196",
+    "texto" : "Vas a 196."
+  },
+  {
+    "clave" : "media_196",
+    "texto" : "Media del tramo 196."
+  },
+  {
+    "clave" : "fin_196",
+    "texto" : "Fin del tramo. Media 196."
+  },
+  {
+    "clave" : "vas_197",
+    "texto" : "Vas a 197."
+  },
+  {
+    "clave" : "media_197",
+    "texto" : "Media del tramo 197."
+  },
+  {
+    "clave" : "fin_197",
+    "texto" : "Fin del tramo. Media 197."
+  },
+  {
+    "clave" : "vas_198",
+    "texto" : "Vas a 198."
+  },
+  {
+    "clave" : "media_198",
+    "texto" : "Media del tramo 198."
+  },
+  {
+    "clave" : "fin_198",
+    "texto" : "Fin del tramo. Media 198."
+  },
+  {
+    "clave" : "vas_199",
+    "texto" : "Vas a 199."
+  },
+  {
+    "clave" : "media_199",
+    "texto" : "Media del tramo 199."
+  },
+  {
+    "clave" : "fin_199",
+    "texto" : "Fin del tramo. Media 199."
+  },
+  {
+    "clave" : "vas_200",
+    "texto" : "Vas a 200."
+  },
+  {
+    "clave" : "media_200",
+    "texto" : "Media del tramo 200."
+  },
+  {
+    "clave" : "fin_200",
+    "texto" : "Fin del tramo. Media 200."
+  },
+  {
+    "clave" : "vas_201",
+    "texto" : "Vas a 201."
+  },
+  {
+    "clave" : "media_201",
+    "texto" : "Media del tramo 201."
+  },
+  {
+    "clave" : "fin_201",
+    "texto" : "Fin del tramo. Media 201."
+  },
+  {
+    "clave" : "vas_202",
+    "texto" : "Vas a 202."
+  },
+  {
+    "clave" : "media_202",
+    "texto" : "Media del tramo 202."
+  },
+  {
+    "clave" : "fin_202",
+    "texto" : "Fin del tramo. Media 202."
+  },
+  {
+    "clave" : "vas_203",
+    "texto" : "Vas a 203."
+  },
+  {
+    "clave" : "media_203",
+    "texto" : "Media del tramo 203."
+  },
+  {
+    "clave" : "fin_203",
+    "texto" : "Fin del tramo. Media 203."
+  },
+  {
+    "clave" : "vas_204",
+    "texto" : "Vas a 204."
+  },
+  {
+    "clave" : "media_204",
+    "texto" : "Media del tramo 204."
+  },
+  {
+    "clave" : "fin_204",
+    "texto" : "Fin del tramo. Media 204."
+  },
+  {
+    "clave" : "vas_205",
+    "texto" : "Vas a 205."
+  },
+  {
+    "clave" : "media_205",
+    "texto" : "Media del tramo 205."
+  },
+  {
+    "clave" : "fin_205",
+    "texto" : "Fin del tramo. Media 205."
+  },
+  {
+    "clave" : "vas_206",
+    "texto" : "Vas a 206."
+  },
+  {
+    "clave" : "media_206",
+    "texto" : "Media del tramo 206."
+  },
+  {
+    "clave" : "fin_206",
+    "texto" : "Fin del tramo. Media 206."
+  },
+  {
+    "clave" : "vas_207",
+    "texto" : "Vas a 207."
+  },
+  {
+    "clave" : "media_207",
+    "texto" : "Media del tramo 207."
+  },
+  {
+    "clave" : "fin_207",
+    "texto" : "Fin del tramo. Media 207."
+  },
+  {
+    "clave" : "vas_208",
+    "texto" : "Vas a 208."
+  },
+  {
+    "clave" : "media_208",
+    "texto" : "Media del tramo 208."
+  },
+  {
+    "clave" : "fin_208",
+    "texto" : "Fin del tramo. Media 208."
+  },
+  {
+    "clave" : "vas_209",
+    "texto" : "Vas a 209."
+  },
+  {
+    "clave" : "media_209",
+    "texto" : "Media del tramo 209."
+  },
+  {
+    "clave" : "fin_209",
+    "texto" : "Fin del tramo. Media 209."
+  },
+  {
+    "clave" : "vas_210",
+    "texto" : "Vas a 210."
+  },
+  {
+    "clave" : "media_210",
+    "texto" : "Media del tramo 210."
+  },
+  {
+    "clave" : "fin_210",
+    "texto" : "Fin del tramo. Media 210."
+  },
+  {
+    "clave" : "vas_211",
+    "texto" : "Vas a 211."
+  },
+  {
+    "clave" : "media_211",
+    "texto" : "Media del tramo 211."
+  },
+  {
+    "clave" : "fin_211",
+    "texto" : "Fin del tramo. Media 211."
+  },
+  {
+    "clave" : "vas_212",
+    "texto" : "Vas a 212."
+  },
+  {
+    "clave" : "media_212",
+    "texto" : "Media del tramo 212."
+  },
+  {
+    "clave" : "fin_212",
+    "texto" : "Fin del tramo. Media 212."
+  },
+  {
+    "clave" : "vas_213",
+    "texto" : "Vas a 213."
+  },
+  {
+    "clave" : "media_213",
+    "texto" : "Media del tramo 213."
+  },
+  {
+    "clave" : "fin_213",
+    "texto" : "Fin del tramo. Media 213."
+  },
+  {
+    "clave" : "vas_214",
+    "texto" : "Vas a 214."
+  },
+  {
+    "clave" : "media_214",
+    "texto" : "Media del tramo 214."
+  },
+  {
+    "clave" : "fin_214",
+    "texto" : "Fin del tramo. Media 214."
+  },
+  {
+    "clave" : "vas_215",
+    "texto" : "Vas a 215."
+  },
+  {
+    "clave" : "media_215",
+    "texto" : "Media del tramo 215."
+  },
+  {
+    "clave" : "fin_215",
+    "texto" : "Fin del tramo. Media 215."
+  },
+  {
+    "clave" : "vas_216",
+    "texto" : "Vas a 216."
+  },
+  {
+    "clave" : "media_216",
+    "texto" : "Media del tramo 216."
+  },
+  {
+    "clave" : "fin_216",
+    "texto" : "Fin del tramo. Media 216."
+  },
+  {
+    "clave" : "vas_217",
+    "texto" : "Vas a 217."
+  },
+  {
+    "clave" : "media_217",
+    "texto" : "Media del tramo 217."
+  },
+  {
+    "clave" : "fin_217",
+    "texto" : "Fin del tramo. Media 217."
+  },
+  {
+    "clave" : "vas_218",
+    "texto" : "Vas a 218."
+  },
+  {
+    "clave" : "media_218",
+    "texto" : "Media del tramo 218."
+  },
+  {
+    "clave" : "fin_218",
+    "texto" : "Fin del tramo. Media 218."
+  },
+  {
+    "clave" : "vas_219",
+    "texto" : "Vas a 219."
+  },
+  {
+    "clave" : "media_219",
+    "texto" : "Media del tramo 219."
+  },
+  {
+    "clave" : "fin_219",
+    "texto" : "Fin del tramo. Media 219."
+  },
+  {
+    "clave" : "vas_220",
+    "texto" : "Vas a 220."
+  },
+  {
+    "clave" : "media_220",
+    "texto" : "Media del tramo 220."
+  },
+  {
+    "clave" : "fin_220",
+    "texto" : "Fin del tramo. Media 220."
+  },
+  {
+    "clave" : "vas_221",
+    "texto" : "Vas a 221."
+  },
+  {
+    "clave" : "media_221",
+    "texto" : "Media del tramo 221."
+  },
+  {
+    "clave" : "fin_221",
+    "texto" : "Fin del tramo. Media 221."
+  },
+  {
+    "clave" : "vas_222",
+    "texto" : "Vas a 222."
+  },
+  {
+    "clave" : "media_222",
+    "texto" : "Media del tramo 222."
+  },
+  {
+    "clave" : "fin_222",
+    "texto" : "Fin del tramo. Media 222."
+  },
+  {
+    "clave" : "vas_223",
+    "texto" : "Vas a 223."
+  },
+  {
+    "clave" : "media_223",
+    "texto" : "Media del tramo 223."
+  },
+  {
+    "clave" : "fin_223",
+    "texto" : "Fin del tramo. Media 223."
+  },
+  {
+    "clave" : "vas_224",
+    "texto" : "Vas a 224."
+  },
+  {
+    "clave" : "media_224",
+    "texto" : "Media del tramo 224."
+  },
+  {
+    "clave" : "fin_224",
+    "texto" : "Fin del tramo. Media 224."
+  },
+  {
+    "clave" : "vas_225",
+    "texto" : "Vas a 225."
+  },
+  {
+    "clave" : "media_225",
+    "texto" : "Media del tramo 225."
+  },
+  {
+    "clave" : "fin_225",
+    "texto" : "Fin del tramo. Media 225."
+  },
+  {
+    "clave" : "vas_226",
+    "texto" : "Vas a 226."
+  },
+  {
+    "clave" : "media_226",
+    "texto" : "Media del tramo 226."
+  },
+  {
+    "clave" : "fin_226",
+    "texto" : "Fin del tramo. Media 226."
+  },
+  {
+    "clave" : "vas_227",
+    "texto" : "Vas a 227."
+  },
+  {
+    "clave" : "media_227",
+    "texto" : "Media del tramo 227."
+  },
+  {
+    "clave" : "fin_227",
+    "texto" : "Fin del tramo. Media 227."
+  },
+  {
+    "clave" : "vas_228",
+    "texto" : "Vas a 228."
+  },
+  {
+    "clave" : "media_228",
+    "texto" : "Media del tramo 228."
+  },
+  {
+    "clave" : "fin_228",
+    "texto" : "Fin del tramo. Media 228."
+  },
+  {
+    "clave" : "vas_229",
+    "texto" : "Vas a 229."
+  },
+  {
+    "clave" : "media_229",
+    "texto" : "Media del tramo 229."
+  },
+  {
+    "clave" : "fin_229",
+    "texto" : "Fin del tramo. Media 229."
+  },
+  {
+    "clave" : "vas_230",
+    "texto" : "Vas a 230."
+  },
+  {
+    "clave" : "media_230",
+    "texto" : "Media del tramo 230."
+  },
+  {
+    "clave" : "fin_230",
+    "texto" : "Fin del tramo. Media 230."
+  },
+  {
+    "clave" : "vas_231",
+    "texto" : "Vas a 231."
+  },
+  {
+    "clave" : "media_231",
+    "texto" : "Media del tramo 231."
+  },
+  {
+    "clave" : "fin_231",
+    "texto" : "Fin del tramo. Media 231."
+  },
+  {
+    "clave" : "vas_232",
+    "texto" : "Vas a 232."
+  },
+  {
+    "clave" : "media_232",
+    "texto" : "Media del tramo 232."
+  },
+  {
+    "clave" : "fin_232",
+    "texto" : "Fin del tramo. Media 232."
+  },
+  {
+    "clave" : "vas_233",
+    "texto" : "Vas a 233."
+  },
+  {
+    "clave" : "media_233",
+    "texto" : "Media del tramo 233."
+  },
+  {
+    "clave" : "fin_233",
+    "texto" : "Fin del tramo. Media 233."
+  },
+  {
+    "clave" : "vas_234",
+    "texto" : "Vas a 234."
+  },
+  {
+    "clave" : "media_234",
+    "texto" : "Media del tramo 234."
+  },
+  {
+    "clave" : "fin_234",
+    "texto" : "Fin del tramo. Media 234."
+  },
+  {
+    "clave" : "vas_235",
+    "texto" : "Vas a 235."
+  },
+  {
+    "clave" : "media_235",
+    "texto" : "Media del tramo 235."
+  },
+  {
+    "clave" : "fin_235",
+    "texto" : "Fin del tramo. Media 235."
+  },
+  {
+    "clave" : "vas_236",
+    "texto" : "Vas a 236."
+  },
+  {
+    "clave" : "media_236",
+    "texto" : "Media del tramo 236."
+  },
+  {
+    "clave" : "fin_236",
+    "texto" : "Fin del tramo. Media 236."
+  },
+  {
+    "clave" : "vas_237",
+    "texto" : "Vas a 237."
+  },
+  {
+    "clave" : "media_237",
+    "texto" : "Media del tramo 237."
+  },
+  {
+    "clave" : "fin_237",
+    "texto" : "Fin del tramo. Media 237."
+  },
+  {
+    "clave" : "vas_238",
+    "texto" : "Vas a 238."
+  },
+  {
+    "clave" : "media_238",
+    "texto" : "Media del tramo 238."
+  },
+  {
+    "clave" : "fin_238",
+    "texto" : "Fin del tramo. Media 238."
+  },
+  {
+    "clave" : "vas_239",
+    "texto" : "Vas a 239."
+  },
+  {
+    "clave" : "media_239",
+    "texto" : "Media del tramo 239."
+  },
+  {
+    "clave" : "fin_239",
+    "texto" : "Fin del tramo. Media 239."
+  },
+  {
+    "clave" : "vas_240",
+    "texto" : "Vas a 240."
+  },
+  {
+    "clave" : "media_240",
+    "texto" : "Media del tramo 240."
+  },
+  {
+    "clave" : "fin_240",
+    "texto" : "Fin del tramo. Media 240."
+  },
+  {
+    "clave" : "vas_241",
+    "texto" : "Vas a 241."
+  },
+  {
+    "clave" : "media_241",
+    "texto" : "Media del tramo 241."
+  },
+  {
+    "clave" : "fin_241",
+    "texto" : "Fin del tramo. Media 241."
+  },
+  {
+    "clave" : "vas_242",
+    "texto" : "Vas a 242."
+  },
+  {
+    "clave" : "media_242",
+    "texto" : "Media del tramo 242."
+  },
+  {
+    "clave" : "fin_242",
+    "texto" : "Fin del tramo. Media 242."
+  },
+  {
+    "clave" : "vas_243",
+    "texto" : "Vas a 243."
+  },
+  {
+    "clave" : "media_243",
+    "texto" : "Media del tramo 243."
+  },
+  {
+    "clave" : "fin_243",
+    "texto" : "Fin del tramo. Media 243."
+  },
+  {
+    "clave" : "vas_244",
+    "texto" : "Vas a 244."
+  },
+  {
+    "clave" : "media_244",
+    "texto" : "Media del tramo 244."
+  },
+  {
+    "clave" : "fin_244",
+    "texto" : "Fin del tramo. Media 244."
+  },
+  {
+    "clave" : "vas_245",
+    "texto" : "Vas a 245."
+  },
+  {
+    "clave" : "media_245",
+    "texto" : "Media del tramo 245."
+  },
+  {
+    "clave" : "fin_245",
+    "texto" : "Fin del tramo. Media 245."
+  },
+  {
+    "clave" : "vas_246",
+    "texto" : "Vas a 246."
+  },
+  {
+    "clave" : "media_246",
+    "texto" : "Media del tramo 246."
+  },
+  {
+    "clave" : "fin_246",
+    "texto" : "Fin del tramo. Media 246."
+  },
+  {
+    "clave" : "vas_247",
+    "texto" : "Vas a 247."
+  },
+  {
+    "clave" : "media_247",
+    "texto" : "Media del tramo 247."
+  },
+  {
+    "clave" : "fin_247",
+    "texto" : "Fin del tramo. Media 247."
+  },
+  {
+    "clave" : "vas_248",
+    "texto" : "Vas a 248."
+  },
+  {
+    "clave" : "media_248",
+    "texto" : "Media del tramo 248."
+  },
+  {
+    "clave" : "fin_248",
+    "texto" : "Fin del tramo. Media 248."
+  },
+  {
+    "clave" : "vas_249",
+    "texto" : "Vas a 249."
+  },
+  {
+    "clave" : "media_249",
+    "texto" : "Media del tramo 249."
+  },
+  {
+    "clave" : "fin_249",
+    "texto" : "Fin del tramo. Media 249."
+  },
+  {
+    "clave" : "vas_250",
+    "texto" : "Vas a 250."
+  },
+  {
+    "clave" : "media_250",
+    "texto" : "Media del tramo 250."
+  },
+  {
+    "clave" : "fin_250",
+    "texto" : "Fin del tramo. Media 250."
+  }
+]

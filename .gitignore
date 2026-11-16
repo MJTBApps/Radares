@@ -6,3 +6,4 @@ ios/*.xcodeproj/
 ios/Radares/Info.plist
 ios/build/
 ios/RadaresCore/.build/
+ios/Aviso/Info.plist

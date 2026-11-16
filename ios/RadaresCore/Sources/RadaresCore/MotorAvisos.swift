@@ -25,6 +25,8 @@ public enum Evento: Equatable, Sendable {
     case excesoTramo(Radar, media: Int)
     /// Fin del tramo, con la media conseguida.
     case finTramo(Radar, media: Int)
+    /// Incidencia de tráfico de la DGT delante.
+    case incidencia(Incidencia, distancia: Double)
 }
 
 /// Seguimiento de un radar de tramo desde que se avisa hasta que se sale.
@@ -190,16 +192,92 @@ public final class MotorAvisos {
 }
 
 /// Lo que dice la voz.
+///
+/// Cada aviso se dice con la voz del iPhone a partir de `texto`, o con una voz grabada
+/// encadenando los audios de `piezas`. Cada pieza es una frase corta y completa
+/// («Radar a 650 metros.», «Límite 120.»), para que suene natural. `catalogo` enumera
+/// todas las piezas posibles con su texto: de ahí salen los audios (`scripts/generar_voces.py`).
 public enum Frases {
-    /// Distancia redondeada como se dice en voz alta.
+    /// Distancias que se dicen: de 50 en 50 m hasta 900 m, de medio en medio km hasta 10 km
+    /// y de km en km hasta 50 km.
+    public static let distancias: [Int] =
+        Array(stride(from: 50, through: 900, by: 50))
+        + Array(stride(from: 1_000, through: 10_000, by: 500))
+        + Array(stride(from: 11_000, through: 50_000, by: 1_000))
+
+    /// Distancia redondeada a uno de los valores de `distancias`.
+    public static func redondear(_ metros: Double) -> Int {
+        let m = max(50, metros)
+        let cerca = Int((m / 50).rounded() * 50)
+        if cerca <= 900 { return cerca }
+        let paso: Double = m < 10_250 ? 500 : 1_000
+        return min(max(Int((m / paso).rounded() * paso), 1_000), 50_000)
+    }
+
+    /// Distancia como se dice en voz alta.
     public static func distancia(_ metros: Double) -> String {
-        if metros >= 950 {
-            let km = (metros / 100).rounded() / 10
-            if km == km.rounded() { return km == 1 ? "1 kilómetro" : "\(Int(km)) kilómetros" }
-            return String(format: "%.1f", km).replacingOccurrences(of: ".", with: ",") + " kilómetros"
+        decir(redondear(metros))
+    }
+
+    static func decir(_ m: Int) -> String {
+        if m < 1_000 { return "\(m) metros" }
+        if m == 1_000 { return "1 kilómetro" }
+        if m % 1_000 == 0 { return "\(m / 1_000) kilómetros" }
+        return "\(m / 1_000),5 kilómetros"
+    }
+
+    /// Velocidades y medias que se dicen (km/h).
+    public static let velocidades = 10...250
+    /// Límites que se dicen.
+    public static let limites = Array(stride(from: 10, through: 130, by: 5))
+
+    static func prefijo(_ clave: String) -> String {
+        switch clave {
+        case "radar": return "Radar a"
+        case "tramo": return "Radar de tramo a"
+        default: return (TipoIncidencia(rawValue: clave)?.nombre ?? clave) + " a"
         }
-        let m = max(50, Int((metros / 50).rounded()) * 50)
-        return "\(m) metros"
+    }
+
+    /// Todas las piezas con su texto.
+    public static var catalogo: [(clave: String, texto: String)] {
+        var c: [(String, String)] = [("prueba", "Prueba.")]
+        for tipo in ["radar", "tramo"] + TipoIncidencia.allCases.map(\.rawValue) {
+            for d in distancias { c.append(("\(tipo)_\(d)", "\(prefijo(tipo)) \(decir(d))." )) }
+        }
+        for d in distancias where d >= 500 { c.append(("dura_\(d)", "Dura \(decir(d)).")) }
+        for l in limites { c.append(("limite_\(l)", "Límite \(l).")) }
+        for v in velocidades {
+            c.append(("vas_\(v)", "Vas a \(v)."))
+            c.append(("media_\(v)", "Media del tramo \(v)."))
+            c.append(("fin_\(v)", "Fin del tramo. Media \(v)."))
+        }
+        return c
+    }
+
+    /// Piezas de un aviso, o nil si alguna cifra se sale del catálogo (entonces se usa la voz del iPhone).
+    public static func piezas(_ evento: Evento) -> [String]? {
+        func vel(_ v: Int) -> Bool { velocidades.contains(v) }
+        switch evento {
+        case let .radar(r, d, velocidad):
+            var p = ["\(r.tipo == .tramo ? "tramo" : "radar")_\(redondear(d))"]
+            if r.tipo == .tramo, let largo = r.longitud, largo >= 500 { p.append("dura_\(redondear(largo))") }
+            if let limite = r.limite {
+                guard limites.contains(limite) else { return nil }
+                p.append("limite_\(limite)")
+                if velocidad > limite + 3 { guard vel(velocidad) else { return nil }; p.append("vas_\(velocidad)") }
+            }
+            return p
+        case let .excesoTramo(r, media):
+            guard vel(media) else { return nil }
+            var p = ["media_\(media)"]
+            if let limite = r.limite { guard limites.contains(limite) else { return nil }; p.append("limite_\(limite)") }
+            return p
+        case let .finTramo(_, media):
+            return vel(media) ? ["fin_\(media)"] : nil
+        case let .incidencia(i, d):
+            return ["\(i.tipo.rawValue)_\(redondear(d))"]
+        }
     }
 
     public static func texto(_ evento: Evento) -> String {
@@ -216,6 +294,8 @@ public enum Frases {
             return "Media del tramo \(media)." + (r.limite.map { " Límite \($0)." } ?? "")
         case let .finTramo(_, media):
             return "Fin del tramo. Media \(media)."
+        case let .incidencia(i, d):
+            return "\(i.tipo.nombre) a \(distancia(d))."
         }
     }
 }
