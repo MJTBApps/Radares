@@ -1,0 +1,67 @@
+name: Chivato - Compilar Android
+
+# Comprueba el núcleo de Kotlin y compila la APK de Android. La APK queda como artefacto
+# de la ejecución para instalarla a mano. Con los secretos CHIVATO_KEYSTORE_B64 y
+# CHIVATO_KEY_PASSWORD se firma siempre con la misma clave (necesario para actualizar).
+on:
+  push:
+    paths:
+      - "android/**"
+      - "ios/RadaresCore/**"
+      - "ios/Radares/Recursos/**"
+      - "ios/Radares/Voces/**"
+      - "scripts/catalogo_voces.json"
+      - ".github/workflows/android-compilar.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: chivato-android-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  compilar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: android
+    steps:
+      - name: Descargar codigo
+        uses: actions/checkout@v4
+      - name: Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - name: Preparar Android SDK
+        run: |
+          SDKMANAGER="$(find "$ANDROID_HOME/cmdline-tools" -name sdkmanager -type f -print -quit)"
+          "$SDKMANAGER" --install "platforms;android-36" "build-tools;36.0.0" > /dev/null
+      - name: Gradle 8.11.1
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.11.1"
+      - name: Firma fija (si hay secretos)
+        env:
+          KEYSTORE_B64: ${{ secrets.CHIVATO_KEYSTORE_B64 }}
+          KEY_PASSWORD: ${{ secrets.CHIVATO_KEY_PASSWORD }}
+        run: |
+          if [ -n "$KEYSTORE_B64" ]; then
+            echo "$KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/chivato.jks"
+            echo "CHIVATO_KEYSTORE=$RUNNER_TEMP/chivato.jks" >> "$GITHUB_ENV"
+            echo "CHIVATO_KEY_PASSWORD=$KEY_PASSWORD" >> "$GITHUB_ENV"
+          else
+            echo "::warning::Sin CHIVATO_KEYSTORE_B64: la APK sale con la firma de depuración"
+          fi
+      - name: Comprobar el nucleo
+        run: gradle --no-daemon :app:testDebugUnitTest
+      - name: Compilar la APK
+        run: gradle --no-daemon :app:assembleRelease
+      - name: Guardar la APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: chivato-radar-android
+          path: android/app/build/outputs/apk/release/*.apk

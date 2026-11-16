@@ -7,3 +7,7 @@ ios/Radares/Info.plist
 ios/build/
 ios/RadaresCore/.build/
 ios/Aviso/Info.plist
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
