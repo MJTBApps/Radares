@@ -49,7 +49,7 @@ Para que arranque sola: app Atajos → Automatización → «Al conectarse al Bl
 - `ios/Radares/`: la app (SwiftUI). `Modelo.swift` (GPS y estado), `Voz.swift` (sonido), `Pantalla.swift`.
 - `ios/project.yml`: proyecto de Xcode, generado con XcodeGen.
 - `scripts/`: base de radares e icono.
-- `web/`: política de privacidad. Tiene que publicarse en una dirección pública; la app enlaza a `https://mjtbapps.github.io/chivato-radar/privacidad.html` (`Enlaces` en `Pantalla.swift`).
+- `web/`: página de soporte (`index.html`) y política de privacidad. Se publican copiándolas a mano en el repositorio público `MJTBApps/chivato-radar` (GitHub Pages): `https://mjtbapps.github.io/chivato-radar/` y `.../privacidad.html`, que es la que enlaza la app (`Enlaces` en `Pantalla.swift`). Las consultas de soporte llegan como issues de ese repositorio.
 
 En este iMac `swift run` falla por no tener Xcode; el núcleo se comprueba compilándolo a mano:
 
@@ -66,7 +66,6 @@ cd ios/RadaresCore && mkdir -p /tmp/radares && swiftc -O -parse-as-library -emit
 
 ## Antes de publicarla
 
-- Publicar `web/privacidad.html` en la dirección que enlaza la app.
 - Crear los dos productos de Premium en App Store Connect y tener firmado el acuerdo de apps de pago.
 - Capturas de pantalla para la ficha.
 - Texto para la revisión de Apple explicando el uso de la ubicación en segundo plano y que el permiso de micrófono no graba nada.
