@@ -1,5 +1,6 @@
 import Combine
 import CoreLocation
+import CoreMotion
 import Foundation
 import RadaresCore
 
@@ -82,6 +83,7 @@ final class Modelo: NSObject, ObservableObject, CLLocationManagerDelegate {
     var llamadaDisponible: Bool { premium || diasDePruebaRestantes > 0 }
 
     private let gestor = CLLocationManager()
+    private let movimiento = CMMotionActivityManager()
     private let motor: MotorAvisos
     private let motorIncidencias = MotorIncidencias()
     private let voz = Voz()
@@ -262,8 +264,9 @@ final class Modelo: NSObject, ObservableObject, CLLocationManagerDelegate {
 
     // MARK: - Arranque automático
 
-    /// iOS despierta la app (aunque esté cerrada) cuando la posición cambia unos cientos de metros.
-    /// Entonces se mira la velocidad un par de minutos: por encima de 25 km/h, empieza a vigilar.
+    /// iOS despierta la app (aunque esté cerrada) cuando la posición cambia unos cientos de metros,
+    /// algo que sabe por las antenas y el wifi, sin GPS. Entonces se pregunta al sensor de movimiento
+    /// si vamos en coche (casi no gasta); solo si lo confirma se enciende el GPS y empieza a vigilar.
     private func configurarArranqueAutomatico(pedirPermiso: Bool) {
         guard CLLocationManager.significantLocationChangeMonitoringAvailable() else { return }
         if arranqueAutomatico {
@@ -274,6 +277,10 @@ final class Modelo: NSObject, ObservableObject, CLLocationManagerDelegate {
                 // iOS pregunta si se pasa a «Siempre». Si ya se denegó, hay que ir a Ajustes.
                 gestor.requestAlwaysAuthorization()
             }
+            // Pedir también el permiso de «Movimiento y forma física» (sale la pregunta la primera vez).
+            if pedirPermiso, CMMotionActivityManager.isActivityAvailable() {
+                movimiento.queryActivityStarting(from: Date().addingTimeInterval(-60), to: Date(), to: .main) { _, _ in }
+            }
         } else {
             gestor.stopMonitoringSignificantLocationChanges()
             if !activo { gestor.allowsBackgroundLocationUpdates = false }
@@ -281,22 +288,21 @@ final class Modelo: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
 
     private func comprobarSiConduce(_ l: CLLocation) {
-        guard arranqueAutomatico, !activo, Date() > sinArranqueHasta else { return }
-        if l.speed >= 7, l.horizontalAccuracy >= 0, l.horizontalAccuracy <= 100 {
-            gestor.stopUpdatingLocation()
-            empezar(sola: true)
+        guard arranqueAutomatico, !activo, comprobandoDesde == nil, Date() > sinArranqueHasta else { return }
+        guard CMMotionActivityManager.isActivityAvailable(),
+              CMMotionActivityManager.authorizationStatus() != .denied else {
+            // Sin sensor de movimiento: la velocidad que traiga el aviso, si la trae.
+            if l.speed >= 7 { empezar(sola: true) }
             return
         }
-        if comprobandoDesde == nil {
-            // Aviso de cambio significativo: mirar la velocidad con el GPS un par de minutos.
-            comprobandoDesde = Date()
-            gestor.allowsBackgroundLocationUpdates = true
-            ponerPrecision(alta: true)
-            gestor.startUpdatingLocation()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 120) { [weak self] in
-                guard let self, !self.activo, self.comprobandoDesde != nil else { return }
-                self.comprobandoDesde = nil
-                self.gestor.stopUpdatingLocation()
+        comprobandoDesde = Date()
+        // Lo que ha detectado el sensor en los últimos 3 minutos.
+        movimiento.queryActivityStarting(from: Date().addingTimeInterval(-180), to: Date(), to: .main) { [weak self] lista, _ in
+            guard let self else { return }
+            self.comprobandoDesde = nil
+            let ultima = lista?.last { $0.confidence != .low }
+            if let ultima, ultima.automotive, !ultima.walking, !ultima.running, !ultima.cycling {
+                self.empezar(sola: true)
             }
         }
     }

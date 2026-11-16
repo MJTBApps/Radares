@@ -60,6 +60,7 @@ targets:
         NSLocationWhenInUseUsageDescription: "Chivato Radar usa tu posición para avisarte de los radares que tienes delante. No sale del iPhone."
         # Solo si se activa «Empezar sola al ir en coche».
         NSLocationAlwaysAndWhenInUseUsageDescription: "Con «Siempre», Chivato Radar se pone a vigilar sola cuando detecta que vas en coche, sin que abras la app. Tu posición no sale del iPhone."
+        NSMotionUsageDescription: "Chivato Radar usa el sensor de movimiento para saber si vas en coche y ponerse a vigilar sola, sin gastar GPS. Solo si activas «Empezar sola al ir en coche»."
         # La app no graba nada. iOS exige este texto porque el aviso por el canal de
         # llamadas del coche y por el altavoz usa una sesión de audio de «reproducir y grabar».
         NSMicrophoneUsageDescription: "Chivato Radar no graba ni escucha nada. iOS pide este permiso para poder dar el aviso por el canal de llamadas del coche."
