@@ -68,6 +68,8 @@ dependencies {
     implementation("androidx.compose.material3:material3")
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.8.7")
     implementation("com.google.android.gms:play-services-location:21.3.0")
+    // Los servicios de Google traen fragment 1.1.0, que rompe la petición de permisos.
+    implementation("androidx.fragment:fragment:1.8.9")
     implementation("com.android.billingclient:billing-ktx:8.0.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
     testImplementation("junit:junit:4.13.2")
