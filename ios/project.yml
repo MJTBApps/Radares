@@ -10,13 +10,10 @@ options:
 packages:
   RadaresCore:
     path: RadaresCore
-  # Anuncio al abrir (AdMob); trae también el formulario de consentimiento (UMP).
+  # Anuncio al abrir (AdMob); trae como dependencia el formulario de consentimiento (UserMessagingPlatform).
   GoogleMobileAds:
     url: https://github.com/googleads/swift-package-manager-google-mobile-ads
     majorVersion: 12.0.0
-  UserMessagingPlatform:
-    url: https://github.com/googleads/swift-package-manager-google-user-messaging-platform
-    majorVersion: 3.0.0
 settings:
   base:
     SWIFT_VERSION: "5.0"
@@ -40,7 +37,6 @@ targets:
     dependencies:
       - package: RadaresCore
       - package: GoogleMobileAds
-      - package: UserMessagingPlatform
       - target: Aviso
         embed: true
     settings:
@@ -66,8 +62,8 @@ targets:
         NSSupportsLiveActivitiesFrequentUpdates: true
         UILaunchScreen: {}
         ITSAppUsesNonExemptEncryption: false
-        # AdMob: identificador de la app (de prueba hasta tener el real) y redes publicitarias.
-        GADApplicationIdentifier: ca-app-pub-3940256099942544~1458002511
+        # AdMob: identificador de la app y redes publicitarias.
+        GADApplicationIdentifier: ca-app-pub-1535697166232113~7135360650
         SKAdNetworkItems:
           - SKAdNetworkIdentifier: cstr6suwn9.skadnetwork
         NSLocationWhenInUseUsageDescription: "Chivato Radar usa tu posición para avisarte de los radares que tienes delante. No sale del iPhone."

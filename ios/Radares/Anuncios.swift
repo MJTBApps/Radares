@@ -10,8 +10,7 @@ final class Anuncios: NSObject, FullScreenContentDelegate {
     static let shared = Anuncios()
 
     // Identificadores de AdMob. El de la app va también en project.yml (GADApplicationIdentifier).
-    // Mientras sean los de prueba de Google, salen anuncios de prueba.
-    static let bloqueAlAbrir = "ca-app-pub-3940256099942544/5575463023"
+    static let bloqueAlAbrir = "ca-app-pub-1535697166232113/5558555109"
 
     private var iniciado = false
     private var mostrando = false
