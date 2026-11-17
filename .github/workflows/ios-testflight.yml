@@ -81,6 +81,15 @@ jobs:
             DEVELOPMENT_TEAM="$TEAM_ID" CODE_SIGN_STYLE=Automatic CODE_SIGNING_ALLOWED=NO \
             CURRENT_PROJECT_VERSION="${{ github.run_number }}" \
             archive | tail -n 80
+          # Los frameworks de Google (AdMob) vienen firmados por Google; al archivar sin firmar
+          # esa firma queda inválida y App Store Connect los rechaza. Se le quita la firma para
+          # que la exportación los firme con nuestro certificado de distribución.
+          for f in build/Radares.xcarchive/Products/Applications/*.app/Frameworks/*.framework; do
+            [ -d "$f" ] || continue
+            echo "Quitando la firma de $(basename "$f")"
+            codesign --remove-signature "$f" || true
+            rm -rf "$f/_CodeSignature"
+          done
 
       - name: Subir a App Store Connect
         working-directory: ios
