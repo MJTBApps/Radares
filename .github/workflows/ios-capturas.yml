@@ -1,0 +1,77 @@
+name: Radares - Capturas para el App Store
+
+# Abre la app en un iPhone simulado de 6,9" (1320x2868), simula ir en coche por la A-2
+# hacia un tramo y saca capturas. Se lanza a mano; las capturas quedan como artefacto.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  capturas:
+    runs-on: macos-15-intel
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Elegir el Xcode mas reciente
+        run: |
+          XCODE="$(ls -d /Applications/Xcode_*.app | sort -V | tail -1)"
+          sudo xcode-select -s "$XCODE"
+          xcodebuild -version
+
+      - name: Generar el proyecto
+        working-directory: ios
+        run: |
+          brew install xcodegen
+          xcodegen generate
+
+      - name: Arrancar el simulador
+        run: |
+          UDID="$(xcrun simctl list devices available -j | python3 -c '
+          import json,sys
+          d=json.load(sys.stdin)["devices"]
+          c=[(r,x) for r,l in d.items() if "iOS" in r for x in l if "Pro Max" in x["name"]]
+          c.sort(key=lambda t:(t[0],t[1]["name"]))
+          print(c[-1][1]["udid"])')"
+          echo "UDID=$UDID" >> "$GITHUB_ENV"
+          xcrun simctl list devices | grep "$UDID"
+          xcrun simctl boot "$UDID"
+          xcrun simctl bootstatus "$UDID" -b
+
+      - name: Compilar para el simulador
+        working-directory: ios
+        run: |
+          set -o pipefail
+          xcodebuild -project Radares.xcodeproj -scheme Radares -configuration Debug \
+            -destination "id=$UDID" -derivedDataPath build CODE_SIGNING_ALLOWED=NO build | tail -n 30
+
+      - name: Sacar capturas
+        run: |
+          set -x
+          APP="$(ls -d ios/build/Build/Products/Debug-iphonesimulator/*.app | head -1)"
+          ID=es.mjtbapps.radares
+          mkdir -p capturas
+          xcrun simctl status_bar "$UDID" override --time "9:41" --batteryState charged --batteryLevel 100 \
+            --cellularMode active --cellularBars 4 --wifiBars 3 --dataNetwork 5g || true
+          xcrun simctl install "$UDID" "$APP"
+          for p in location-always motion; do xcrun simctl privacy "$UDID" grant $p $ID || true; done
+          xcrun simctl location "$UDID" set 41.6361,1.0473
+          xcrun simctl launch "$UDID" $ID
+          sleep 8
+          xcrun simctl io "$UDID" screenshot capturas/00-inicio.png
+          # Ruta: 3 km antes del tramo de la A-2 (Cataluña) y lo recorre entero, a 118 km/h.
+          xcrun simctl location "$UDID" start --speed=33 \
+            41.63611,1.04726 41.64076,1.06418 41.645409,1.081109 41.65263,1.10739 41.659845,1.133676 41.6640,1.1488 &
+          for t in 25 45 65 85 105 125 145 165; do
+            sleep 20
+            xcrun simctl io "$UDID" screenshot "capturas/$(printf %03d $t)s.png"
+          done
+          xcrun simctl location "$UDID" clear || true
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: capturas-app-store
+          path: capturas
