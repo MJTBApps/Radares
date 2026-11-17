@@ -31,7 +31,7 @@ El modo «Coche, como llamada» es de Premium, con 14 días de prueba desde el p
 - `es.mjtbapps.radares.premium.anual`: suscripción anual.
 - `es.mjtbapps.radares.premium.siempre`: pago único.
 
-La prueba se cuenta con una fecha guardada en el iPhone: reinstalar la app la reinicia. Anuncios: aún no hay (pendiente para una versión posterior).
+La prueba se cuenta con una fecha guardada en el iPhone: reinstalar la app la reinicia. Sin Premium sale un anuncio de AdMob al abrir (como mucho cada 4 h, nunca vigilando); ver `ios/Radares/Anuncios.swift`.
 
 Para que arranque sola: app Atajos → Automatización → «Al conectarse al Bluetooth del coche» → «Abrir app Radares» (con «Empezar al abrir la app» activado).
 
