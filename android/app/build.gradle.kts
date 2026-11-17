@@ -16,7 +16,7 @@ android {
         minSdk = 26
         targetSdk = 36
         versionCode = 1
-        versionName = "0.3.0"
+        versionName = "1.0"
     }
 
     // radares.json y las carpetas de voces (lucia/, pablo/…) quedan en la raíz de assets.
