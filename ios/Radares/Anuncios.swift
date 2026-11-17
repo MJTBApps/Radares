@@ -40,7 +40,12 @@ final class Anuncios: NSObject, FullScreenContentDelegate {
             iniciado = true
         }
         let pedido = Date()
-        AppOpenAd.load(with: Self.bloqueAlAbrir, request: Request()) { [weak self] anuncio, _ in
+        // Anuncios no personalizados: la app no hace seguimiento (ni pide permiso de rastreo).
+        let peticion = Request()
+        let extras = Extras()
+        extras.additionalParameters = ["npa": "1"]
+        peticion.register(extras)
+        AppOpenAd.load(with: Self.bloqueAlAbrir, request: peticion) { [weak self] anuncio, _ in
             Task { @MainActor in
                 // Si tarda más de 5 s ya no se muestra: el usuario estará usando la app.
                 guard let self, let anuncio, Date().timeIntervalSince(pedido) < 5,
