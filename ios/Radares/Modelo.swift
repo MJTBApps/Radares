@@ -95,7 +95,7 @@ final class Modelo: NSObject, ObservableObject, CLLocationManagerDelegate {
     /// Minutos parado tras los que la app deja de usar el GPS sola.
     private let minutosParado = 15.0
     /// Si ha empezado sola, se apaga antes al aparcar.
-    private var arrancadaSola = false
+    private(set) var arrancadaSola = false
     /// Comprobando si vamos en coche tras un aviso de «cambio significativo» de posición.
     private var comprobandoDesde: Date?
     /// Tras pulsar «Parar» no vuelve a arrancar sola durante un rato.

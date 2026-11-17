@@ -12,12 +12,14 @@ enum Enlaces {
 struct Pantalla: View {
     @EnvironmentObject private var modelo: Modelo
     @EnvironmentObject private var tienda: Tienda
+    @EnvironmentObject private var actualizacion: Actualizacion
     @Environment(\.openURL) private var abrir
     @State private var verPremium = false
 
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
+                if let v = actualizacion.nueva { avisoActualizacion(v) }
                 velocidad
                 if let tramo = modelo.tramo, tramo.dentro { tarjetaTramo(tramo) }
                 tarjetaRadar
@@ -38,6 +40,25 @@ struct Pantalla: View {
     }
 
     // MARK: - Piezas
+
+    private func avisoActualizacion(_ version: String) -> some View {
+        Button {
+            if let url = actualizacion.enlace { abrir(url) }
+        } label: {
+            HStack(spacing: 12) {
+                Image(systemName: "arrow.down.app.fill").font(.title2)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Hay una versión nueva (\(version))").font(.headline)
+                    Text("Toca para actualizar en el App Store.").font(.subheadline)
+                }
+                Spacer()
+            }
+            .foregroundColor(.white)
+            .padding()
+            .background(Color.blue, in: RoundedRectangle(cornerRadius: 14))
+        }
+        .buttonStyle(.plain)
+    }
 
     private var velocidad: some View {
         VStack(spacing: 0) {
