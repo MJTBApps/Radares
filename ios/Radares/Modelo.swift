@@ -89,6 +89,12 @@ final class Modelo: NSObject, ObservableObject, CLLocationManagerDelegate {
     private let voz = Voz()
     private let actividad = ActividadAviso()
     private var quiereEmpezar = false
+
+    /// iOS no deja crear la tarjeta de la pantalla de bloqueo con la app en segundo plano
+    /// (p. ej. al arrancar sola en el coche). Se crea en cuanto el usuario abre la app.
+    func alPasarAlFrente() {
+        if activo && pantallaBloqueo { actividad.empezar() }
+    }
     private var ultimoMovimiento = Date()
     private var vigilante: Timer?
     private var relojIncidencias: Timer?

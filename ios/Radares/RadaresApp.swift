@@ -19,6 +19,7 @@ struct RadaresApp: App {
         }
         .onChange(of: fase) { nueva in
             guard nueva == .active else { return }
+            modelo.alPasarAlFrente()
             Task { await actualizacion.comprobar() }
             // Espera a que la tienda confirme si hay Premium antes de decidir el anuncio.
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
