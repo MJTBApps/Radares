@@ -174,18 +174,6 @@ struct Pantalla: View {
                 Button("Volver a oírlo por el coche") { verPremium = true }
                     .buttonStyle(.borderedProminent)
             }
-            Divider()
-            Text("Voz").font(.headline)
-            Picker("Voz", selection: $modelo.idVoz) {
-                Text("La del iPhone por defecto").tag("")
-                ForEach(modelo.voces) { voz in Text(voz.titulo).tag(voz.id) }
-            }
-            .pickerStyle(.menu)
-            .labelsHidden()
-            Text(modelo.idVoz.hasPrefix(VozDisponible.prefijoGrabada)
-                 ? "Las voces «natural» están generadas con inteligencia artificial y van dentro de la app: funcionan sin cobertura."
-                 : "Para tener más voces del iPhone: Ajustes → Accesibilidad → Contenido leído → Voces → Español.")
-                .font(.footnote).foregroundColor(.secondary)
             HStack {
                 Button("Probar ahora") { modelo.probarSonido() }
                 Spacer()

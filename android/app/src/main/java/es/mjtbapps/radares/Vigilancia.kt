@@ -75,7 +75,7 @@ class Vigilancia : Service(), LocationListener {
         if (!tienePermiso(this)) { Estado.anotar("Sin permiso de ubicación."); detener(); return START_NOT_STICKY }
 
         voz.salida = salidaEfectiva()
-        voz.voz = ajustes.voz
+        voz.voz = "sistema"
         precision(true)
         Estado.pantalla.update { it.copy(activo = true) }
         Estado.anotar(if (arrancadaSola) "En coche: empiezo a vigilar $total radares." else "Vigilando $total radares.")
@@ -119,7 +119,7 @@ class Vigilancia : Service(), LocationListener {
         )
         if (p.velocidad >= 3) ultimoMovimiento = System.currentTimeMillis()
         voz.salida = salidaEfectiva()
-        voz.voz = ajustes.voz
+        voz.voz = "sistema"
         for (e in motor.procesar(p) + incidencias.procesar(p)) {
             val frase = Frases.texto(e)
             voz.decir(frase, Frases.piezas(e))

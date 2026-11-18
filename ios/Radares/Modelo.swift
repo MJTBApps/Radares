@@ -133,7 +133,8 @@ final class Modelo: NSObject, ObservableObject, CLLocationManagerDelegate {
             d.set(primerUso, forKey: "primerUso")
         }
         // Por defecto, la primera voz natural si la hay.
-        idVoz = d.string(forKey: "idVoz") ?? (VozDisponible.grabadas().first?.id ?? "")
+        // Solo la voz del iPhone por defecto (la más natural).
+        idVoz = ""
 
         // La base más reciente: la que viene con la app o la descargada.
         var errorDatos: String?
