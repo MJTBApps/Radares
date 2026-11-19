@@ -15,7 +15,8 @@ android {
         applicationId = "es.mjtbapps.radares"
         minSdk = 26
         targetSdk = 36
-        versionCode = 1
+        // Google Play exige un número nuevo en cada subida: lo pone GitHub (número de ejecución).
+        versionCode = (project.findProperty("codigoVersion") as String?)?.toIntOrNull() ?: 1
         versionName = "1.0"
     }
 

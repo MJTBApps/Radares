@@ -58,10 +58,15 @@ jobs:
           fi
       - name: Comprobar el nucleo
         run: gradle --no-daemon :app:testDebugUnitTest
-      - name: Compilar la APK
-        run: gradle --no-daemon :app:assembleRelease
+      - name: Compilar la APK y el paquete para Google Play
+        run: gradle --no-daemon :app:assembleRelease :app:bundleRelease -PcodigoVersion=${{ github.run_number }}
       - name: Guardar la APK
         uses: actions/upload-artifact@v4
         with:
           name: chivato-radar-android
           path: android/app/build/outputs/apk/release/*.apk
+      - name: Guardar el paquete para Google Play (.aab)
+        uses: actions/upload-artifact@v4
+        with:
+          name: chivato-radar-google-play
+          path: android/app/build/outputs/bundle/release/*.aab
