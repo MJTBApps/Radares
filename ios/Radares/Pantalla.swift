@@ -16,22 +16,26 @@ struct Pantalla: View {
     @Environment(\.openURL) private var abrir
     @State private var verPremium = false
 
+    private let rojo = Color(red: 0.83, green: 0.18, blue: 0.18)
+
     var body: some View {
         ScrollView {
-            VStack(spacing: 16) {
+            VStack(alignment: .leading, spacing: 18) {
+                Text("Chivato Radar").font(.title2.weight(.bold))
                 if let v = actualizacion.nueva { avisoActualizacion(v) }
                 velocidad
-                if let tramo = modelo.tramo, tramo.dentro { tarjetaTramo(tramo) }
-                tarjetaRadar
+                if let tramo = modelo.tramo, tramo.dentro { tarjetaTramo(tramo) } else { tarjetaRadar }
                 botonPrincipal
                 if modelo.permiso == .denied || modelo.permiso == .restricted { avisoPermiso }
+                Text("Ajustes").font(.title3.weight(.bold)).padding(.top, 6)
                 sonido
-                tarjetaPremium
                 arranque
+                tarjetaPremium
                 if !modelo.diario.isEmpty { diario }
                 pie
             }
-            .padding(16)
+            .padding(.horizontal, 20)
+            .padding(.vertical, 12)
         }
         .background(Color(.systemBackground))
         .sheet(isPresented: $verPremium) {
@@ -40,6 +44,32 @@ struct Pantalla: View {
     }
 
     // MARK: - Piezas
+
+    private func tarjeta<C: View>(@ViewBuilder _ contenido: () -> C) -> some View {
+        VStack(alignment: .leading, spacing: 10) { contenido() }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(18)
+            .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+    }
+
+    /// Señal de límite: círculo blanco con borde rojo.
+    private func senal(_ valor: Int, tam: CGFloat = 56) -> some View {
+        Text("\(valor)")
+            .font(.system(size: tam * 0.38, weight: .bold, design: .rounded))
+            .foregroundColor(.black)
+            .frame(width: tam, height: tam)
+            .background(Circle().fill(Color.white))
+            .overlay(Circle().stroke(rojo, lineWidth: tam / 9))
+    }
+
+    private func interruptor(_ titulo: String, _ explicacion: String, _ valor: Binding<Bool>) -> some View {
+        Toggle(isOn: valor) {
+            VStack(alignment: .leading, spacing: 2) {
+                Text(titulo).font(.body.weight(.semibold))
+                Text(explicacion).font(.footnote).foregroundColor(.secondary)
+            }
+        }
+    }
 
     private func avisoActualizacion(_ version: String) -> some View {
         Button {
@@ -55,21 +85,26 @@ struct Pantalla: View {
             }
             .foregroundColor(.white)
             .padding()
-            .background(Color.blue, in: RoundedRectangle(cornerRadius: 14))
+            .background(Color.accentColor, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
         }
         .buttonStyle(.plain)
     }
 
+    /// Velocidad dentro de un anillo: color de la app mientras vigila, rojo si vas por encima del límite.
     private var velocidad: some View {
-        VStack(spacing: 0) {
-            Text(modelo.kmh.map(String.init) ?? "–")
-                .font(.system(size: 96, weight: .bold, design: .rounded))
-                .monospacedDigit()
-                .foregroundColor(pasado ? .red : .primary)
-            Text("km/h").font(.title3).foregroundColor(.secondary)
+        let anillo: Color = pasado ? rojo : (modelo.activo ? .accentColor : Color(.systemGray4))
+        return ZStack {
+            Circle().stroke(anillo, lineWidth: 10)
+            VStack(spacing: 0) {
+                Text(modelo.kmh.map(String.init) ?? "–")
+                    .font(.system(size: 72, weight: .bold, design: .rounded))
+                    .monospacedDigit()
+                    .foregroundColor(pasado ? rojo : .primary)
+                Text("km/h").font(.subheadline).foregroundColor(.secondary)
+            }
         }
+        .frame(width: 200, height: 200)
         .frame(maxWidth: .infinity)
-        .padding(.top, 8)
         .accessibilityElement(children: .combine)
     }
 
@@ -81,54 +116,50 @@ struct Pantalla: View {
     }
 
     private var tarjetaRadar: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            if let radar = modelo.proximo, let d = modelo.distanciaProximo {
-                Text(radar.tipo == .tramo ? "Radar de tramo" : "Radar")
-                    .font(.headline)
-                Text(Frases.distancia(d))
-                    .font(.system(size: 34, weight: .semibold, design: .rounded))
-                HStack(spacing: 12) {
-                    if let limite = radar.limite { Label("Límite \(limite)", systemImage: "speedometer") }
-                    if let via = radar.via { Label(via, systemImage: "road.lanes") }
+        tarjeta {
+            HStack(spacing: 12) {
+                VStack(alignment: .leading, spacing: 4) {
+                    if let radar = modelo.proximo, let d = modelo.distanciaProximo {
+                        Text(radar.tipo == .tramo ? "Radar de tramo" : "Radar").font(.headline)
+                        Text(Frases.distancia(d)).font(.system(size: 30, weight: .bold, design: .rounded))
+                        if let via = radar.via { Text(via).font(.subheadline).foregroundColor(.secondary) }
+                    } else if !modelo.activo {
+                        Text("Parado").font(.headline)
+                        Text("Pulsa Empezar antes de salir. Puedes bloquear el móvil o usar otras apps.")
+                            .font(.subheadline).foregroundColor(.secondary)
+                    } else if modelo.ahorro {
+                        Text("Sin radares cerca").font(.headline)
+                        Text("GPS en modo de ahorro.").font(.subheadline).foregroundColor(.secondary)
+                    } else {
+                        Text("Ningún radar delante").font(.headline)
+                        Text("Te aviso unos 20 segundos antes.").font(.subheadline).foregroundColor(.secondary)
+                    }
                 }
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-            } else if !modelo.activo {
-                Text("Parado").font(.headline)
-                Text("Pulsa Empezar antes de salir. Puedes bloquear el móvil o usar otras apps.")
-                    .font(.subheadline).foregroundColor(.secondary)
-            } else if modelo.ahorro {
-                Text("Sin radares a menos de 10 km").font(.headline)
-                Text("GPS en modo de ahorro.").font(.subheadline).foregroundColor(.secondary)
-            } else {
-                Text("Ningún radar delante").font(.headline)
-                Text("Avisaré unos 20 segundos antes.").font(.subheadline).foregroundColor(.secondary)
+                Spacer(minLength: 0)
+                if modelo.distanciaProximo != nil, let limite = modelo.proximo?.limite { senal(limite) }
             }
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding()
-        .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 14))
     }
 
     private func tarjetaTramo(_ tramo: EstadoTramo) -> some View {
         let media = tramo.media
         let exceso = media != nil && tramo.radar.limite != nil && media! > tramo.radar.limite!
-        return VStack(alignment: .leading, spacing: 6) {
-            Text("Dentro de un tramo").font(.headline)
-            Text("Media " + (media.map(String.init) ?? "–") + " km/h")
-                .font(.system(size: 34, weight: .semibold, design: .rounded))
-                .monospacedDigit()
-                .foregroundColor(exceso ? .red : .primary)
+        return tarjeta {
             HStack(spacing: 12) {
-                if let limite = tramo.radar.limite { Label("Límite \(limite)", systemImage: "speedometer") }
-                if let quedan = tramo.restante { Label("Quedan " + Frases.distancia(quedan), systemImage: "flag.checkered") }
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Dentro de un tramo").font(.headline)
+                    Text("Media " + (media.map(String.init) ?? "–") + " km/h")
+                        .font(.system(size: 30, weight: .bold, design: .rounded))
+                        .monospacedDigit()
+                        .foregroundColor(exceso ? rojo : .primary)
+                    if let quedan = tramo.restante {
+                        Text("Quedan " + Frases.distancia(quedan)).font(.subheadline).foregroundColor(.secondary)
+                    }
+                }
+                Spacer(minLength: 0)
+                if let limite = tramo.radar.limite { senal(limite) }
             }
-            .font(.subheadline)
-            .foregroundColor(.secondary)
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding()
-        .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 14))
     }
 
     private var botonPrincipal: some View {
@@ -136,60 +167,63 @@ struct Pantalla: View {
             if modelo.activo { modelo.parar(manual: true) } else { modelo.empezar() }
         } label: {
             Text(modelo.activo ? "Parar" : "Empezar")
-                .font(.title2.weight(.semibold))
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 10)
+                .font(.title3.weight(.semibold))
+                .foregroundColor(.white)
+                .frame(maxWidth: .infinity, minHeight: 60)
+                .background(modelo.activo ? rojo : Color.accentColor, in: Capsule())
         }
-        .buttonStyle(.borderedProminent)
-        .tint(modelo.activo ? .red : .accentColor)
+        .buttonStyle(.plain)
     }
 
     private var avisoPermiso: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text("La app no tiene permiso de ubicación").font(.headline)
+        tarjeta {
+            Label("La app no tiene permiso de ubicación", systemImage: "location.slash.fill").font(.headline)
             Text("Sin la posición no puede saber qué radares tienes delante.")
                 .font(.subheadline).foregroundColor(.secondary)
             Button("Abrir Ajustes") {
                 if let url = URL(string: UIApplication.openSettingsURLString) { abrir(url) }
             }
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding()
-        .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 14))
     }
 
     private var sonido: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text("Dónde suena el aviso").font(.headline)
-            Picker("Dónde suena el aviso", selection: $modelo.salida) {
-                ForEach(SalidaVoz.allCases) { modo in Text(modo.titulo).tag(modo) }
+        tarjeta {
+            Text("Dónde suena el aviso").font(.body.weight(.semibold))
+            Menu {
+                Picker("Dónde suena el aviso", selection: $modelo.salida) {
+                    ForEach(SalidaVoz.allCases) { modo in Text(modo.titulo).tag(modo) }
+                }
+            } label: {
+                HStack {
+                    Text(modelo.salida.titulo).foregroundColor(.primary)
+                    Spacer()
+                    Image(systemName: "chevron.up.chevron.down").foregroundColor(.accentColor)
+                }
+                .padding(.horizontal, 14)
+                .padding(.vertical, 12)
+                .background(Color(.systemBackground), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
             }
-            .pickerStyle(.menu)
-            .labelsHidden()
-            Text(modelo.salida.explicacion)
-                .font(.subheadline).foregroundColor(.secondary)
+            Text(modelo.salida.explicacion).font(.footnote).foregroundColor(.secondary)
             if modelo.salida == .llamada && !modelo.llamadaDisponible {
                 Label("La prueba ha terminado: ahora suena por el altavoz del iPhone.", systemImage: "lock.fill")
-                    .font(.subheadline).foregroundColor(.orange)
+                    .font(.footnote).foregroundColor(.orange)
                 Button("Volver a oírlo por el coche") { verPremium = true }
                     .buttonStyle(.borderedProminent)
             }
             HStack {
-                Button("Probar ahora") { modelo.probarSonido() }
+                Button("Probar el aviso") { modelo.probarSonido() }
                 Spacer()
                 Button("Probar en 10 s") { modelo.probarSonido(dentroDe: 10) }
             }
             .buttonStyle(.bordered)
-            Text("«Probar en 10 s» sirve para bloquear el móvil y comprobar que suena igual. Con la app parada puede no sonar en segundo plano.")
+            .buttonBorderShape(.capsule)
+            Text("«Probar en 10 s» sirve para bloquear el móvil y comprobar que suena igual.")
                 .font(.footnote).foregroundColor(.secondary)
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding()
-        .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 14))
     }
 
     private var tarjetaPremium: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        tarjeta {
             if modelo.premium {
                 Label("Premium activo", systemImage: "checkmark.seal.fill").font(.headline)
                 Text("El aviso por los altavoces del coche está desbloqueado. Gracias por apoyar la app.")
@@ -202,55 +236,45 @@ struct Pantalla: View {
                      : "El aviso por los altavoces del coche es de Premium. Los avisos por el iPhone siguen siendo gratis.")
                     .font(.subheadline).foregroundColor(.secondary)
                 Button("Ver Premium") { verPremium = true }
-                    .buttonStyle(.bordered)
+                    .buttonStyle(.borderedProminent)
+                    .buttonBorderShape(.capsule)
             }
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding()
-        .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 14))
     }
 
     private var arranque: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Toggle("Empezar sola al ir en coche", isOn: $modelo.arranqueAutomatico)
-            Text("Detecta que vas en coche y se pone a vigilar sin que abras la app. Al aparcar se apaga sola.")
-                .font(.subheadline).foregroundColor(.secondary)
+        tarjeta {
+            interruptor("Empezar sola al ir en coche",
+                        "Se pone a vigilar sola al ir en coche y se apaga al aparcar.", $modelo.arranqueAutomatico)
             if modelo.arranqueAutomatico && modelo.permiso != .authorizedAlways {
-                VStack(alignment: .leading, spacing: 6) {
+                HStack {
                     Label("Necesita la ubicación «Siempre».", systemImage: "exclamationmark.triangle.fill")
-                        .font(.subheadline).foregroundColor(.orange)
-                    Button("Abrir Ajustes") {
+                        .font(.footnote).foregroundColor(.orange)
+                    Spacer()
+                    Button("Ajustes") {
                         if let url = URL(string: UIApplication.openSettingsURLString) { abrir(url) }
                     }
-                    .font(.subheadline)
+                    .font(.footnote)
                 }
             }
             Divider()
-            Toggle("Empezar al abrir la app", isOn: $modelo.empezarAlAbrir)
+            interruptor("Empezar al abrir la app", "Vigila nada más abrirla, sin pulsar Empezar.", $modelo.empezarAlAbrir)
             Divider()
-            Toggle("Avisos de tráfico de la DGT", isOn: $modelo.avisosDGT)
-            Text("Accidentes, retenciones, obstáculos y mal tiempo en tu carretera, a unos 2 km. Usa unos 2 MB de datos por hora de viaje.")
-                .font(.subheadline).foregroundColor(.secondary)
+            interruptor("Avisos de tráfico de la DGT",
+                        "Accidentes, retenciones y obstáculos en tu carretera, a unos 2 km.", $modelo.avisosDGT)
             Divider()
-            Toggle("Aviso en la pantalla de bloqueo", isOn: $modelo.pantallaBloqueo)
-            Text("El próximo radar, la distancia y el límite en la pantalla de bloqueo y en la isla dinámica.")
-                .font(.subheadline).foregroundColor(.secondary)
+            interruptor("Aviso en la pantalla de bloqueo",
+                        "El próximo radar en la pantalla de bloqueo y en la isla dinámica.", $modelo.pantallaBloqueo)
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding()
-        .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 14))
     }
 
     private var diario: some View {
-        VStack(alignment: .leading, spacing: 4) {
+        tarjeta {
             Text("Últimos avisos").font(.headline)
-            ForEach(Array(modelo.diario.prefix(8).enumerated()), id: \.offset) { _, linea in
-                Text(linea).font(.footnote).foregroundColor(.secondary)
+            ForEach(Array(modelo.diario.prefix(6).enumerated()), id: \.offset) { _, linea in
+                Text(linea).font(.caption).foregroundColor(.secondary)
             }
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding()
-        .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 14))
     }
 
     private var pie: some View {
@@ -264,6 +288,7 @@ struct Pantalla: View {
         .font(.footnote)
         .foregroundColor(.secondary)
         .multilineTextAlignment(.center)
+        .frame(maxWidth: .infinity)
         .padding(.top, 4)
     }
 }
