@@ -83,6 +83,15 @@ class Principal : ComponentActivity() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        Actualizacion.comprobar(this)
+        // Espera a que la tienda confirme si hay Premium antes de decidir el anuncio.
+        window.decorView.postDelayed({
+            Anuncios.alAbrir(this) { !ajustes.premium && (Estado.pantalla.value.kmh ?: 0) < 10 }
+        }, 1500)
+    }
+
     private fun empezar() {
         val faltan = mutableListOf<String>()
         if (!Vigilancia.tienePermiso(this)) faltan += Manifest.permission.ACCESS_FINE_LOCATION
@@ -143,6 +152,7 @@ class Principal : ComponentActivity() {
         val e by Estado.pantalla.collectAsState()
         val ofertas by tienda.ofertas.collectAsState()
         val avisoTienda by tienda.aviso.collectAsState()
+        val nueva by Actualizacion.hay.collectAsState()
         var salida by remember { mutableStateOf(ajustes.salida) }
         var auto by remember { mutableStateOf(ajustes.arranqueAutomatico) }
         var dgt by remember { mutableStateOf(ajustes.avisosDGT) }
@@ -154,6 +164,23 @@ class Principal : ComponentActivity() {
             verticalArrangement = Arrangement.spacedBy(18.dp),
         ) {
             Text("Chivato Radar", fontSize = 22.sp, fontWeight = FontWeight.Bold)
+
+            if (nueva) {
+                Row(
+                    Modifier.fillMaxWidth().clip(RoundedCornerShape(20.dp)).background(MaterialTheme.colorScheme.primary)
+                        .clickable {
+                            runCatching { startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageName"))) }
+                                .onFailure { startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=$packageName"))) }
+                        }.padding(18.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Column(Modifier.weight(1f)) {
+                        Text("Hay una versión nueva", fontWeight = FontWeight.SemiBold, fontSize = 16.sp, color = MaterialTheme.colorScheme.onPrimary)
+                        Text("Toca para actualizar en Google Play", fontSize = 13.sp, color = MaterialTheme.colorScheme.onPrimary)
+                    }
+                    Text("›", fontSize = 28.sp, color = MaterialTheme.colorScheme.onPrimary)
+                }
+            }
 
             // Velocidad en un anillo: rojo si vas por encima del límite del radar cercano.
             val pasado = e.kmh != null && e.limite != null && (e.distancia ?: 9e9) < 1500 && e.kmh!! > e.limite!!

@@ -24,6 +24,11 @@
         android:supportsRtl="true"
         android:theme="@android:style/Theme.Material.NoActionBar">
 
+        <!-- ID de la app en AdMob (el del bloque de anuncios está en Anuncios.kt). -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-1535697166232113~6839278962" />
+
         <activity
             android:name=".Principal"
             android:exported="true"
