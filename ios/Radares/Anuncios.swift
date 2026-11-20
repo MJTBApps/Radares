@@ -1,4 +1,5 @@
 import GoogleMobileAds
+import SwiftUI
 import UIKit
 import UserMessagingPlatform
 
