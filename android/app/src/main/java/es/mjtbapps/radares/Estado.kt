@@ -72,7 +72,7 @@ class Ajustes(contexto: Context) {
     val diasDePruebaRestantes: Int
         get() = maxOf(0, DIAS_PRUEBA - ((System.currentTimeMillis() - primerUso) / 86_400_000L).toInt())
 
-    /** El aviso por los altavoces del coche es de Premium, con 14 días de prueba. */
+    /** Lo de Premium (aviso por el coche y arranque automático), con 14 días de prueba. */
     val llamadaDisponible: Boolean get() = premium || diasDePruebaRestantes > 0
 
     companion object { const val DIAS_PRUEBA = 14 }

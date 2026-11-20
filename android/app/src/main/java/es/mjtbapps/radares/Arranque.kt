@@ -38,7 +38,9 @@ object Arranque {
     @SuppressLint("MissingPermission")
     fun configurar(c: Context) {
         val cliente = ActivityRecognition.getClient(c)
-        if (!Ajustes(c).arranqueAutomatico || permisosQueFaltan(c).isNotEmpty()) {
+        // Es de Premium (o durante los días de prueba).
+        val a = Ajustes(c)
+        if (!a.arranqueAutomatico || !a.llamadaDisponible || permisosQueFaltan(c).isNotEmpty()) {
             runCatching { cliente.removeActivityTransitionUpdates(intento(c)) }
             return
         }
@@ -59,7 +61,7 @@ class AlEntrarEnCoche : BroadcastReceiver() {
         val enCoche = resultado.transitionEvents.any {
             it.activityType == DetectedActivity.IN_VEHICLE && it.transitionType == ActivityTransition.ACTIVITY_TRANSITION_ENTER
         }
-        if (enCoche && Ajustes(c).arranqueAutomatico && !Estado.pantalla.value.activo && Vigilancia.tienePermiso(c)) {
+        if (enCoche && Ajustes(c).arranqueAutomatico && Ajustes(c).llamadaDisponible && !Estado.pantalla.value.activo && Vigilancia.tienePermiso(c)) {
             Vigilancia.empezar(c, sola = true)
         }
     }

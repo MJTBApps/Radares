@@ -32,6 +32,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.HorizontalDivider
@@ -171,7 +172,9 @@ class Principal : ComponentActivity() {
         val avisoTienda by tienda.aviso.collectAsState()
         val nueva by Actualizacion.hay.collectAsState()
         var salida by remember { mutableStateOf(ajustes.salida) }
-        var auto by remember { mutableStateOf(ajustes.arranqueAutomatico) }
+        var auto by remember { mutableStateOf(ajustes.arranqueAutomatico && ajustes.llamadaDisponible) }
+        var avisoUbicacion by remember { mutableStateOf(false) }
+        var avisoPremium by remember { mutableStateOf(false) }
         var dgt by remember { mutableStateOf(ajustes.avisosDGT) }
         var menu by remember { mutableStateOf(false) }
         val rojo = Color(0xFFD32F2F)
@@ -277,9 +280,30 @@ class Principal : ComponentActivity() {
 
             Tarjeta {
                 Interruptor("Empezar sola al ir en coche",
-                    "Se pone a vigilar sola al ir en coche y se apaga al aparcar. Necesita la ubicación «Permitir todo el tiempo».", auto) {
-                    auto = it; ajustes.arranqueAutomatico = it; if (it) activarArranque() else Arranque.configurar(this@Principal)
+                    if (ajustes.llamadaDisponible) "Premium. Se pone a vigilar sola al ir en coche y se apaga al aparcar. Necesita la ubicación «Permitir todo el tiempo»."
+                    else "Premium. Se pone a vigilar sola al ir en coche y se apaga al aparcar.", auto) {
+                    if (!it) { auto = false; ajustes.arranqueAutomatico = false; Arranque.configurar(this@Principal) }
+                    else if (!ajustes.llamadaDisponible) avisoPremium = true
+                    else avisoUbicacion = true
                 }
+                if (avisoUbicacion) AlertDialog(
+                    onDismissRequest = { avisoUbicacion = false },
+                    title = { Text("Ubicación en segundo plano") },
+                    text = { Text("Para empezar sola cuando vas en coche, Chivato Radar necesita usar tu ubicación y tu actividad física también con la app cerrada o sin usar. " +
+                        "Así detecta que has subido al coche y te avisa de los radares sin que tengas que abrirla.\n\n" +
+                        "La ubicación solo se usa dentro del móvil para calcular los radares que tienes delante: no se envía a ningún sitio ni se usa para anuncios.\n\n" +
+                        "A continuación Android te pedirá los permisos; en la ubicación elige «Permitir todo el tiempo».") },
+                    confirmButton = { TextButton(onClick = {
+                        avisoUbicacion = false; auto = true; ajustes.arranqueAutomatico = true; activarArranque()
+                    }) { Text("Continuar") } },
+                    dismissButton = { TextButton(onClick = { avisoUbicacion = false }) { Text("Ahora no") } },
+                )
+                if (avisoPremium) AlertDialog(
+                    onDismissRequest = { avisoPremium = false },
+                    title = { Text("Es de Premium") },
+                    text = { Text("Que la app empiece sola al ir en coche es de Premium, junto con el aviso por los altavoces del coche y sin anuncios. Puedes conseguirlo en la tarjeta Premium, más abajo.") },
+                    confirmButton = { TextButton(onClick = { avisoPremium = false }) { Text("Entendido") } },
+                )
                 if (auto && Arranque.permisosQueFaltan(this@Principal).isNotEmpty()) {
                     TextButton(onClick = {
                         startActivity(Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse("package:$packageName")))
@@ -293,12 +317,12 @@ class Principal : ComponentActivity() {
             Tarjeta {
                 if (ajustes.premium) {
                     Text("★ Premium activo", fontWeight = FontWeight.SemiBold, fontSize = 16.sp)
-                    Gris("Avisos por los altavoces del coche y sin anuncios. Gracias por apoyar la app.")
+                    Gris("Avisos por los altavoces del coche, arranque automático y sin anuncios. Gracias por apoyar la app.")
                 } else {
                     Text("★ Premium", fontWeight = FontWeight.SemiBold, fontSize = 16.sp)
                     val dias = ajustes.diasDePruebaRestantes
-                    Gris(if (dias > 0) "Premium: avisos por los altavoces del coche y sin anuncios. El aviso por el coche lo estás probando gratis: quedan $dias días."
-                         else "Premium: avisos por los altavoces del coche y sin anuncios. Los avisos por el móvil siguen siendo gratis.")
+                    Gris(if (dias > 0) "Premium: avisos por los altavoces del coche, arranque automático y sin anuncios. Lo estás probando gratis: quedan $dias días."
+                         else "Premium: avisos por los altavoces del coche, arranque automático y sin anuncios. Los avisos por el móvil siguen siendo gratis.")
                     ofertas.forEach { o ->
                         Button(onClick = { tienda.comprar(this@Principal, o) }, modifier = Modifier.fillMaxWidth(),
                             shape = RoundedCornerShape(20.dp)) { Text("${o.titulo} · ${o.precio}") }
