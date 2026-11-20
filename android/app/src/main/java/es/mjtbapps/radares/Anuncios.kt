@@ -12,6 +12,7 @@ import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.appopen.AppOpenAd
 import com.google.android.ump.ConsentRequestParameters
 import com.google.android.ump.UserMessagingPlatform
+import androidx.compose.foundation.layout.fillMaxWidth
 
 /**
  * Un anuncio de Google (AdMob) al abrir la app, solo sin Premium. Igual que en el iPhone:
@@ -62,4 +63,22 @@ object Anuncios {
             override fun onAdFailedToLoad(error: LoadAdError) {}
         })
     }
+}
+
+/** Banner de AdMob al pie de la pantalla (solo sin Premium y con el consentimiento resuelto). */
+@androidx.compose.runtime.Composable
+fun BannerAnuncio() {
+    val anchoDp = androidx.compose.ui.platform.LocalConfiguration.current.screenWidthDp
+    androidx.compose.ui.viewinterop.AndroidView(
+        modifier = androidx.compose.ui.Modifier.fillMaxWidth(),
+        factory = { ctx ->
+            MobileAds.initialize(ctx.applicationContext)
+            com.google.android.gms.ads.AdView(ctx).apply {
+                setAdSize(com.google.android.gms.ads.AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(ctx, anchoDp))
+                adUnitId = "ca-app-pub-1535697166232113/2739719020"
+                val extras = Bundle().apply { putString("npa", "1") }
+                loadAd(AdRequest.Builder().addNetworkExtrasBundle(AdMobAdapter::class.java, extras).build())
+            }
+        },
+    )
 }

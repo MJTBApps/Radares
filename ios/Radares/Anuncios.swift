@@ -75,3 +75,27 @@ final class Anuncios: NSObject, FullScreenContentDelegate {
         return vc
     }
 }
+
+/// Banner de AdMob al pie de la pantalla, solo sin Premium y con el consentimiento ya resuelto.
+struct BannerAnuncio: UIViewRepresentable {
+    static let bloque = "ca-app-pub-1535697166232113/8702045036"
+    let ancho: CGFloat
+
+    func makeUIView(context: Context) -> BannerView {
+        let banner = BannerView(adSize: currentOrientationAnchoredAdaptiveBanner(width: ancho))
+        banner.adUnitID = Self.bloque
+        banner.rootViewController = UIApplication.shared.connectedScenes
+            .compactMap { ($0 as? UIWindowScene)?.windows.first { $0.isKeyWindow }?.rootViewController }.first
+        MobileAds.shared.start(completionHandler: nil)
+        let peticion = Request()
+        let extras = Extras()
+        extras.additionalParameters = ["npa": "1"]
+        peticion.register(extras)
+        banner.load(peticion)
+        return banner
+    }
+
+    func updateUIView(_ uiView: BannerView, context: Context) {}
+
+    static func alto(_ ancho: CGFloat) -> CGFloat { currentOrientationAnchoredAdaptiveBanner(width: ancho).size.height }
+}

@@ -1,7 +1,9 @@
 import CoreLocation
 import RadaresCore
+import GoogleMobileAds
 import StoreKit
 import SwiftUI
+import UserMessagingPlatform
 
 /// Páginas públicas de la app (política de privacidad y condiciones de uso).
 enum Enlaces {
@@ -15,6 +17,7 @@ struct Pantalla: View {
     @EnvironmentObject private var actualizacion: Actualizacion
     @Environment(\.openURL) private var abrir
     @State private var verPremium = false
+    @State private var puedeAnuncios = ConsentInformation.shared.canRequestAds
 
     private let rojo = Color(red: 0.83, green: 0.18, blue: 0.18)
 
@@ -38,6 +41,18 @@ struct Pantalla: View {
             .padding(.vertical, 12)
         }
         .background(Color(.systemBackground))
+        .safeAreaInset(edge: .bottom) {
+            // Banner solo sin Premium (Premium quita los anuncios).
+            if !modelo.premium && puedeAnuncios {
+                BannerAnuncio(ancho: UIScreen.main.bounds.width)
+                    .frame(height: BannerAnuncio.alto(UIScreen.main.bounds.width))
+                    .background(Color(.systemBackground))
+            }
+        }
+        .onReceive(Timer.publish(every: 3, on: .main, in: .common).autoconnect()) { _ in
+            // El consentimiento se resuelve al abrir (Anuncios.alAbrir); hasta entonces, sin banner.
+            if !puedeAnuncios && ConsentInformation.shared.canRequestAds { puedeAnuncios = true }
+        }
         .sheet(isPresented: $verPremium) {
             PantallaPremium().environmentObject(modelo).environmentObject(tienda)
         }
@@ -226,14 +241,14 @@ struct Pantalla: View {
         tarjeta {
             if modelo.premium {
                 Label("Premium activo", systemImage: "checkmark.seal.fill").font(.headline)
-                Text("El aviso por los altavoces del coche está desbloqueado. Gracias por apoyar la app.")
+                Text("Avisos por los altavoces del coche y sin anuncios. Gracias por apoyar la app.")
                     .font(.subheadline).foregroundColor(.secondary)
             } else {
                 Label("Premium", systemImage: "star.fill").font(.headline)
                 let dias = modelo.diasDePruebaRestantes
                 Text(dias > 0
-                     ? "El aviso por los altavoces del coche es de Premium. Lo estás probando gratis: " + (dias == 1 ? "queda 1 día." : "quedan \(dias) días.")
-                     : "El aviso por los altavoces del coche es de Premium. Los avisos por el iPhone siguen siendo gratis.")
+                     ? "Premium: avisos por los altavoces del coche y sin anuncios. El aviso por el coche lo estás probando gratis: " + (dias == 1 ? "queda 1 día." : "quedan \(dias) días.")
+                     : "Premium: avisos por los altavoces del coche y sin anuncios. Los avisos por el iPhone siguen siendo gratis.")
                     .font(.subheadline).foregroundColor(.secondary)
                 Button("Ver Premium") { verPremium = true }
                     .buttonStyle(.borderedProminent)
@@ -309,6 +324,7 @@ struct PantallaPremium: View {
                         .foregroundColor(.secondary)
                     Label("Avisos de radares fijos y de tramo: gratis, por el iPhone", systemImage: "checkmark")
                     Label("Avisos por los altavoces del coche: Premium", systemImage: "star.fill")
+                    Label("Sin anuncios: Premium", systemImage: "star.fill")
 
                     if modelo.premium {
                         Label("Ya tienes Premium", systemImage: "checkmark.seal.fill")

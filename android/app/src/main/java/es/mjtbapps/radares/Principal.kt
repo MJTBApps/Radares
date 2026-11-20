@@ -44,6 +44,10 @@ import androidx.compose.material3.TextButton
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.foundation.layout.navigationBarsPadding
+import com.google.android.ump.UserMessagingPlatform
+import kotlinx.coroutines.delay
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -78,7 +82,20 @@ class Principal : ComponentActivity() {
             val azul = Color(0xFF1B4DB1)
             MaterialTheme(colorScheme = if (isSystemInDarkTheme()) darkColorScheme(primary = Color(0xFF8FB4FF), onPrimary = Color(0xFF0F1830))
                 else lightColorScheme(primary = azul, onPrimary = Color.White)) {
-                Surface(Modifier.fillMaxSize()) { Contenido() }
+                Surface(Modifier.fillMaxSize()) {
+                    var anuncios by remember { mutableStateOf(false) }
+                    LaunchedEffect(Unit) {
+                        // Banner solo sin Premium (Premium quita los anuncios) y tras el consentimiento.
+                        while (true) {
+                            anuncios = !ajustes.premium && UserMessagingPlatform.getConsentInformation(this@Principal).canRequestAds()
+                            delay(3000)
+                        }
+                    }
+                    Column(Modifier.fillMaxSize()) {
+                        Box(Modifier.weight(1f)) { Contenido() }
+                        if (anuncios) Box(Modifier.navigationBarsPadding()) { BannerAnuncio() }
+                    }
+                }
             }
         }
     }
@@ -276,12 +293,12 @@ class Principal : ComponentActivity() {
             Tarjeta {
                 if (ajustes.premium) {
                     Text("★ Premium activo", fontWeight = FontWeight.SemiBold, fontSize = 16.sp)
-                    Gris("El aviso por los altavoces del coche está desbloqueado. Gracias por apoyar la app.")
+                    Gris("Avisos por los altavoces del coche y sin anuncios. Gracias por apoyar la app.")
                 } else {
                     Text("★ Premium", fontWeight = FontWeight.SemiBold, fontSize = 16.sp)
                     val dias = ajustes.diasDePruebaRestantes
-                    Gris(if (dias > 0) "El aviso por los altavoces del coche es de Premium. Lo estás probando gratis: quedan $dias días."
-                         else "El aviso por los altavoces del coche es de Premium. Los avisos por el móvil siguen siendo gratis.")
+                    Gris(if (dias > 0) "Premium: avisos por los altavoces del coche y sin anuncios. El aviso por el coche lo estás probando gratis: quedan $dias días."
+                         else "Premium: avisos por los altavoces del coche y sin anuncios. Los avisos por el móvil siguen siendo gratis.")
                     ofertas.forEach { o ->
                         Button(onClick = { tienda.comprar(this@Principal, o) }, modifier = Modifier.fillMaxWidth(),
                             shape = RoundedCornerShape(20.dp)) { Text("${o.titulo} · ${o.precio}") }
