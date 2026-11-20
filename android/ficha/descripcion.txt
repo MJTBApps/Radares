@@ -1,0 +1,30 @@
+Chivato Radar te avisa por voz de los radares fijos y de tramo mientras conduces. Sin mapa, sin cuentas y con el móvil bloqueado en el bolsillo.
+
+Está pensado para quien usa el navegador y la música del propio coche: el aviso puede entrar por los altavoces del coche como si fuera una llamada, aunque el coche no tenga Android Auto.
+
+QUÉ HACE
+• Avisa unos 20 segundos antes de cada radar: «Radar a 650 metros. Límite 120. Vas a 131.»
+• Radares de tramo: avisa al entrar, calcula tu velocidad media, te avisa si la superas y te dice la media al salir.
+• Solo avisa de los radares que tienes delante y en tu sentido de la marcha.
+• Más de 3.400 radares fijos y de tramo de España.
+• Avisos de tráfico de la DGT en tu carretera: accidentes, retenciones y obstáculos.
+
+DÓNDE SUENA
+• Por el altavoz del móvil.
+• Por los altavoces del coche, como una llamada: el coche baja la música y dice el aviso (Premium, con 14 días de prueba gratis).
+• Por Bluetooth normal, como cualquier app de música.
+
+ARRANCA SOLA
+Puede ponerse a vigilar sola cuando detecta que vas en coche y apagarse al aparcar.
+
+GASTA POCA BATERÍA
+Usa el GPS a máxima precisión solo cuando hay un radar cerca y se apaga sola si llevas 15 minutos parado.
+
+PRIVACIDAD
+Tu posición no sale del móvil. No hay registro ni cuentas. La versión gratuita muestra anuncios de Google no personalizados.
+
+PREMIUM
+Los avisos por el móvil son gratis. Premium añade el aviso por los altavoces del coche (se puede probar gratis 14 días) y quita todos los anuncios. Suscripción anual o pago único; la suscripción se renueva sola cada año hasta que la canceles en Google Play.
+
+AVISO
+No avisa de radares móviles. Los datos proceden de © colaboradores de OpenStreetMap, del Servei Català de Trànsit y de la DGT, y pueden no estar completos. Respeta siempre los límites de velocidad.
