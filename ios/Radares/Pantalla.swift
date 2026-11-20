@@ -241,14 +241,14 @@ struct Pantalla: View {
         tarjeta {
             if modelo.premium {
                 Label("Premium activo", systemImage: "checkmark.seal.fill").font(.headline)
-                Text("Avisos por los altavoces del coche y sin anuncios. Gracias por apoyar la app.")
+                Text("Avisos por los altavoces del coche, arranque automático y sin anuncios. Gracias por apoyar la app.")
                     .font(.subheadline).foregroundColor(.secondary)
             } else {
                 Label("Premium", systemImage: "star.fill").font(.headline)
                 let dias = modelo.diasDePruebaRestantes
                 Text(dias > 0
-                     ? "Premium: avisos por los altavoces del coche y sin anuncios. El aviso por el coche lo estás probando gratis: " + (dias == 1 ? "queda 1 día." : "quedan \(dias) días.")
-                     : "Premium: avisos por los altavoces del coche y sin anuncios. Los avisos por el iPhone siguen siendo gratis.")
+                     ? "Premium: avisos por los altavoces del coche, arranque automático y sin anuncios. Lo estás probando gratis: " + (dias == 1 ? "queda 1 día." : "quedan \(dias) días.")
+                     : "Premium: avisos por los altavoces del coche, arranque automático y sin anuncios. Los avisos por el iPhone siguen siendo gratis.")
                     .font(.subheadline).foregroundColor(.secondary)
                 Button("Ver Premium") { verPremium = true }
                     .buttonStyle(.borderedProminent)
@@ -259,8 +259,14 @@ struct Pantalla: View {
 
     private var arranque: some View {
         tarjeta {
+            // Es de Premium (o durante los días de prueba); si no, abre la hoja de Premium.
             interruptor("Empezar sola al ir en coche",
-                        "Se pone a vigilar sola al ir en coche y se apaga al aparcar.", $modelo.arranqueAutomatico)
+                        "Premium. Se pone a vigilar sola al ir en coche y se apaga al aparcar.",
+                        Binding(get: { modelo.arranqueAutomatico && modelo.llamadaDisponible },
+                                set: { nuevo in
+                                    if nuevo && !modelo.llamadaDisponible { verPremium = true }
+                                    else { modelo.arranqueAutomatico = nuevo }
+                                }))
             if modelo.arranqueAutomatico && modelo.permiso != .authorizedAlways {
                 HStack {
                     Label("Necesita la ubicación «Siempre».", systemImage: "exclamationmark.triangle.fill")
@@ -324,6 +330,7 @@ struct PantallaPremium: View {
                         .foregroundColor(.secondary)
                     Label("Avisos de radares fijos y de tramo: gratis, por el iPhone", systemImage: "checkmark")
                     Label("Avisos por los altavoces del coche: Premium", systemImage: "star.fill")
+                    Label("Empezar sola al ir en coche: Premium", systemImage: "star.fill")
                     Label("Sin anuncios: Premium", systemImage: "star.fill")
 
                     if modelo.premium {

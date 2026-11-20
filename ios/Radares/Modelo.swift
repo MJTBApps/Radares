@@ -79,7 +79,7 @@ final class Modelo: NSObject, ObservableObject, CLLocationManagerDelegate {
         return max(0, Modelo.diasDePrueba - pasados)
     }
 
-    /// El modo «Coche, como llamada» es de Premium; los primeros días se puede probar gratis.
+    /// Lo de Premium (modo «Coche, como llamada» y arranque automático); los primeros días se puede probar gratis.
     var llamadaDisponible: Bool { premium || diasDePruebaRestantes > 0 }
 
     private let gestor = CLLocationManager()
@@ -276,7 +276,7 @@ final class Modelo: NSObject, ObservableObject, CLLocationManagerDelegate {
     /// si vamos en coche (casi no gasta); solo si lo confirma se enciende el GPS y empieza a vigilar.
     private func configurarArranqueAutomatico(pedirPermiso: Bool) {
         guard CLLocationManager.significantLocationChangeMonitoringAvailable() else { return }
-        if arranqueAutomatico {
+        if arranqueAutomatico && llamadaDisponible {
             if gestor.authorizationStatus == .authorizedAlways {
                 gestor.allowsBackgroundLocationUpdates = true
                 gestor.startMonitoringSignificantLocationChanges()
@@ -295,7 +295,7 @@ final class Modelo: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
 
     private func comprobarSiConduce(_ l: CLLocation) {
-        guard arranqueAutomatico, !activo, comprobandoDesde == nil, Date() > sinArranqueHasta else { return }
+        guard arranqueAutomatico, llamadaDisponible, !activo, comprobandoDesde == nil, Date() > sinArranqueHasta else { return }
         guard CMMotionActivityManager.isActivityAvailable(),
               CMMotionActivityManager.authorizationStatus() != .denied else {
             // Sin sensor de movimiento: la velocidad que traiga el aviso, si la trae.
